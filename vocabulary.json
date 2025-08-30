@@ -1,0 +1,59 @@
+{
+  "family": [
+    {"jp": "かぞく", "romaji": "kazoku", "es": "familia"},
+    {"jp": "おとうさん", "romaji": "otosan", "es": "padre"},
+    {"jp": "おかあさん", "romaji": "okasan", "es": "madre"},
+    {"jp": "おにいさん", "romaji": "onisan", "es": "hermano mayor"},
+    {"jp": "おねえさん", "romaji": "onesan", "es": "hermana mayor"},
+    {"jp": "おとうと", "romaji": "ototo", "es": "hermano menor"},
+    {"jp": "いもうと", "romaji": "imoto", "es": "hermana menor"},
+    {"jp": "ともだち", "romaji": "tomodachi", "es": "amigo/a"}
+  ],
+  "food": [
+    {"jp": "たべもの", "romaji": "tabemono", "es": "comida"},
+    {"jp": "のみもの", "romaji": "nomimono", "es": "bebida"},
+    {"jp": "みず", "romaji": "mizu", "es": "agua"},
+    {"jp": "おちゃ", "romaji": "ocha", "es": "té"},
+    {"jp": "コーヒー", "romaji": "kohi", "es": "café"},
+    {"jp": "ごはん", "romaji": "gohan", "es": "arroz/comida"},
+    {"jp": "パン", "romaji": "pan", "es": "pan"},
+    {"jp": "にく", "romaji": "niku", "es": "carne"},
+    {"jp": "さかな", "romaji": "sakana", "es": "pescado"},
+    {"jp": "りんご", "romaji": "ringo", "es": "manzana"}
+  ],
+  "time": [
+    {"jp": "いま", "romaji": "ima", "es": "ahora"},
+    {"jp": "あさ", "romaji": "asa", "es": "mañana"},
+    {"jp": "ひる", "romaji": "hiru", "es": "mediodía"},
+    {"jp": "ばん", "romaji": "ban", "es": "tarde"},
+    {"jp": "よる", "romaji": "yoru", "es": "noche"},
+    {"jp": "きのう", "romaji": "kino", "es": "ayer"},
+    {"jp": "きょう", "romaji": "kyo", "es": "hoy"},
+    {"jp": "あした", "romaji": "ashita", "es": "mañana"}
+  ],
+  "places": [
+    {"jp": "いえ", "romaji": "ie", "es": "casa"},
+    {"jp": "がっこう", "romaji": "gakko", "es": "escuela"},
+    {"jp": "びょういん", "romaji": "byoin", "es": "hospital"},
+    {"jp": "ぎんこう", "romaji": "ginko", "es": "banco"},
+    {"jp": "みせ", "romaji": "mise", "es": "tienda"},
+    {"jp": "えき", "romaji": "eki", "es": "estación"},
+    {"jp": "こうえん", "romaji": "koen", "es": "parque"},
+    {"jp": "としょかん", "romaji": "toshokan", "es": "biblioteca"}
+  ],
+  "verbs": [
+    {"jp": "ちがいます", "romaji": "chigaimasu", "es": "ser diferente/estar equivocado"}
+  ],
+  "occupations": [
+    {"jp": "しゃいん", "romaji": "shain", "es": "empleado de empresa"},
+    {"jp": "がくせい", "romaji": "gakusei", "es": "estudiante"},
+    {"jp": "こうむいん", "romaji": "komuin", "es": "funcionario público"},
+    {"jp": "べんごし", "romaji": "bengoshi", "es": "abogado"}
+  ],
+  "countries": [
+    {"jp": "イギリス", "romaji": "igirisu", "es": "Inglaterra"}
+  ],
+  "numbers": [
+    {"jp": "きゅうさい", "romaji": "kyuu-sai", "es": "9 años de edad"}
+  ]
+}
