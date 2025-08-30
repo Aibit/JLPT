@@ -862,6 +862,7 @@
             <button class="nav-tab" onclick="showSection('vocabulary')">📝 Vocabulario</button>
             <button class="nav-tab" onclick="showSection('verbs-practice')">🔄 Práctica de Verbos</button>
             <button class="nav-tab" onclick="showSection('grammar')">🔧 Gramática</button>
+            <button class="nav-tab" onclick="showSection('counters')">🔢 Contadores</button>
         </div>
         
         <!-- Daily Challenge Section -->
@@ -1020,8 +1021,8 @@
                         <div class="stat-label">Vocabulario Dominado</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number" id="kanaMastered">0</div>
-                        <div class="stat-label">Kana Dominado</div>
+                        <div class="stat-number" id="tofuguKana">∞</div>
+                        <div class="stat-label">Kana (Tofugu Quiz)</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="quizzesTaken">0</div>
@@ -1130,33 +1131,44 @@
         
         <!-- Kana Practice Section -->
         <div id="kana-practice" class="content-section">
-            <h2 class="section-title">🔤 Kana Practice</h2>
+            <h2 class="section-title">🔤 Práctica de Kana - Powered by Tofugu</h2>
             
-            <div class="controls">
-                <button class="btn" onclick="practiceKana('hiragana')">あ Hiragana</button>
-                <button class="btn" onclick="practiceKana('katakana')">ア Katakana</button>
-                <button class="btn secondary" onclick="resetKanaPractice()">🔄 Reiniciar</button>
-                <button class="btn success" onclick="showAllKana()">👁️ Show All</button>
+            <div class="study-tip" style="margin-bottom: 20px;">
+                <h4>🎯 El Mejor Quiz de Kana del Internet</h4>
+                <p>Integración con el famoso <strong><a href="https://kana-quiz.tofugu.com/" target="_blank" style="color: #3b82f6;">Kana Quiz de Tofugu</a></strong> - la herramienta más efectiva y respetada para dominar hiragana y katakana. ¡Más de 1 millón de estudiantes han usado este sistema!</p>
             </div>
             
-            <div class="score-display">
-                Modo de Práctica: <span id="kanaMode">Selecciona un modo</span> | 
-                Dominado: <span id="kanaMasteredCount">0</span>/46
-            </div>
-            
-            <div class="kana-grid" id="kanaGrid">
-                <!-- Kana characters will be populated here -->
+            <div class="kana-quiz-container" style="
+                background: white;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                height: 700px;
+                margin: 20px -24px;
+                width: calc(100% + 48px);
+            ">
+                <iframe 
+                    src="https://kana-quiz.tofugu.com/" 
+                    width="100%" 
+                    height="700px" 
+                    frameborder="0"
+                    style="border: none; display: block;"
+                    title="Tofugu Kana Quiz - Práctica de Hiragana y Katakana">
+                </iframe>
             </div>
             
             <div class="study-tip">
-                <h4>🎓 Estrategia de Aprendizaje de Kana</h4>
-                <ul>
-                    <li><strong>Click on characters</strong> to reveal their readings</li>
-                    <li><strong>Practice daily</strong> - 10 minutes builds strong memory</li>
-                    <li><strong>Comienza con hiragana</strong> - se usa con más frecuencia</li>
-                    <li><strong>Use mnemonics</strong> - create visual associations</li>
+                <h4>💡 Tips para Maximizar tu Práctica</h4>
+                <ul style="margin-left: 20px;">
+                    <li><strong>🎯 Enfócate en precisión antes que velocidad</strong> - Es mejor responder correctamente despacio que rápido pero mal</li>
+                    <li><strong>📅 Practica diariamente</strong> - 10-15 minutos al día son más efectivos que sesiones largas esporádicas</li>
+                    <li><strong>🔄 Repite los caracteres difíciles</strong> - El quiz se adapta a tus debilidades automáticamente</li>
+                    <li><strong>✏️ Escribe mientras practicas</strong> - Usa papel para reforzar la memoria motriz</li>
+                    <li><strong>🎌 Domina hiragana primero</strong> - Luego pasa a katakana cuando tengas 90%+ de precisión</li>
                 </ul>
             </div>
+
         </div>
         
         <!-- Vocabulary Section -->
@@ -1187,7 +1199,6 @@
                 <button class="btn" onclick="filterVocabulary('animals')">🐕 Animales</button>
                 <button class="btn" onclick="filterVocabulary('study')">📚 Estudio</button>
                 <button class="btn" onclick="filterVocabulary('body_parts')">👤 Cuerpo</button>
-                <button class="btn" onclick="filterVocabulary('counters')">🔢 Contadores</button>
                 <button class="btn" onclick="filterVocabulary('others')">📋 Otros</button>
                 <button class="btn secondary" onclick="searchVocabulary()">🔍 Buscar</button>
             </div>
@@ -1360,6 +1371,171 @@
                             <strong>🔊 Pronunciación:</strong> kah-ree-mah-su
                         </div>
                     </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>いきます (ikimasu) - ir</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "I KEY-masu" → voy con mi llave (iki-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> がっこうに いきます。(Gakkou ni ikimasu) - Voy a la escuela.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> ee-kee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>かいます (kaimasu) - comprar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "BUY-masu" → comprar suena como "KAI" (kai-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> パンを かいます。(Pan wo kaimasu) - Compro pan.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> kah-ee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>かえります (kaerimasu) - regresar/volver</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CARRY ME" → regreso cargándome a casa (kaeri-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> いえに かえります。(Ie ni kaerimasu) - Regreso a casa.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> kah-eh-ree-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>よびます (yobimasu) - llamar/invitar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "YO BE-masu" → yo soy quien llama (yobi-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> ともだちを よびます。(Tomodachi wo yobimasu) - Llamo/invito a un amigo.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> yoh-bee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>まちます (machimasu) - esperar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "MATCH I-masu" → espero que coincidamos (machi-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> バスを まちます。(Basu wo machimasu) - Espero el autobús.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> mah-chee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>いそぎます (isogimasu) - apresurarse</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "I SO GO" → me apresuro tanto (isogi-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> いそいで いきます。(Isoide ikimasu) - Voy rápido/con prisa.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> ee-soh-gee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>およぎます (oyogimasu) - nadar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "OH, YOGA-masu" → nadar es como yoga en el agua (oyogi-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> うみで およぎます。(Umi de oyogimasu) - Nado en el mar.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> oh-yoh-gee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>おくります (okurimasu) - enviar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "OCCUR I-masu" → ocurre que envío (okuri-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> メールを おくります。(Meeru wo okurimasu) - Envío un email.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> oh-ku-ree-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>すわります (suwarimasu) - sentarse</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "SUAVE-masu" → sentarse suavemente (suwari-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> いすに すわります。(Isu ni suwarimasu) - Me siento en la silla.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> su-wah-ree-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>かします (kashimasu) - prestar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CASH I-masu" → presto dinero en efectivo (kashi-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> ほんを かします。(Hon wo kashimasu) - Presto un libro.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> kah-shee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>のりかえます (norikaemasu) - hacer transbordo</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "NO RISKY-masu" → no es arriesgado cambiar de tren (norikae-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> でんしゃを のりかえます。(Densha wo norikaemasu) - Hago transbordo de tren.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> noh-ree-kah-eh-mah-su
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1415,6 +1591,108 @@
                     <h4>🎓 Practica con esta frase:</h4>
                     <p><strong>"Escribo (かきます) una nota, cuelgo (かけます) el teléfono y tomo prestado (かります) un libro"</strong></p>
                     <p>てがみを かきます。でんわを かけます。ほんを かります。</p>
+                </div>
+
+                <h3 style="margin-top: 40px;">🆚 Súper Grupo KA: ¡6 Verbos Muy Confusos!</h3>
+                <div class="comparison-warning">
+                    <p>⚠️ <strong>¡CUIDADO EXTREMO!</strong> Estos 6 verbos con "KA" son la pesadilla de los estudiantes:</p>
+                </div>
+
+                <div class="verb-comparison" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="comparison-card">
+                        <h4>かいます (kaimasu) - comprar 🛒</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "BUY-masu" → comprar (KAI suena como BUY)
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> KAI = BUY → ¡Súper fácil!
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>かえります (kaerimasu) - regresar 🏠</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CARRY ME" → me cargan a casa (KAERI)
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> KAERI = CARRY → regresar cargándome
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>かきます (kakimasu) - escribir ✏️</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CAQUI-masu" → escribir con tinta caqui
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> KAKI = KEY → escritura es CLAVE
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>かけます (kakemasu) - llamar 📞</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CAKE-masu" → llamar para pedir pastel
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> KAKE = CAKE → llamar por teléfono
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>かります (karimasu) - pedir prestado 📚</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CARRY-masu" → llevar algo prestado
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> KARI = CARRY → tomar prestado
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>かします (kashimasu) - prestar 💰</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CASH I-masu" → presto dinero
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> KASHI = CASH → dar en efectivo
+                        </div>
+                    </div>
+                </div>
+
+                <div class="practice-tip" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white;">
+                    <h4>🔥 RETO SUPREMO: Memoriza esta secuencia</h4>
+                    <p><strong>Compro (かいます) → Regreso (かえります) → Escribo (かきます) → Llamo (かけます) → Pido prestado (かります) → Presto (かします)</strong></p>
+                    <p style="font-size: 0.9em; opacity: 0.9;">パンを かいます → いえに かえります → にっきを かきます → ともだちに でんわを かけます → ほんを かります → おかねを かします</p>
+                </div>
+
+                <h3 style="margin-top: 40px;">🏃‍♂️ Dúo Confuso: IKI vs ISOGI</h3>
+                <div class="verb-comparison" style="grid-template-columns: repeat(2, 1fr);">
+                    <div class="comparison-card">
+                        <h4>いきます (ikimasu) - ir 🚶‍♂️</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "I KEY-masu" → voy con mi llave
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> IKI = I KEY → voy con llave
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> がっこうに いきます (normal)
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>いそぎます (isogimasu) - apresurarse 🏃‍♂️</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "I SO GO!" → ¡voy tan rápido!
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> ISOGI = I SO GO → súper rápido
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> いそいで いきます (¡con prisa!)
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1697,6 +1975,395 @@
                 </div>
             </div>
         </div>
+
+        <!-- Counters Section -->
+        <div id="counters" class="content-section">
+            <h2 class="section-title">🔢 Sistema Completo de Contadores Japoneses</h2>
+            
+            <div class="study-tip" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white; margin-bottom: 25px;">
+                <h4>💡 ¿Por qué son tan importantes los contadores?</h4>
+                <p>En japonés, <strong>SIEMPRE</strong> debes usar un contador específico según el tipo de objeto que cuentas. No se dice "tres" a secas, sino "三本 (sanbon)" para lápices, "三匹 (sanbiki)" para animales pequeños, etc. ¡Es fundamental para sonar natural!</p>
+            </div>
+
+            <div class="controls" style="margin-bottom: 30px;">
+                <button class="btn" onclick="showCounterCategory('personas')">👥 Personas</button>
+                <button class="btn" onclick="showCounterCategory('objetos')">📦 Objetos</button>
+                <button class="btn" onclick="showCounterCategory('ordinal')">🔢 Ordinal</button>
+                <button class="btn" onclick="showCounterCategory('delgadas')">📄 Cosas Delgadas</button>
+                <button class="btn" onclick="showCounterCategory('maquinas')">🚗 Máquinas</button>
+                <button class="btn" onclick="showCounterCategory('edad')">🎂 Edad</button>
+                <button class="btn" onclick="showCounterCategory('libros')">📚 Libros</button>
+                <button class="btn" onclick="showCounterCategory('ropa')">👕 Ropa</button>
+                <button class="btn" onclick="showCounterCategory('frecuencia')">🔄 Frecuencia</button>
+                <button class="btn" onclick="showCounterCategory('pequenos')">⚪ Objetos Pequeños</button>
+                <button class="btn" onclick="showCounterCategory('calzado')">👟 Calzado</button>
+                <button class="btn" onclick="showCounterCategory('viviendas')">🏠 Viviendas</button>
+                <button class="btn" onclick="showCounterCategory('pisos')">🏢 Pisos/Plantas</button>
+                <button class="btn" onclick="showCounterCategory('largos')">🖊️ Objetos Largos</button>
+                <button class="btn" onclick="showCounterCategory('bebidas')">🥤 Bebidas</button>
+                <button class="btn" onclick="showCounterCategory('animales')">🐱 Animales Pequeños</button>
+                <button class="btn secondary" onclick="showAllCounters()">📋 Ver Todos</button>
+            </div>
+
+            <div id="counterDisplay" class="card-grid">
+                <div class="card" style="grid-column: 1/-1; text-align: center; padding: 40px;">
+                    <h4>🎯 Selecciona una categoría arriba para explorar los contadores</h4>
+                    <p>Cada tipo de objeto en japonés requiere su contador específico. ¡Descubre cómo dominar este sistema fundamental!</p>
+                </div>
+            </div>
+
+            <!-- Counter Categories Data -->
+            <div id="counterCategories" style="display: none;">
+                <!-- Personas -->
+                <div id="personas-counters">
+                    <h3>👥 Contadores para Personas (~人/~にん)</h3>
+                    <div class="study-tip">
+                        <h4>📝 Regla especial</h4>
+                        <p><strong>1 persona</strong> = ひとり (hitori) | <strong>2 personas</strong> = ふたり (futari)<br>
+                        <strong>3+ personas</strong> = 三人 (sannin), 四人 (yonin), 五人 (gonin)...</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>ひとり (hitori)</h4>
+                            <p>Una persona<br><em>Ejemplo: 一人で行きます (hitori de ikimasu) - Voy solo/a</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>ふたり (futari)</h4>
+                            <p>Dos personas<br><em>Ejemplo: 二人で映画を見ます (futari de eiga wo mimasu) - Vemos una película juntos</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>さんにん (sannin)</h4>
+                            <p>Tres personas<br><em>Ejemplo: 三人家族です (sannin kazoku desu) - Somos una familia de tres</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>よにん (yonin)</h4>
+                            <p>Cuatro personas<br><em>Ejemplo: 四人のグループ (yonin no guruupu) - Un grupo de cuatro</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objetos generales -->
+                <div id="objetos-counters">
+                    <h3>📦 Contadores para Objetos (~個/~こ)</h3>
+                    <div class="study-tip">
+                        <h4>🎯 Uso general</h4>
+                        <p>Se usa para objetos pequeños, redondos, o cuando no sabes qué contador usar. ¡Es el "comodín" más útil!</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっこ (ikko)</h4>
+                            <p>Un objeto<br><em>Ejemplo: りんご一個 (ringo ikko) - Una manzana</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にこ (niko)</h4>
+                            <p>Dos objetos<br><em>Ejemplo: 卵二個 (tamago niko) - Dos huevos</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>さんこ (sanko)</h4>
+                            <p>Tres objetos<br><em>Ejemplo: オレンジ三個 (orenji sanko) - Tres naranjas</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ordinal -->
+                <div id="ordinal-counters">
+                    <h3>🔢 Números Ordinales (~番目/~ばんめ)</h3>
+                    <div class="study-tip">
+                        <h4>📍 Para orden y posición</h4>
+                        <p>Usado para expresar "primero", "segundo", "tercero", etc. Esencial para describir orden.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いちばんめ (ichibanme)</h4>
+                            <p>El primero<br><em>Ejemplo: 一番目の質問 (ichibanme no shitsumon) - La primera pregunta</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にばんめ (nibanme)</h4>
+                            <p>El segundo<br><em>Ejemplo: 二番目の駅 (nibanme no eki) - La segunda estación</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cosas delgadas -->
+                <div id="delgadas-counters">
+                    <h3>📄 Cosas Delgadas (~枚/~まい)</h3>
+                    <div class="study-tip">
+                        <h4>📋 Para objetos planos</h4>
+                        <p>Papel, cartas, fotografías, camisetas, platos, etc. Todo lo que sea delgado y plano.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いちまい (ichimai)</h4>
+                            <p>Una hoja/lámina<br><em>Ejemplo: 写真一枚 (shashin ichimai) - Una fotografía</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にまい (nimai)</h4>
+                            <p>Dos hojas<br><em>Ejemplo: 紙二枚 (kami nimai) - Dos hojas de papel</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>さんまい (sanmai)</h4>
+                            <p>Tres hojas<br><em>Ejemplo: シャツ三枚 (shatsu sanmai) - Tres camisetas</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Máquinas -->
+                <div id="maquinas-counters">
+                    <h3>🚗 Máquinas y Vehículos (~台/~だい)</h3>
+                    <div class="study-tip">
+                        <h4>🚙 Para todo lo mecánico</h4>
+                        <p>Coches, computadoras, televisores, refrigeradores, etc. Cualquier máquina o aparato.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いちだい (ichidai)</h4>
+                            <p>Una máquina<br><em>Ejemplo: 車一台 (kuruma ichidai) - Un coche</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にだい (nidai)</h4>
+                            <p>Dos máquinas<br><em>Ejemplo: コンピューター二台 (konpyuutaa nidai) - Dos computadoras</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Edad -->
+                <div id="edad-counters">
+                    <h3>🎂 Edad (~歳/~さい)</h3>
+                    <div class="study-tip">
+                        <h4>🎈 Para expresar años de edad</h4>
+                        <p>Siempre se usa 歳 (sai) para la edad. ¡Cuidado con las pronunciaciones irregulares!</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっさい (issai)</h4>
+                            <p>1 año de edad<br><em>Ejemplo: 一歳の赤ちゃん (issai no akachan) - Un bebé de 1 año</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>はっさい (hassai)</h4>
+                            <p>8 años<br><em>Ejemplo: 八歳になりました (hassai ni narimashita) - Cumplí 8 años</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にじゅっさい (nijussai)</h4>
+                            <p>20 años<br><em>Ejemplo: 二十歳です (nijussai desu) - Tengo 20 años</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Libros -->
+                <div id="libros-counters">
+                    <h3>📚 Libros y Publicaciones (~冊/~さつ)</h3>
+                    <div class="study-tip">
+                        <h4>📖 Para material de lectura</h4>
+                        <p>Libros, revistas, cuadernos, diccionarios. Todo lo que tenga páginas encuadernadas.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっさつ (issatsu)</h4>
+                            <p>Un libro<br><em>Ejemplo: 本一冊 (hon issatsu) - Un libro</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にさつ (nisatsu)</h4>
+                            <p>Dos libros<br><em>Ejemplo: 雑誌二冊 (zasshi nisatsu) - Dos revistas</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objetos largos -->
+                <div id="largos-counters">
+                    <h3>🖊️ Objetos Delgados y Largos (~本/~ほん)</h3>
+                    <div class="study-tip">
+                        <h4>✏️ Para cosas cilíndricas</h4>
+                        <p>Lápices, bolígrafos, botellas, paraguas, árboles, etc. Todo lo que sea largo y cilíndrico.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっぽん (ippon)</h4>
+                            <p>Un objeto largo<br><em>Ejemplo: 鉛筆一本 (enpitsu ippon) - Un lápiz</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にほん (nihon)</h4>
+                            <p>Dos objetos largos<br><em>Ejemplo: ボトル二本 (botoru nihon) - Dos botellas</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>さんぼん (sanbon)</h4>
+                            <p>Tres objetos largos<br><em>Ejemplo: 傘三本 (kasa sanbon) - Tres paraguas</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ropa -->
+                <div id="ropa-counters">
+                    <h3>👕 Ropa y Prendas (~着/~ちゃく)</h3>
+                    <div class="study-tip">
+                        <h4>👔 Para vestimenta completa</h4>
+                        <p>Se usa para contar conjuntos de ropa o prendas específicas como trajes, vestidos, etc.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっちゃく (icchaku)</h4>
+                            <p>Un conjunto de ropa<br><em>Ejemplo: スーツ一着 (suutsu icchaku) - Un traje</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にちゃく (nichaku)</h4>
+                            <p>Dos conjuntos<br><em>Ejemplo: 着物二着 (kimono nichaku) - Dos kimonos</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frecuencia -->
+                <div id="frecuencia-counters">
+                    <h3>🔄 Frecuencia (~回/~かい)</h3>
+                    <div class="study-tip">
+                        <h4>🔁 Para veces y repeticiones</h4>
+                        <p>Expresa cuántas veces ocurre algo. También se usa para contar pisos de edificios.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっかい (ikkai)</h4>
+                            <p>Una vez/Primer piso<br><em>Ejemplo: 一回行きました (ikkai ikimashita) - Fui una vez</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にかい (nikai)</h4>
+                            <p>Dos veces/Segundo piso<br><em>Ejemplo: 二回目です (nikaime desu) - Es la segunda vez</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>さんかい (sankai)</h4>
+                            <p>Tres veces/Tercer piso<br><em>Ejemplo: 三階に住んでいます (sankai ni sunde imasu) - Vivo en el tercer piso</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objetos pequeños (revisión) -->
+                <div id="pequenos-counters">
+                    <h3>⚪ Objetos Pequeños (~個/~こ)</h3>
+                    <div class="study-tip">
+                        <h4>🔸 Contador comodín</h4>
+                        <p>Ideal para frutas, dulces, pelotas, huevos, y cualquier objeto pequeño y redondo. ¡Tu salvador cuando no sabes qué contador usar!</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっこ (ikko)</h4>
+                            <p>Un objeto pequeño<br><em>Ejemplo: ケーキ一個 (keeki ikko) - Un pastel</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にこ (niko)</h4>
+                            <p>Dos objetos<br><em>Ejemplo: 飴二個 (ame niko) - Dos caramelos</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>いくつ (ikutsu)</h4>
+                            <p>¿Cuántos?<br><em>Ejemplo: いくつありますか (ikutsu arimasu ka) - ¿Cuántos hay?</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calzado -->
+                <div id="calzado-counters">
+                    <h3>👟 Calzado (~足/~そく)</h3>
+                    <div class="study-tip">
+                        <h4>👠 Para zapatos y calcetines</h4>
+                        <p>Se usa para todo tipo de calzado: zapatos, botas, sandalias, calcetines, etc.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっそく (issoku)</h4>
+                            <p>Un par de zapatos<br><em>Ejemplo: 靴一足 (kutsu issoku) - Un par de zapatos</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にそく (nisoku)</h4>
+                            <p>Dos pares<br><em>Ejemplo: 靴下二足 (kutsushita nisoku) - Dos pares de calcetines</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viviendas -->
+                <div id="viviendas-counters">
+                    <h3>🏠 Viviendas y Edificios (~軒/~けん)</h3>
+                    <div class="study-tip">
+                        <h4>🏘️ Para casas y construcciones</h4>
+                        <p>Se usa para contar casas, edificios, tiendas, templos, etc. Cualquier estructura habitable.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっけん (ikken)</h4>
+                            <p>Una casa<br><em>Ejemplo: 家一軒 (ie ikken) - Una casa</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にけん (niken)</h4>
+                            <p>Dos casas<br><em>Ejemplo: 店二軒 (mise niken) - Dos tiendas</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pisos -->
+                <div id="pisos-counters">
+                    <h3>🏢 Pisos y Plantas (~階/~かい)</h3>
+                    <div class="study-tip">
+                        <h4>🏬 Para niveles de edificios</h4>
+                        <p>Usado para indicar el piso de un edificio. ¡Cuidado! En Japón el primer piso es 一階!</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっかい (ikkai)</h4>
+                            <p>Primer piso<br><em>Ejemplo: 一階のレストラン (ikkai no resutoran) - El restaurante del primer piso</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にかい (nikai)</h4>
+                            <p>Segundo piso<br><em>Ejemplo: 二階に住んでいます (nikai ni sunde imasu) - Vivo en el segundo piso</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>なんかい (nankai)</h4>
+                            <p>¿Qué piso?<br><em>Ejemplo: 何階ですか (nankai desu ka) - ¿En qué piso está?</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bebidas -->
+                <div id="bebidas-counters">
+                    <h3>🥤 Bebidas (~杯/~はい)</h3>
+                    <div class="study-tip">
+                        <h4>☕ Para líquidos en recipientes</h4>
+                        <p>Se usa para contar bebidas en tazas, vasos, copas, etc. Perfecto para cafés y restaurantes.</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっぱい (ippai)</h4>
+                            <p>Una bebida/vaso<br><em>Ejemplo: コーヒー一杯 (koohii ippai) - Una taza de café</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にはい (nihai)</h4>
+                            <p>Dos bebidas<br><em>Ejemplo: ビール二杯 (biiru nihai) - Dos cervezas</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>さんばい (sanbai)</h4>
+                            <p>Tres bebidas<br><em>Ejemplo: お茶三杯 (ocha sanbai) - Tres tés</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animales pequeños -->
+                <div id="animales-counters">
+                    <h3>🐱 Animales Pequeños (~匹/~ひき)</h3>
+                    <div class="study-tip">
+                        <h4>🐕 Para mascotas y animales pequeños</h4>
+                        <p>Se usa para perros, gatos, pájaros, peces, insectos, etc. ¡Cuidado con los cambios fonéticos!</p>
+                    </div>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>いっぴき (ippiki)</h4>
+                            <p>Un animal pequeño<br><em>Ejemplo: 猫一匹 (neko ippiki) - Un gato</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>にひき (nihiki)</h4>
+                            <p>Dos animales<br><em>Ejemplo: 犬二匹 (inu nihiki) - Dos perros</em></p>
+                        </div>
+                        <div class="card">
+                            <h4>さんびき (sanbiki)</h4>
+                            <p>Tres animales<br><em>Ejemplo: 鳥三羽 (tori sanbiki) - Tres pájaros</em></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     
     <script>
@@ -1843,40 +2510,14 @@
             {category: "adjectives", pattern: "でした", romaji: "deshita", meaning: "na-adjective past", question: "きのうは げんき___ 。", options: ["です", "でした", "じゃないです", "な"], correct: "でした", explanation: "でした is the past form of です with な-adjectives"}
         ];
         
-        const hiraganaData = [
-            {char: "あ", romaji: "a"}, {char: "い", romaji: "i"}, {char: "う", romaji: "u"}, {char: "え", romaji: "e"}, {char: "お", romaji: "o"},
-            {char: "か", romaji: "ka"}, {char: "き", romaji: "ki"}, {char: "く", romaji: "ku"}, {char: "け", romaji: "ke"}, {char: "こ", romaji: "ko"},
-            {char: "さ", romaji: "sa"}, {char: "し", romaji: "shi"}, {char: "す", romaji: "su"}, {char: "せ", romaji: "se"}, {char: "そ", romaji: "so"},
-            {char: "た", romaji: "ta"}, {char: "ち", romaji: "chi"}, {char: "つ", romaji: "tsu"}, {char: "て", romaji: "te"}, {char: "と", romaji: "to"},
-            {char: "な", romaji: "na"}, {char: "に", romaji: "ni"}, {char: "ぬ", romaji: "nu"}, {char: "ね", romaji: "ne"}, {char: "の", romaji: "no"},
-            {char: "は", romaji: "ha"}, {char: "ひ", romaji: "hi"}, {char: "ふ", romaji: "fu"}, {char: "へ", romaji: "he"}, {char: "ほ", romaji: "ho"},
-            {char: "ま", romaji: "ma"}, {char: "み", romaji: "mi"}, {char: "む", romaji: "mu"}, {char: "め", romaji: "me"}, {char: "も", romaji: "mo"},
-            {char: "や", romaji: "ya"}, {char: "ゆ", romaji: "yu"}, {char: "よ", romaji: "yo"},
-            {char: "ら", romaji: "ra"}, {char: "り", romaji: "ri"}, {char: "る", romaji: "ru"}, {char: "れ", romaji: "re"}, {char: "ろ", romaji: "ro"},
-            {char: "わ", romaji: "wa"}, {char: "を", romaji: "wo"}, {char: "ん", romaji: "n"}
-        ];
-        
-        const katakanaData = [
-            {char: "ア", romaji: "a"}, {char: "イ", romaji: "i"}, {char: "ウ", romaji: "u"}, {char: "エ", romaji: "e"}, {char: "オ", romaji: "o"},
-            {char: "カ", romaji: "ka"}, {char: "キ", romaji: "ki"}, {char: "ク", romaji: "ku"}, {char: "ケ", romaji: "ke"}, {char: "コ", romaji: "ko"},
-            {char: "サ", romaji: "sa"}, {char: "シ", romaji: "shi"}, {char: "ス", romaji: "su"}, {char: "セ", romaji: "se"}, {char: "ソ", romaji: "so"},
-            {char: "タ", romaji: "ta"}, {char: "チ", romaji: "chi"}, {char: "ツ", romaji: "tsu"}, {char: "テ", romaji: "te"}, {char: "ト", romaji: "to"},
-            {char: "ナ", romaji: "na"}, {char: "ニ", romaji: "ni"}, {char: "ヌ", romaji: "nu"}, {char: "ネ", romaji: "ne"}, {char: "ノ", romaji: "no"},
-            {char: "ハ", romaji: "ha"}, {char: "ヒ", romaji: "hi"}, {char: "フ", romaji: "fu"}, {char: "ヘ", romaji: "he"}, {char: "ホ", romaji: "ho"},
-            {char: "マ", romaji: "ma"}, {char: "ミ", romaji: "mi"}, {char: "ム", romaji: "mu"}, {char: "メ", romaji: "me"}, {char: "モ", romaji: "mo"},
-            {char: "ヤ", romaji: "ya"}, {char: "ユ", romaji: "yu"}, {char: "ヨ", romaji: "yo"},
-            {char: "ラ", romaji: "ra"}, {char: "リ", romaji: "ri"}, {char: "ル", romaji: "ru"}, {char: "レ", romaji: "re"}, {char: "ロ", romaji: "ro"},
-            {char: "ワ", romaji: "wa"}, {char: "ヲ", romaji: "wo"}, {char: "ン", romaji: "n"}
-        ];
+        // Kana data removed - now using Tofugu's embedded quiz
         
         // Learning progress tracking with JSON persistence
         let learningProgress = {
             vocabMastered: 0,
-            kanaMastered: 0,
             quizzesTaken: 0,
             studyStreak: 1,
             masteredWords: new Set(),
-            masteredKana: new Set(),
             difficultyMap: {}, // word/kanji -> difficulty level (1=easy, 2=medium, 3=hard)
             reviewSchedule: {}, // word/kanji -> next review date
             streakDates: [], // dates of study sessions
@@ -2298,8 +2939,7 @@
                     animals: [],
                     study: [],
                     body_parts: [],
-                    numbers: [],
-                    counters: []
+                    numbers: []
                 };
                 return false;
             }
@@ -2351,7 +2991,7 @@
         }
         
         function updateProgress() {
-            const sections = ['overview', 'daily-challenge', 'reading-practice', 'sentence-builder', 'flashcards', 'quizzes', 'kana-practice', 'vocabulary', 'grammar'];
+            const sections = ['overview', 'daily-challenge', 'reading-practice', 'sentence-builder', 'flashcards', 'quizzes', 'kana-practice', 'vocabulary', 'grammar', 'counters'];
             const activeSection = document.querySelector('.content-section.active').id;
             const progress = ((sections.indexOf(activeSection) + 1) / sections.length) * 100;
             document.getElementById('progressFill').style.width = progress + '%';
@@ -2360,7 +3000,7 @@
         // Statistics functions
         function updateStats() {
             document.getElementById('vocabMastered').textContent = learningProgress.vocabMastered;
-            document.getElementById('kanaMastered').textContent = learningProgress.kanaMastered;
+            // Kana stats handled by Tofugu quiz
             document.getElementById('quizzesTaken').textContent = learningProgress.quizzesTaken;
             document.getElementById('studyStreak').textContent = learningProgress.studyStreak;
         }
@@ -2647,58 +3287,7 @@
             incrementStat('quizzesTaken');
         }
         
-        // Kana practice functions
-        function practiceKana(type) {
-            const data = type === 'hiragana' ? hiraganaData : katakanaData;
-            document.getElementById('kanaMode').textContent = type.charAt(0).toUpperCase() + type.slice(1);
-            
-            const grid = document.getElementById('kanaGrid');
-            grid.innerHTML = '';
-            
-            data.forEach(kana => {
-                const cell = document.createElement('div');
-                cell.className = 'kana-cell';
-                cell.innerHTML = `<div style="font-size: 1.5em;">${kana.char}</div><div style="font-size: 0.8em; opacity: 0.6;">?</div>`;
-                cell.onclick = () => revealKana(cell, kana);
-                grid.appendChild(cell);
-            });
-            
-            updateKanaStats();
-        }
-        
-        function revealKana(cell, kana) {
-            if (cell.classList.contains('revealed')) return;
-            
-            cell.classList.add('revealed');
-            cell.innerHTML = `<div style="font-size: 1.5em;">${kana.char}</div><div style="font-size: 0.8em;">${kana.romaji}</div>`;
-            
-            const kanaId = kana.char;
-            learningProgress.masteredKana.add(kanaId);
-            incrementStat('kanaMastered');
-            updateKanaStats();
-        }
-        
-        function resetKanaPractice() {
-            learningProgress.masteredKana.clear();
-            learningProgress.kanaMastered = 0;
-            updateStats();
-            updateKanaStats();
-            document.getElementById('kanaGrid').innerHTML = '';
-            document.getElementById('kanaMode').textContent = 'Selecciona un modo';
-        }
-        
-        function showAllKana() {
-            const cells = document.querySelectorAll('.kana-cell');
-            cells.forEach(cell => {
-                if (!cell.classList.contains('revealed')) {
-                    cell.click();
-                }
-            });
-        }
-        
-        function updateKanaStats() {
-            document.getElementById('kanaMasterredCount').textContent = learningProgress.masteredKana.size;
-        }
+        // Kana practice functions removed - now using Tofugu's embedded quiz
         
         // Vocabulary functions
         function populateVocabulary() {
@@ -2888,6 +3477,39 @@
         }
         
         // Remove study plan functions since we removed that section
+        
+        // Counter Functions
+        function showCounterCategory(category) {
+            const counterDisplay = document.getElementById('counterDisplay');
+            const categoryData = document.getElementById(category + '-counters');
+            
+            if (categoryData) {
+                counterDisplay.innerHTML = categoryData.innerHTML;
+                
+                // Highlight active button
+                const buttons = document.querySelectorAll('#counters .controls .btn:not(.secondary)');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+            }
+        }
+        
+        function showAllCounters() {
+            const counterDisplay = document.getElementById('counterDisplay');
+            const allCategories = document.querySelectorAll('#counterCategories > div');
+            
+            let allContent = '<h3 style="grid-column: 1/-1; text-align: center; margin-bottom: 30px;">🔢 Todos los Contadores Japoneses</h3>';
+            
+            allCategories.forEach(category => {
+                allContent += '<div style="grid-column: 1/-1; margin-bottom: 40px;">' + category.innerHTML + '</div>';
+            });
+            
+            counterDisplay.innerHTML = allContent;
+            
+            // Highlight active button
+            const buttons = document.querySelectorAll('#counters .controls .btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
         
         // Event listeners
         document.getElementById('vocabSearch').addEventListener('input', searchVocabulary);
