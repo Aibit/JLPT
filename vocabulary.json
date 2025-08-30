@@ -127,7 +127,9 @@
     {"jp": "はります", "romaji": "harimasu", "es": "pegar/poner"},
     {"jp": "すわります", "romaji": "suwarimasu", "es": "sentarse"},
     {"jp": "おろします", "romaji": "oroshimasu", "es": "bajar/retirar dinero"},
-    {"jp": "のりかえます", "romaji": "norikaemasu", "es": "hacer transbordo"}
+    {"jp": "のりかえます", "romaji": "norikaemasu", "es": "hacer transbordo"},
+    {"jp": "います", "romaji": "imasu", "es": "estar/ser (personas/animales)"},
+    {"jp": "はなします", "romaji": "hanashimasu", "es": "hablar"}
   ],
   "occupations": [
     {"jp": "しゃいん", "romaji": "shain", "es": "empleado de empresa"},
@@ -239,7 +241,8 @@
     {"jp": "みじかい", "romaji": "mijikai", "es": "corto"},
     {"jp": "わかくて", "romaji": "wakakute", "es": "joven y..."},
     {"jp": "ハンサム", "romaji": "hansamu", "es": "guapo/atractivo"},
-    {"jp": "かるいです", "romaji": "karui desu", "es": "es ligero/liviano"}
+    {"jp": "かるいです", "romaji": "karui desu", "es": "es ligero/liviano"},
+    {"jp": "あぶない", "romaji": "abunai", "es": "peligroso"}
   ],
   "colors": [
     {"jp": "しろい", "romaji": "shiroi", "es": "blanco"},
@@ -278,7 +281,9 @@
     {"jp": "やすんで", "romaji": "yasunde", "es": "descansando"},
     {"jp": "もいいですか？", "romaji": "mo ii deska?", "es": "¿está bien si...?/¿puedo...?"},
     {"jp": "シャワーをあびて", "romaji": "shawa o abite", "es": "ducharse/tomar una ducha"},
-    {"jp": "すんで", "romaji": "sunde", "es": "viviendo/residiendo"}
+    {"jp": "すんで", "romaji": "sunde", "es": "viviendo/residiendo"},
+    {"jp": "はやく", "romaji": "hayaku", "es": "rápido/rápidamente"},
+    {"jp": "ければなりません", "romaji": "kereba narimasen", "es": "debe/tiene que"}
   ],
   "activities": [
     {"jp": "スポーツ", "romaji": "supotsu", "es": "deportes"},
