@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma de Estudio Interactiva JLPT N5</title>
+    <title>Mina no Nihongo</title>
     <style>
         * {
             margin: 0;
@@ -848,11 +848,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🇯🇵 Plataforma de Estudio Interactiva JLPT N5</h1>
-            <p>Domina el japonés N5 con cuestionarios, tarjetas de estudio y herramientas interactivas</p>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
+            <h1>Mina no Nihongo</h1>
         </div>
         
         <div class="nav-tabs">
@@ -1217,6 +1213,7 @@
                 <button class="btn" onclick="filterVocabulary('weather')">🌤️ Clima</button>
                 <button class="btn" onclick="filterVocabulary('animals')">🐕 Animales</button>
                 <button class="btn" onclick="filterVocabulary('study')">📚 Estudio</button>
+                <button class="btn" onclick="filterVocabulary('body_parts')">👤 Cuerpo</button>
                 <button class="btn" onclick="filterVocabulary('others')">📋 Otros</button>
                 <button class="btn secondary" onclick="searchVocabulary()">🔍 Buscar</button>
             </div>
@@ -2230,7 +2227,8 @@
                     directions: [],
                     weather: [],
                     animals: [],
-                    study: []
+                    study: [],
+                    body_parts: []
                 };
                 return false;
             }

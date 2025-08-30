@@ -60,7 +60,8 @@
     {"jp": "あさって", "romaji": "asatte", "es": "pasado mañana"},
     {"jp": "きょねん", "romaji": "kyonen", "es": "año pasado"},
     {"jp": "らいしゅう", "romaji": "raishu", "es": "próxima semana"},
-    {"jp": "じかん", "romaji": "jikan", "es": "tiempo/hora"}
+    {"jp": "じかん", "romaji": "jikan", "es": "tiempo/hora"},
+    {"jp": "しゅうまつ", "romaji": "shumatsu", "es": "fin de semana"}
   ],
   "places": [
     {"jp": "いえ", "romaji": "ie", "es": "casa"},
@@ -112,7 +113,9 @@
     {"jp": "あります", "romaji": "arimasu", "es": "haber/estar (objetos)"},
     {"jp": "いって", "romaji": "itte", "es": "yendo/ir (forma te)"},
     {"jp": "ぬすまれ", "romaji": "nusumare", "es": "ser robado"},
-    {"jp": "ほしい", "romaji": "hoshii", "es": "querer/desear"}
+    {"jp": "ほしい", "romaji": "hoshii", "es": "querer/desear"},
+    {"jp": "およぎます", "romaji": "oyogimasu", "es": "nadar"},
+    {"jp": "ならい", "romaji": "narai", "es": "aprender (forma)"}
   ],
   "occupations": [
     {"jp": "しゃいん", "romaji": "shain", "es": "empleado de empresa"},
@@ -155,7 +158,8 @@
     {"jp": "はこ", "romaji": "hako", "es": "caja"},
     {"jp": "しゃしん", "romaji": "shashin", "es": "fotografía"},
     {"jp": "ポスト", "romaji": "posuto", "es": "buzón de correo"},
-    {"jp": "いろいろなもの", "romaji": "iroirona mono", "es": "varias cosas/cosas diversas"}
+    {"jp": "いろいろなもの", "romaji": "iroirona mono", "es": "varias cosas/cosas diversas"},
+    {"jp": "にもつ", "romaji": "nimotsu", "es": "equipaje/paquete"}
   ],
   "demonstratives": [
     {"jp": "これ", "romaji": "kore", "es": "esto"},
@@ -234,14 +238,21 @@
     {"jp": "ただいま", "romaji": "tadaima", "es": "ya estoy en casa"},
     {"jp": "ますが", "romaji": "masu ga", "es": "pero/sin embargo"},
     {"jp": "など", "romaji": "nado", "es": "etcétera/y cosas así"},
-    {"jp": "ふなびん", "romaji": "funabin", "es": "correo por barco"}
+    {"jp": "ふなびん", "romaji": "funabin", "es": "correo por barco"},
+    {"jp": "なにか", "romaji": "nanika", "es": "algo/alguna cosa"},
+    {"jp": "いたい", "romaji": "itai", "es": "doler/duele"},
+    {"jp": "いちども", "romaji": "ichido mo", "es": "ni una vez/nunca"},
+    {"jp": "ちょっと", "romaji": "chotto", "es": "un poco/un momento"}
   ],
   "activities": [
     {"jp": "スポーツ", "romaji": "supotsu", "es": "deportes"},
     {"jp": "コンサート", "romaji": "konsato", "es": "concierto"},
     {"jp": "かいわ", "romaji": "kaiwa", "es": "conversación"},
     {"jp": "おでかけ", "romaji": "o-dekake", "es": "salir/ir de paseo"},
-    {"jp": "ぎおんまつり", "romaji": "gion-matsuri", "es": "Festival Gion"}
+    {"jp": "ぎおんまつり", "romaji": "gion-matsuri", "es": "Festival Gion"},
+    {"jp": "あそび", "romaji": "asobi", "es": "juego/diversión"},
+    {"jp": "うた", "romaji": "uta", "es": "canción"},
+    {"jp": "さんぽ", "romaji": "sanpo", "es": "paseo/caminata"}
   ],
   "people": [
     {"jp": "おとこ", "romaji": "otoko", "es": "hombre"},
@@ -270,5 +281,9 @@
     {"jp": "ぶんけい", "romaji": "bunkei", "es": "patrón de oración"},
     {"jp": "れいぶん", "romaji": "reibun", "es": "oración de ejemplo"},
     {"jp": "いちばん", "romaji": "ichiban", "es": "número uno/el mejor"}
+  ],
+  "body_parts": [
+    {"jp": "のど", "romaji": "nodo", "es": "garganta"},
+    {"jp": "あたま", "romaji": "atama", "es": "cabeza"}
   ]
 }
