@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JLPT N5 Interactive Study Platform</title>
+    <title>Mina no Nihongo</title>
     <style>
         * {
             margin: 0;
@@ -11,92 +11,124 @@
             box-sizing: border-box;
         }
         
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #1f2937;
+            background: #ffffff;
             min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 2;
         }
         
         .header {
             text-align: center;
-            color: white;
-            margin-bottom: 30px;
-            padding: 40px 0;
+            color: #1f2937;
+            margin-bottom: 48px;
+            padding: 64px 0 48px 0;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
         }
         
         .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #111827;
+            letter-spacing: -0.025em;
         }
         
         .header p {
-            font-size: 1.3em;
-            opacity: 0.9;
+            font-size: 1.125rem;
+            color: #6b7280;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
         .progress-bar {
             width: 100%;
             height: 8px;
-            background: rgba(255,255,255,0.3);
+            background: #f3f4f6;
             border-radius: 4px;
-            margin: 20px 0;
+            margin: 24px 0;
             overflow: hidden;
+            position: relative;
         }
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #00f260, #0575e6);
+            background: #3b82f6;
             width: 0%;
             transition: width 0.3s ease;
+            border-radius: 4px;
         }
         
         .nav-tabs {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
+            gap: 8px;
+            margin-bottom: 48px;
+            padding: 4px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .nav-tab {
-            background: rgba(255,255,255,0.2);
-            color: white;
+            background: transparent;
+            color: #6b7280;
             border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
+            padding: 12px 20px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: 0;
+            transition: all 0.2s ease;
+            position: relative;
+            white-space: nowrap;
         }
         
         .nav-tab:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+            background: #f3f4f6;
+            color: #374151;
         }
         
         .nav-tab.active {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: #ffffff;
+            color: #111827;
+            font-weight: 600;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         }
         
         .content-section {
             display: none;
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         }
         
         .content-section.active {
@@ -110,11 +142,15 @@
         }
         
         .section-title {
-            color: #4a90e2;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #4a90e2;
-            padding-bottom: 10px;
+            color: #111827;
+            font-size: 1.875rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            margin-bottom: 24px;
+            padding-bottom: 0;
+            text-transform: none;
+            letter-spacing: -0.025em;
+            text-align: left;
         }
         
         .subsection {
@@ -151,7 +187,7 @@
             font-style: italic;
         }
         
-        .english {
+        .spanish {
             color: #27ae60;
             font-weight: 500;
         }
@@ -172,21 +208,30 @@
         }
         
         .card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            background: #ffffff;
+            color: #1f2937;
+            padding: 24px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
         }
         
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-color: #d1d5db;
         }
         
         .card h4 {
-            color: #fff;
-            margin-bottom: 10px;
+            color: #111827;
+            margin-bottom: 12px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.125rem;
+            line-height: 1.4;
         }
         
         .study-tip {
@@ -256,16 +301,21 @@
         }
         
         .flashcard {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            background: transparent;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             width: 400px;
             height: 250px;
             margin: 20px auto;
             cursor: pointer;
             transform-style: preserve-3d;
-            transition: transform 0.6s;
+            transition: all 0.3s ease;
             position: relative;
+        }
+        
+        .flashcard:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-2px);
         }
         
         .flashcard.flipped {
@@ -281,31 +331,39 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            padding: 20px;
-            border-radius: 15px;
+            padding: 32px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
         }
         
         .flashcard-front {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: #ffffff;
+            color: #1f2937;
         }
         
         .flashcard-back {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            color: #2c3e50;
+            background: #f9fafb;
+            color: #374151;
             transform: rotateY(180deg);
         }
         
         .flashcard-text {
-            font-size: 2.5em;
+            font-size: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 16px;
+            color: #111827;
+            line-height: 1.2;
         }
         
         .flashcard-reading {
-            font-size: 1.2em;
-            opacity: 0.8;
-            font-style: italic;
+            font-size: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            color: #6b7280;
+            text-align: center;
         }
         
         .controls {
@@ -314,28 +372,54 @@
         }
         
         .btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+            background: #3b82f6;
+            color: #ffffff;
             border: none;
-            padding: 12px 25px;
-            border-radius: 25px;
+            padding: 10px 16px;
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 1em;
-            margin: 5px;
-            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            margin: 4px;
+            transition: all 0.2s ease;
+            text-transform: none;
+            letter-spacing: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
         }
         
         .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            background: #2563eb;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         }
         
         .btn.secondary {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            background: #ffffff;
+            color: #374151;
+            border: 1px solid #d1d5db;
+        }
+        
+        .btn.secondary:hover {
+            background: #f9fafb;
+            color: #111827;
         }
         
         .btn.success {
-            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            background: #10b981;
+            color: #ffffff;
+        }
+        
+        .btn.success:hover {
+            background: #059669;
         }
         
         .score-display {
@@ -598,28 +682,186 @@
                 font-size: 2em;
             }
         }
+
+        /* Verb Practice Styles */
+        .verb-cards {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .verb-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .verb-main h4 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .mnemonic {
+            background: #ffeaa7;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #fdcb6e;
+        }
+
+        .example {
+            background: #d1f2eb;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #00b894;
+        }
+
+        .pronunciation-tip {
+            background: #e8f4fd;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .comparison-warning {
+            background: #ff7675;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .verb-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-top: 6px solid #e17055;
+        }
+
+        .memory-trick {
+            background: #fd79a8;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .practice-tip {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .opposite-pairs {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .opposite-pair {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .opposite-card {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .opposite-card.wake {
+            background: linear-gradient(135deg, #fdcb6e 0%, #e17055 100%);
+            color: white;
+        }
+
+        .opposite-card.sleep {
+            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+            color: white;
+        }
+
+        .opposite-card.work {
+            background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%);
+            color: white;
+        }
+
+        .opposite-card.rest {
+            background: linear-gradient(135deg, #00cec9 0%, #55a3ff 100%);
+            color: white;
+        }
+
+        .vs-arrow {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #e17055;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .daily-routine {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .verb-section {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🇯🇵 JLPT N5 Interactive Study Platform</h1>
-            <p>Master Japanese N5 with quizzes, flashcards, and interactive tools</p>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
+            <h1>Mina no Nihongo</h1>
         </div>
         
         <div class="nav-tabs">
             <button class="nav-tab active" onclick="showSection('overview')">📚 Overview</button>
-            <button class="nav-tab" onclick="showSection('daily-challenge')">🏆 Daily Challenge</button>
-            <button class="nav-tab" onclick="showSection('reading-practice')">📖 Reading Practice</button>
-            <button class="nav-tab" onclick="showSection('sentence-builder')">🧩 Sentence Builder</button>
-            <button class="nav-tab" onclick="showSection('flashcards')">🎴 Flashcards</button>
-            <button class="nav-tab" onclick="showSection('quizzes')">🧠 Quizzes</button>
-            <button class="nav-tab" onclick="showSection('kana-practice')">🔤 Kana Practice</button>
-            <button class="nav-tab" onclick="showSection('vocabulary')">📝 Vocabulary</button>
-            <button class="nav-tab" onclick="showSection('grammar')">🔧 Grammar</button>
+            <button class="nav-tab" onclick="showSection('daily-challenge')">🏆 Desafío Diario</button>
+            <button class="nav-tab" onclick="showSection('reading-practice')">📖 Práctica de Lectura</button>
+            <button class="nav-tab" onclick="showSection('sentence-builder')">🧩 Constructor de Oraciones</button>
+            <button class="nav-tab" onclick="showSection('flashcards')">🎴 Tarjetas de Estudio</button>
+            <button class="nav-tab" onclick="showSection('quizzes')">🧠 Cuestionarios</button>
+            <button class="nav-tab" onclick="showSection('kana-practice')">🔤 Práctica de Kana</button>
+            <button class="nav-tab" onclick="showSection('vocabulary')">📝 Vocabulario</button>
+            <button class="nav-tab" onclick="showSection('verbs-practice')">🔄 Práctica de Verbos</button>
+            <button class="nav-tab" onclick="showSection('grammar')">🔧 Gramática</button>
         </div>
         
         <!-- Daily Challenge Section -->
@@ -631,7 +873,7 @@
                 <div class="challenge-progress">
                     <div class="challenge-progress-fill" id="challengeProgress"></div>
                 </div>
-                <p id="challengeDescription">Complete today's tasks to maintain your streak!</p>
+                <p id="challengeDescription">¡Completa las tareas de hoy para mantener tu racha!</p>
                 <div class="streak-flame" id="streakFlame">🔥</div>
                 <p><strong><span id="currentStreak">0</span> Day Streak!</strong></p>
             </div>
@@ -639,11 +881,11 @@
             <div class="daily-stats">
                 <div class="daily-stat">
                     <div class="daily-stat-number" id="todayFlashcards">0</div>
-                    <div class="daily-stat-label">Flashcards</div>
+                    <div class="daily-stat-label">Tarjetas</div>
                 </div>
                 <div class="daily-stat">
                     <div class="daily-stat-number" id="todayQuizzes">0</div>
-                    <div class="daily-stat-label">Quizzes</div>
+                    <div class="daily-stat-label">Cuestionarios</div>
                 </div>
                 <div class="daily-stat">
                     <div class="daily-stat-number" id="todayReading">0</div>
@@ -657,31 +899,31 @@
             
             <div class="card-grid">
                 <div class="card" onclick="startDailyTask('flashcards')">
-                    <h4>🎴 Flashcard Challenge</h4>
+                    <h4>🎴 Desafío de Tarjetas</h4>
                     <p>Review 20 vocabulary cards</p>
-                    <div class="btn" style="margin-top: 10px;">Start Challenge</div>
+                    <div class="btn" style="margin-top: 10px;">Iniciar Desafío</div>
                 </div>
                 <div class="card" onclick="startDailyTask('quiz')">
-                    <h4>🧠 Quiz Challenge</h4>
-                    <p>Score 80%+ on a mixed quiz</p>
-                    <div class="btn" style="margin-top: 10px;">Start Challenge</div>
+                    <h4>🧠 Desafío de Cuestionarios</h4>
+                    <p>Obtén 80%+ en un cuestionario mixto</p>
+                    <div class="btn" style="margin-top: 10px;">Iniciar Desafío</div>
                 </div>
                 <div class="card" onclick="startDailyTask('reading')">
                     <h4>📖 Reading Challenge</h4>
                     <p>Read and comprehend 1 passage</p>
-                    <div class="btn" style="margin-top: 10px;">Start Challenge</div>
+                    <div class="btn" style="margin-top: 10px;">Iniciar Desafío</div>
                 </div>
                 <div class="card" onclick="startDailyTask('sentences')">
                     <h4>🧩 Sentence Challenge</h4>
-                    <p>Build 5 correct sentences</p>
-                    <div class="btn" style="margin-top: 10px;">Start Challenge</div>
+                    <p>Construye 5 oraciones correctas</p>
+                    <div class="btn" style="margin-top: 10px;">Iniciar Desafío</div>
                 </div>
             </div>
         </div>
         
         <!-- Reading Practice Section -->
         <div id="reading-practice" class="content-section">
-            <h2 class="section-title">📖 N5 Reading Practice</h2>
+            <h2 class="section-title">📖 Práctica de Lectura N5</h2>
             
             <div class="reading-controls">
                 <button class="btn" onclick="loadReadingPassage('beginner')">👶 Beginner</button>
@@ -695,7 +937,7 @@
                     Select a reading level to begin
                 </div>
                 <div id="passageContent">
-                    Click on a difficulty level above to load a reading passage with comprehension questions.
+                    Haz clic en un nivel de dificultad arriba para cargar un pasaje de lectura con preguntas de comprensión.
                 </div>
             </div>
             
@@ -703,8 +945,8 @@
                 <h3 style="color: #e74c3c; margin: 20px 0;">Comprehension Questions</h3>
                 <div id="questionContainer"></div>
                 <div class="controls">
-                    <button class="btn success" onclick="checkReadingAnswers()">Check Answers</button>
-                    <button class="btn" onclick="nextReadingPassage()">Next Passage</button>
+                    <button class="btn success" onclick="checkReadingAnswers()">Verificar Respuestas</button>
+                    <button class="btn" onclick="nextReadingPassage()">Siguiente Pasaje</button>
                 </div>
             </div>
             
@@ -714,7 +956,7 @@
                     <li><strong>Toggle Furigana</strong> to test your kanji knowledge</li>
                     <li><strong>Read twice</strong> - once for general meaning, once for details</li>
                     <li><strong>Don't translate</strong> - try to understand directly in Japanese</li>
-                    <li><strong>Note new vocabulary</strong> for later flashcard practice</li>
+                    <li><strong>Anota vocabulario nuevo</strong> para practicar luego con tarjetas</li>
                 </ul>
             </div>
         </div>
@@ -735,10 +977,10 @@
                 </div>
                 
                 <div class="controls">
-                    <button class="btn success" onclick="checkSentence()">✅ Check Sentence</button>
+                    <button class="btn success" onclick="checkSentence()">✅ Verificar Oración</button>
                     <button class="btn" onclick="clearSentence()">🗑️ Clear</button>
                     <button class="btn secondary" onclick="getHint()">💡 Hint</button>
-                    <button class="btn" onclick="nextSentenceChallenge()">➡️ Next Challenge</button>
+                    <button class="btn" onclick="nextSentenceChallenge()">➡️ Siguiente Desafío</button>
                 </div>
                 
                 <div id="sentenceFeedback" style="margin-top: 20px; padding: 15px; border-radius: 10px; display: none;"></div>
@@ -751,7 +993,7 @@
                     <p>Success Rate: <span id="sentenceSuccessRate">0%</span></p>
                 </div>
                 <div class="card">
-                    <h4>📊 Your Progress</h4>
+                    <h4>📊 Tu Progreso</h4>
                     <p>Total Sentences: <span id="totalSentences">0</span></p>
                     <p>Accuracy: <span id="overallAccuracy">0%</span></p>
                 </div>
@@ -760,7 +1002,7 @@
             <div class="study-tip">
                 <h4>🔧 Sentence Building Tips</h4>
                 <ul>
-                    <li><strong>Start with the topic</strong> - usually marked with は</li>
+                    <li><strong>Comienza con el tema</strong> - usualmente marcado con は</li>
                     <li><strong>Object comes before verb</strong> - marked with を</li>
                     <li><strong>Verb goes at the end</strong> - this is key in Japanese!</li>
                     <li><strong>Time/place before action</strong> - に, で particles show when/where</li>
@@ -771,95 +1013,95 @@
             <h2 class="section-title">📚 Welcome to Your N5 Journey</h2>
             
             <div class="study-tip">
-                <h4>🎯 Your Learning Stats</h4>
+                <h4>🎯 Tus Estadísticas de Aprendizaje</h4>
                 <div class="stats" id="learningStats">
                     <div class="stat-card">
                         <div class="stat-number" id="vocabMastered">0</div>
-                        <div class="stat-label">Vocabulary Mastered</div>
+                        <div class="stat-label">Vocabulario Dominado</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="kanaMastered">0</div>
-                        <div class="stat-label">Kana Mastered</div>
+                        <div class="stat-label">Kana Dominado</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="quizzesTaken">0</div>
-                        <div class="stat-label">Quizzes Completed</div>
+                        <div class="stat-label">Cuestionarios Completados</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="studyStreak">0</div>
-                        <div class="stat-label">Study Streak (Days)</div>
+                        <div class="stat-label">Racha de Estudio (Días)</div>
                     </div>
                 </div>
                 
                 <div class="controls" style="margin-top: 20px;">
-                    <button class="btn success" onclick="saveProgress()">💾 Save Progress</button>
+                    <button class="btn success" onclick="saveProgress()">💾 Guardar Progreso</button>
                     <input type="file" id="loadProgressFile" accept=".json" onchange="loadProgress(event)" style="display: none;">
-                    <button class="btn" onclick="document.getElementById('loadProgressFile').click()">📁 Load Progress</button>
+                    <button class="btn" onclick="document.getElementById('loadProgressFile').click()">📁 Cargar Progreso</button>
                     <button class="btn secondary" onclick="showDifficultWords()">🔄 Review Difficult Words</button>
                 </div>
             </div>
             
             <div class="card-grid">
                 <div class="card">
-                    <h4>🎴 Interactive Flashcards</h4>
-                    <p>Study vocabulary, kanji, and grammar with spaced repetition flashcards that adapt to your learning pace.</p>
+                    <h4>🎴 Tarjetas de Estudio Interactivas</h4>
+                    <p>Estudia vocabulario, kanji y gramática con tarjetas de repetición espaciada que se adaptan a tu ritmo de aprendizaje.</p>
                 </div>
                 <div class="card">
-                    <h4>🧠 Smart Quizzes</h4>
-                    <p>Test your knowledge with adaptive quizzes that focus on your weak areas and track your progress.</p>
+                    <h4>🧠 Cuestionarios Inteligentes</h4>
+                    <p>Pon a prueba tu conocimiento con cuestionarios adaptativos que se enfocan en tus áreas débiles y monitorean tu progreso.</p>
                 </div>
                 <div class="card">
                     <h4>🔤 Kana Mastery</h4>
                     <p>Master hiragana and katakana with interactive practice tools and memory games.</p>
                 </div>
                 <div class="card">
-                    <h4>📊 Progress Tracking</h4>
-                    <p>Monitor your learning with detailed statistics and personalized study recommendations.</p>
+                    <h4>📊 Seguimiento de Progreso</h4>
+                    <p>Monitorea tu aprendizaje con estadísticas detalladas y recomendaciones personalizadas de estudio.</p>
                 </div>
             </div>
             
             <div class="study-tip">
-                <h4>🚀 Quick Start Guide</h4>
+                <h4>🚀 Guía de Inicio Rápido</h4>
                 <ol>
-                    <li><strong>Start with Kana Practice</strong> - Master hiragana and katakana first</li>
-                    <li><strong>Use Flashcards Daily</strong> - Study 20-30 cards per session</li>
-                    <li><strong>Take Regular Quizzes</strong> - Test yourself weekly to track progress</li>
-                    <li><strong>Follow the Study Plan</strong> - Structured 12-week curriculum</li>
+                    <li><strong>Comienza con Práctica de Kana</strong> - Domina hiragana y katakana primero</li>
+                    <li><strong>Usa Tarjetas Diariamente</strong> - Estudia 20-30 tarjetas por sesión</li>
+                    <li><strong>Toma Cuestionarios Regulares</strong> - Evalúate semanalmente para seguir el progreso</li>
+                    <li><strong>Sigue el Plan de Estudio</strong> - Currículo estructurado de 12 semanas</li>
                 </ol>
             </div>
         </div>
         
         <!-- Flashcards Section -->
         <div id="flashcards" class="content-section">
-            <h2 class="section-title">🎴 Interactive Flashcards</h2>
+            <h2 class="section-title">🎴 Tarjetas de Estudio Interactivas</h2>
             
             <div class="controls">
-                <button class="btn" onclick="setFlashcardMode('vocabulary')">📝 Vocabulary</button>
+                <button class="btn" onclick="setFlashcardMode('vocabulary')">📝 Vocabulario</button>
                 <button class="btn" onclick="setFlashcardMode('kanji')">🈯 Kanji</button>
-                <button class="btn" onclick="setFlashcardMode('grammar')">🔧 Grammar</button>
-                <button class="btn secondary" onclick="shuffleFlashcards()">🔀 Shuffle</button>
+                <button class="btn" onclick="setFlashcardMode('grammar')">🔧 Gramática</button>
+                <button class="btn secondary" onclick="shuffleFlashcards()">🔀 Mezclar</button>
             </div>
             
             <div class="score-display">
                 <span>Card <span id="currentCard">1</span> of <span id="totalCards">10</span></span>
-                <span style="margin-left: 20px;">Known: <span id="knownCards">0</span> | Learning: <span id="learningCards">0</span></span>
+                <span style="margin-left: 20px;">Conocidas: <span id="knownCards">0</span> | Aprendiendo: <span id="learningCards">0</span></span>
             </div>
             
             <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
                 <div class="flashcard-front">
-                    <div class="flashcard-text" id="flashcardFront">Click to start</div>
+                    <div class="flashcard-text" id="flashcardFront">Haz clic para comenzar</div>
                     <div class="flashcard-reading" id="flashcardReading"></div>
                 </div>
                 <div class="flashcard-back">
-                    <div class="flashcard-text" id="flashcardBack">Let's learn!</div>
+                    <div class="flashcard-text" id="flashcardBack">¡Vamos a aprender!</div>
                     <div class="flashcard-reading" id="flashcardMeaning"></div>
                 </div>
             </div>
             
             <div class="controls">
-                <button class="btn" onclick="previousCard()">⬅️ Previous</button>
+                <button class="btn" onclick="previousCard()">⬅️ Anterior</button>
                 <button class="btn" onclick="flipFlashcard()">🔄 Flip</button>
-                <button class="btn" onclick="nextCard()">Next ➡️</button>
+                <button class="btn" onclick="nextCard()">Siguiente ➡️</button>
             </div>
             
             <div class="controls">
@@ -869,9 +1111,9 @@
             </div>
             
             <div class="study-tip">
-                <h4>💡 Flashcard Tips</h4>
+                <h4>💡 Consejos para Tarjetas</h4>
                 <ul>
-                    <li><strong>Click the card</strong> to flip between question and answer</li>
+                    <li><strong>Haz clic en la tarjeta</strong> para voltear entre pregunta y respuesta</li>
                     <li><strong>Rate your knowledge</strong> to use spaced repetition effectively</li>
                     <li><strong>Hard cards</strong> will appear more frequently</li>
                     <li><strong>Easy cards</strong> will appear less often</li>
@@ -881,33 +1123,33 @@
         
         <!-- Quizzes Section -->
         <div id="quizzes" class="content-section">
-            <h2 class="section-title">🧠 Interactive Quizzes</h2>
+            <h2 class="section-title">🧠 Cuestionarios Interactivos</h2>
             
             <div class="controls">
-                <button class="btn" onclick="startQuiz('vocabulary')">📝 Vocabulary Quiz</button>
-                <button class="btn" onclick="startQuiz('kanji')">🈯 Kanji Quiz</button>
-                <button class="btn" onclick="startQuiz('grammar')">🔧 Grammar Quiz</button>
-                <button class="btn secondary" onclick="startQuiz('mixed')">🎲 Mixed Quiz</button>
+                <button class="btn" onclick="startQuiz('vocabulary')">📝 Cuestionario de Vocabulario</button>
+                <button class="btn" onclick="startQuiz('kanji')">🈯 Cuestionario de Kanji</button>
+                <button class="btn" onclick="startQuiz('grammar')">🔧 Cuestionario de Gramática</button>
+                <button class="btn secondary" onclick="startQuiz('mixed')">🎲 Cuestionario Mixto</button>
             </div>
             
             <div class="quiz-container" id="quizContainer">
-                <div class="quiz-question" id="quizQuestion">Select a quiz type to begin!</div>
+                <div class="quiz-question" id="quizQuestion">¡Selecciona un tipo de cuestionario para comenzar!</div>
                 <div class="quiz-options" id="quizOptions"></div>
                 <div class="score-display" id="quizScore" style="display: none;">
-                    Score: <span id="currentScore">0</span>/<span id="totalQuestions">10</span>
+                    Puntuación: <span id="currentScore">0</span>/<span id="totalQuestions">10</span>
                 </div>
                 <div class="controls" id="quizControls" style="display: none;">
-                    <button class="btn" onclick="nextQuestion()">Next Question ➡️</button>
-                    <button class="btn secondary" onclick="restartQuiz()">🔄 Restart</button>
+                    <button class="btn" onclick="nextQuestion()">Siguiente Pregunta ➡️</button>
+                    <button class="btn secondary" onclick="restartQuiz()">🔄 Reiniciar</button>
                 </div>
             </div>
             
             <div class="study-tip">
-                <h4>🎯 Quiz Features</h4>
+                <h4>🎯 Características del Cuestionario</h4>
                 <ul>
                     <li><strong>Adaptive questioning</strong> - Focus on your weak areas</li>
                     <li><strong>Immediate feedback</strong> - Learn from mistakes instantly</li>
-                    <li><strong>Progress tracking</strong> - See your improvement over time</li>
+                    <li><strong>Seguimiento de progreso</strong> - Ve tu mejora a lo largo del tiempo</li>
                     <li><strong>Mixed practice</strong> - Test all skills together</li>
                 </ul>
             </div>
@@ -920,13 +1162,13 @@
             <div class="controls">
                 <button class="btn" onclick="practiceKana('hiragana')">あ Hiragana</button>
                 <button class="btn" onclick="practiceKana('katakana')">ア Katakana</button>
-                <button class="btn secondary" onclick="resetKanaPractice()">🔄 Reset</button>
+                <button class="btn secondary" onclick="resetKanaPractice()">🔄 Reiniciar</button>
                 <button class="btn success" onclick="showAllKana()">👁️ Show All</button>
             </div>
             
             <div class="score-display">
-                Practice Mode: <span id="kanaMode">Select a mode</span> | 
-                Mastered: <span id="kanaMasteredCount">0</span>/46
+                Modo de Práctica: <span id="kanaMode">Selecciona un modo</span> | 
+                Dominado: <span id="kanaMasteredCount">0</span>/46
             </div>
             
             <div class="kana-grid" id="kanaGrid">
@@ -934,11 +1176,11 @@
             </div>
             
             <div class="study-tip">
-                <h4>🎓 Kana Learning Strategy</h4>
+                <h4>🎓 Estrategia de Aprendizaje de Kana</h4>
                 <ul>
                     <li><strong>Click on characters</strong> to reveal their readings</li>
                     <li><strong>Practice daily</strong> - 10 minutes builds strong memory</li>
-                    <li><strong>Start with hiragana</strong> - it's used more frequently</li>
+                    <li><strong>Comienza con hiragana</strong> - se usa con más frecuencia</li>
                     <li><strong>Use mnemonics</strong> - create visual associations</li>
                 </ul>
             </div>
@@ -946,44 +1188,337 @@
         
         <!-- Vocabulary Section -->
         <div id="vocabulary" class="content-section">
-            <h2 class="section-title">📝 N5 Vocabulary Master List</h2>
+            <h2 class="section-title">📝 Lista Maestra de Vocabulario N5</h2>
             
             <div class="controls">
-                <button class="btn" onclick="filterVocabulary('all')">All Words</button>
-                <button class="btn" onclick="filterVocabulary('family')">👨‍👩‍👧‍👦 Family</button>
-                <button class="btn" onclick="filterVocabulary('food')">🍱 Food</button>
-                <button class="btn" onclick="filterVocabulary('time')">⏰ Time</button>
-                <button class="btn" onclick="filterVocabulary('places')">🏢 Places</button>
-                <button class="btn secondary" onclick="searchVocabulary()">🔍 Search</button>
+                <button class="btn" onclick="filterVocabulary('all')">Todas las Palabras</button>
+                <button class="btn" onclick="filterVocabulary('family')">👨‍👩‍👧‍👦 Familia</button>
+                <button class="btn" onclick="filterVocabulary('food')">🍱 Comida</button>
+                <button class="btn" onclick="filterVocabulary('time')">⏰ Tiempo</button>
+                <button class="btn" onclick="filterVocabulary('weekdays')">📅 Días de la Semana</button>
+                <button class="btn" onclick="filterVocabulary('places')">🏢 Lugares</button>
+                <button class="btn" onclick="filterVocabulary('verbs')">🔄 Verbos</button>
+                <button class="btn" onclick="filterVocabulary('adjectives')">✨ Adjetivos</button>
+                <button class="btn" onclick="filterVocabulary('colors')">🎨 Colores</button>
+                <button class="btn" onclick="filterVocabulary('transportation')">🚊 Transporte</button>
+                <button class="btn" onclick="filterVocabulary('occupations')">💼 Profesiones</button>
+                <button class="btn" onclick="filterVocabulary('countries')">🌍 Países</button>
+                <button class="btn" onclick="filterVocabulary('numbers')">🔢 Números</button>
+                <button class="btn" onclick="filterVocabulary('objects')">📦 Objetos</button>
+                <button class="btn" onclick="filterVocabulary('demonstratives')">👆 Demostrativos</button>
+                <button class="btn" onclick="filterVocabulary('expressions')">💬 Expresiones</button>
+                <button class="btn" onclick="filterVocabulary('activities')">🎯 Actividades</button>
+                <button class="btn" onclick="filterVocabulary('people')">👥 Personas</button>
+                <button class="btn" onclick="filterVocabulary('directions')">🧭 Direcciones</button>
+                <button class="btn" onclick="filterVocabulary('weather')">🌤️ Clima</button>
+                <button class="btn" onclick="filterVocabulary('animals')">🐕 Animales</button>
+                <button class="btn" onclick="filterVocabulary('study')">📚 Estudio</button>
+                <button class="btn" onclick="filterVocabulary('body_parts')">👤 Cuerpo</button>
+                <button class="btn" onclick="filterVocabulary('others')">📋 Otros</button>
+                <button class="btn secondary" onclick="searchVocabulary()">🔍 Buscar</button>
             </div>
             
-            <input type="text" id="vocabSearch" placeholder="Search vocabulary..." style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ddd;">
+            <input type="text" id="vocabSearch" placeholder="Buscar vocabulario..." style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ddd;">
             
             <div id="vocabularyList">
                 <!-- Vocabulary will be populated here -->
             </div>
         </div>
         
+        <!-- Verbs Practice Section -->
+        <div id="verbs-practice" class="content-section">
+            <h2 class="section-title">🔄 Práctica de Verbos N5 con Mnemotécnicos</h2>
+            
+            <div class="study-tip" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin-bottom: 20px;">
+                <h4>💡 ¿Por qué son difíciles los verbos japoneses?</h4>
+                <p>Los verbos en japonés pueden confundirse fácilmente porque:</p>
+                <ul>
+                    <li>Muchos terminan en -masu (forma educada)</li>
+                    <li>Sonidos similares: kakimasu, kakemasu, karimasu</li>
+                    <li>Conceptos opuestos con sonidos parecidos</li>
+                </ul>
+                <p><strong>¡Los mnemotécnicos te ayudarán a recordarlos fácilmente!</strong></p>
+            </div>
+
+            <div class="controls">
+                <button class="btn" onclick="showVerbSection('all')">🔄 Todos los Verbos</button>
+                <button class="btn" onclick="showVerbSection('similar')">⚡ Verbos Similares</button>
+                <button class="btn" onclick="showVerbSection('opposites')">⚖️ Verbos Opuestos</button>
+                <button class="btn secondary" onclick="startVerbQuiz()">🎯 Quiz de Verbos</button>
+            </div>
+
+            <!-- All Verbs Section -->
+            <div id="allVerbs" class="verb-section">
+                <h3>🎯 Verbos N5 con Mnemotécnicos</h3>
+                
+                <div class="verb-cards">
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>おきます (okimasu) - despertar/levantarse</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "OK, me levanto" - suena como "OK-imasu"
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> あさ ろくじに おきます。(Asa rokuji ni okimasu) - Me levanto a las 6 de la mañana.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> OH-kee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>ねます (nemasu) - dormir</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "NO más" actividad → dormir (ne-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> じゅういちじに ねます。(Juichiji ni nemasu) - Me duermo a las 11.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> neh-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>はたらきます (hatarakimasu) - trabajar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "HASTA RAKE" → trabajar duro como rastrillando (hataraki-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> かいしゃで はたらきます。(Kaisha de hatarakimasu) - Trabajo en una empresa.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> hah-tah-rah-kee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>やすみます (yasumimasu) - descansar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "YES, ME" descanso → yasumi-masu
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> どようびに やすみます。(Doyobi ni yasumimasu) - Descanso el sábado.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> yah-su-mee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>ならいます (naraimasu) - aprender</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "NARRA y más" → aprender contando historias (narai-masu)
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> にほんごを ならいます。(Nihongo wo naraimasu) - Aprendo japonés.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> nah-rah-ee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>ちがいます (chigaimasu) - ser diferente/estar equivocado</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CHI GA (chica) está equivocada" → chigai-masu
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> これは ちがいます。(Kore wa chigaimasu) - Esto está equivocado.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> chee-gah-ee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>かきます (kakimasu) - escribir</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CAQUI-masu" → escribir con tinta color caqui
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> てがみを かきます。(Tegami wo kakimasu) - Escribo una carta.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> kah-kee-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>かけます (kakemasu) - colgar/llamar</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CAKE-masu" → colgar el teléfono después de pedir pastel
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> でんわを かけます。(Denwa wo kakemasu) - Hago una llamada.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> kah-keh-mah-su
+                        </div>
+                    </div>
+
+                    <div class="verb-card">
+                        <div class="verb-main">
+                            <h4>かります (karimasu) - tomar prestado</h4>
+                        </div>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CARRY-masu" → llevar algo prestado
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> ほんを かります。(Hon wo karimasu) - Tomo prestado un libro.
+                        </div>
+                        <div class="pronunciation-tip">
+                            <strong>🔊 Pronunciación:</strong> kah-ree-mah-su
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Similar Verbs Section -->
+            <div id="similarVerbs" class="verb-section" style="display: none;">
+                <h3>⚡ Trío Confuso: KA-KI, KA-KE, KA-RI</h3>
+                <div class="comparison-warning">
+                    <p>🚨 <strong>¡ATENCIÓN!</strong> Estos tres verbos son los más confusos para principiantes:</p>
+                </div>
+                
+                <div class="verb-comparison">
+                    <div class="comparison-card">
+                        <h4>かきます (kakimasu) - escribir ✍️</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CAQUI-masu" → escribir con tinta color caqui
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> KI = Key (llave) → la escritura es la LLAVE del aprendizaje
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> てがみを かきます (Tegami wo kakimasu) - Escribo una carta.
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>かけます (kakemasu) - colgar/llamar 📞</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CAKE-masu" → colgar el teléfono después de pedir pastel
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> KE = KEep → MANTENER una llamada/colgar algo
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> でんわを かけます (Denwa wo kakemasu) - Hago una llamada.
+                        </div>
+                    </div>
+
+                    <div class="comparison-card">
+                        <h4>かります (karimasu) - tomar prestado 📚</h4>
+                        <div class="mnemonic">
+                            <strong>🧠 Mnemotécnico:</strong> "CARRY-masu" → llevar algo prestado
+                        </div>
+                        <div class="memory-trick">
+                            <strong>🎯 Truco:</strong> RI = RIver → como un río que TOMA agua de otro lugar
+                        </div>
+                        <div class="example">
+                            <strong>📝 Ejemplo:</strong> ほんを かります (Hon wo karimasu) - Tomo prestado un libro.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="practice-tip">
+                    <h4>🎓 Practica con esta frase:</h4>
+                    <p><strong>"Escribo (かきます) una nota, cuelgo (かけます) el teléfono y tomo prestado (かります) un libro"</strong></p>
+                    <p>てがみを かきます。でんわを かけます。ほんを かります。</p>
+                </div>
+            </div>
+
+            <!-- Opposite Verbs Section -->
+            <div id="oppositeVerbs" class="verb-section" style="display: none;">
+                <h3>⚖️ Verbos Opuestos - Fáciles de Recordar Juntos</h3>
+                
+                <div class="opposite-pairs">
+                    <div class="opposite-pair">
+                        <div class="opposite-card wake">
+                            <h4>おきます (okimasu) - despertar 🌅</h4>
+                            <div class="mnemonic">
+                                <strong>🧠 Mnemotécnico:</strong> "OK, despierto!"
+                            </div>
+                        </div>
+                        <div class="vs-arrow">⚡ VS ⚡</div>
+                        <div class="opposite-card sleep">
+                            <h4>ねます (nemasu) - dormir 😴</h4>
+                            <div class="mnemonic">
+                                <strong>🧠 Mnemotécnico:</strong> "NO más actividad"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="opposite-pair">
+                        <div class="opposite-card work">
+                            <h4>はたらきます (hatarakimasu) - trabajar 💼</h4>
+                            <div class="mnemonic">
+                                <strong>🧠 Mnemotécnico:</strong> "HASTA RAKE trabajando duro"
+                            </div>
+                        </div>
+                        <div class="vs-arrow">⚡ VS ⚡</div>
+                        <div class="opposite-card rest">
+                            <h4>やすみます (yasumimasu) - descansar 🏖️</h4>
+                            <div class="mnemonic">
+                                <strong>🧠 Mnemotécnico:</strong> "YES, ME descanso"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="daily-routine">
+                    <h4>🌙 Rutina Diaria con Verbos Opuestos:</h4>
+                    <p>あさ おきます → はたらきます → よる やすみます → ねます</p>
+                    <p>(Mañana me levanto → trabajo → noche descanso → duermo)</p>
+                </div>
+            </div>
+
+            <!-- Verb Quiz Section -->
+            <div id="verbQuiz" class="verb-section" style="display: none;">
+                <h3>🎯 Quiz de Verbos</h3>
+                <div id="verbQuizContent">
+                    <p>¡Quiz próximamente! Mientras tanto, practica con las tarjetas de estudio.</p>
+                </div>
+            </div>
+
+        </div>
+        
         <!-- Grammar Section -->
         <div id="grammar" class="content-section">
-            <h2 class="section-title">🔧 N5 Grammar Interactive Practice</h2>
+            <h2 class="section-title">🔧 Práctica Interactiva de Gramática N5</h2>
             
             <div class="controls">
-                <button class="btn" onclick="startGrammarQuiz('particles')">⚡ Particles Quiz</button>
-                <button class="btn" onclick="startGrammarQuiz('verbs')">🏃 Verb Forms</button>
-                <button class="btn" onclick="startGrammarQuiz('adjectives')">🎨 Adjectives</button>
+                <button class="btn" onclick="startGrammarQuiz('particles')">⚡ Quiz de Partículas</button>
+                <button class="btn" onclick="startGrammarQuiz('verbs')">🏃 Formas Verbales</button>
+                <button class="btn" onclick="startGrammarQuiz('adjectives')">🎨 Adjetivos</button>
                 <button class="btn secondary" onclick="showGrammarReference()">📖 Reference</button>
             </div>
             
             <div class="quiz-container" id="grammarQuizContainer">
-                <div class="quiz-question" id="grammarQuestion">Select a grammar topic to practice!</div>
+                <div class="quiz-question" id="grammarQuestion">¡Selecciona un tema de gramática para practicar!</div>
                 <div class="quiz-options" id="grammarOptions"></div>
                 <div class="score-display" id="grammarScore" style="display: none;">
-                    Score: <span id="grammarCurrentScore">0</span>/<span id="grammarTotalQuestions">10</span>
+                    Puntuación: <span id="grammarCurrentScore">0</span>/<span id="grammarTotalQuestions">10</span>
                 </div>
                 <div class="controls" id="grammarControls" style="display: none;">
-                    <button class="btn" onclick="nextGrammarQuestion()">Next Question ➡️</button>
-                    <button class="btn secondary" onclick="restartGrammarQuiz()">🔄 Restart</button>
+                    <button class="btn" onclick="nextGrammarQuestion()">Siguiente Pregunta ➡️</button>
+                    <button class="btn secondary" onclick="restartGrammarQuiz()">🔄 Reiniciar</button>
                 </div>
             </div>
             
@@ -1111,18 +1646,18 @@
                     title: "私の家族 (My Family)",
                     content: `<span class="furigana-text">私<span class="furigana">わたし</span></span>の<span class="furigana-text">家族<span class="furigana">かぞく</span></span>は五人です。<span class="furigana-text">父<span class="furigana">ちち</span></span>と<span class="furigana-text">母<span class="furigana">はは</span></span>と<span class="furigana-text">姉<span class="furigana">あね</span></span>と<span class="furigana-text">弟<span class="furigana">おとうと</span></span>がいます。<span class="furigana-text">父<span class="furigana">ちち</span></span>は<span class="furigana-text">会社員<span class="furigana">かいしゃいん</span></span>です。<span class="furigana-text">母<span class="furigana">はは</span></span>は<span class="furigana-text">看護師<span class="furigana">かんごし</span></span>です。<span class="furigana-text">姉<span class="furigana">あね</span></span>は<span class="furigana-text">大学生<span class="furigana">だいがくせい</span></span>で、<span class="furigana-text">弟<span class="furigana">おとうと</span></span>は<span class="furigana-text">高校生<span class="furigana">こうこうせい</span></span>です。みんな<span class="furigana-text">元気<span class="furigana">げんき</span></span>です。`,
                     questions: [
-                        {q: "How many people are in the family?", options: ["4", "5", "6", "3"], correct: "5"},
-                        {q: "What is the father's job?", options: ["Teacher", "Doctor", "Company employee", "Student"], correct: "Company employee"},
-                        {q: "Who is a university student?", options: ["Father", "Mother", "Sister", "Brother"], correct: "Sister"}
+                        {q: "¿Cuántas personas hay en la familia?", options: ["4", "5", "6", "3"], correct: "5"},
+                        {q: "¿Cuál es el trabajo del padre?", options: ["Maestro", "Doctor", "Empleado de empresa", "Estudiante"], correct: "Empleado de empresa"},
+                        {q: "¿Quién es estudiante universitario?", options: ["Padre", "Madre", "Hermana", "Hermano"], correct: "Hermana"}
                     ]
                 },
                 {
                     title: "毎日の生活 (Daily Life)",
                     content: `<span class="furigana-text">毎日<span class="furigana">まいにち</span></span>七<span class="furigana-text">時<span class="furigana">じ</span></span>に<span class="furigana-text">起<span class="furigana">お</span></span>きます。<span class="furigana-text">朝<span class="furigana">あさ</span></span>ごはんを<span class="furigana-text">食<span class="furigana">た</span></span>べて、<span class="furigana-text">学校<span class="furigana">がっこう</span></span>に<span class="furigana-text">行<span class="furigana">い</span></span>きます。<span class="furigana-text">午後<span class="furigana">ごご</span></span>三<span class="furigana-text">時<span class="furigana">じ</span></span>に<span class="furigana-text">家<span class="furigana">いえ</span></span>に<span class="furigana-text">帰<span class="furigana">かえ</span></span>ります。<span class="furigana-text">宿題<span class="furigana">しゅくだい</span></span>をして、<span class="furigana-text">友達<span class="furigana">ともだち</span></span>と<span class="furigana-text">遊<span class="furigana">あそ</span></span>びます。<span class="furigana-text">夜<span class="furigana">よる</span></span>は<span class="furigana-text">家族<span class="furigana">かぞく</span></span>と<span class="furigana-text">晩<span class="furigana">ばん</span></span>ごはんを<span class="furigana-text">食<span class="furigana">た</span></span>べます。`,
                     questions: [
-                        {q: "What time do they wake up?", options: ["6:00", "7:00", "8:00", "9:00"], correct: "7:00"},
-                        {q: "What time do they return home?", options: ["2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"], correct: "3:00 PM"},
-                        {q: "Who do they eat dinner with?", options: ["Friends", "Family", "Alone", "Classmates"], correct: "Family"}
+                        {q: "¿A qué hora se levantan?", options: ["6:00", "7:00", "8:00", "9:00"], correct: "7:00"},
+                        {q: "¿A qué hora regresan a casa?", options: ["2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"], correct: "3:00 PM"},
+                        {q: "¿Con quién cenan?", options: ["Amigos", "Familia", "Solo/a", "Compañeros"], correct: "Familia"}
                     ]
                 }
             ],
@@ -1131,9 +1666,9 @@
                     title: "日本の四季 (Japan's Four Seasons)",
                     content: `<span class="furigana-text">日本<span class="furigana">にほん</span></span>には<span class="furigana-text">美<span class="furigana">うつく</span></span>しい<span class="furigana-text">四季<span class="furigana">しき</span></span>があります。<span class="furigana-text">春<span class="furigana">はる</span></span>には<span class="furigana-text">桜<span class="furigana">さくら</span></span>が<span class="furigana-text">咲<span class="furigana">さ</span></span>きます。<span class="furigana-text">夏<span class="furigana">なつ</span></span>は<span class="furigana-text">暑<span class="furigana">あつ</span></span>くて、<span class="furigana-text">海<span class="furigana">うみ</span></span>に<span class="furigana-text">行<span class="furigana">い</span></span>く<span class="furigana-text">人<span class="furigana">ひと</span></span>が<span class="furigana-text">多<span class="furigana">おお</span></span>いです。<span class="furigana-text">秋<span class="furigana">あき</span></span>は<span class="furigana-text">紅葉<span class="furigana">こうよう</span></span>が<span class="furigana-text">綺麗<span class="furigana">きれい</span></span>で、<span class="furigana-text">冬<span class="furigana">ふゆ</span></span>には<span class="furigana-text">雪<span class="furigana">ゆき</span></span>が<span class="furigana-text">降<span class="furigana">ふ</span></span>ります。それぞれの<span class="furigana-text">季節<span class="furigana">きせつ</span></span>に<span class="furigana-text">特別<span class="furigana">とくべつ</span></span>な<span class="furigana-text">楽<span class="furigana">たの</span></span>しみがあります。`,
                     questions: [
-                        {q: "What blooms in spring?", options: ["Leaves", "Cherry blossoms", "Snow", "Rain"], correct: "Cherry blossoms"},
-                        {q: "What do many people do in summer?", options: ["Ski", "Go to the sea", "See leaves", "Stay home"], correct: "Go to the sea"},
-                        {q: "What is beautiful in autumn?", options: ["Snow", "Cherry blossoms", "Autumn leaves", "Rain"], correct: "Autumn leaves"}
+                        {q: "¿Qué florece en primavera?", options: ["Hojas", "Flores de cerezo", "Nieve", "Lluvia"], correct: "Flores de cerezo"},
+                        {q: "¿Qué hace mucha gente en verano?", options: ["Esquiar", "Ir al mar", "Ver hojas", "Quedarse en casa"], correct: "Ir al mar"},
+                        {q: "¿Qué es hermoso en otoño?", options: ["Nieve", "Flores de cerezo", "Hojas de otoño", "Lluvia"], correct: "Hojas de otoño"}
                     ]
                 }
             ],
@@ -1142,10 +1677,10 @@
                     title: "友達からの手紙 (Letter from a Friend)",
                     content: `<span class="furigana-text">田中<span class="furigana">たなか</span></span>さんへ<br><br><span class="furigana-text">元気<span class="furigana">げんき</span></span>ですか。<span class="furigana-text">私<span class="furigana">わたし</span></span>は<span class="furigana-text">今<span class="furigana">いま</span></span>、<span class="furigana-text">大阪<span class="furigana">おおさか</span></span>にいます。<span class="furigana-text">先週<span class="furigana">せんしゅう</span></span>の<span class="furigana-text">土曜日<span class="furigana">どようび</span></span>に<span class="furigana-text">東京<span class="furigana">とうきょう</span></span>から<span class="furigana-text">来<span class="furigana">き</span></span>ました。<span class="furigana-text">大阪<span class="furigana">おおさか</span></span>の<span class="furigana-text">食<span class="furigana">た</span></span>べ<span class="furigana-text">物<span class="furigana">もの</span></span>は<span class="furigana-text">美味<span class="furigana">おい</span></span>しいです。<span class="furigana-text">特<span class="furigana">とく</span></span>に<span class="furigana-text">お好<span class="furigana">おこの</span></span>み<span class="furigana-text">焼<span class="furigana">や</span></span>きと<span class="furigana-text">たこ焼<span class="furigana">たこや</span></span>きが<span class="furigana-text">好<span class="furigana">す</span></span>きになりました。<span class="furigana-text">来月<span class="furigana">らいげつ</span></span><span class="furigana-text">東京<span class="furigana">とうきょう</span></span>に<span class="furigana-text">帰<span class="furigana">かえ</span></span>ります。その<span class="furigana-text">時<span class="furigana">とき</span></span>、<span class="furigana-text">会<span class="furigana">あ</span></span>いませんか。<br><br><span class="furigana-text">山田<span class="furigana">やまだ</span></span>より`,
                     questions: [
-                        {q: "Where is Yamada now?", options: ["Tokyo", "Osaka", "Kyoto", "Nagoya"], correct: "Osaka"},
-                        {q: "When did Yamada come to this city?", options: ["Last Sunday", "Last Saturday", "Last Friday", "This Saturday"], correct: "Last Saturday"},
-                        {q: "What foods does Yamada particularly like?", options: ["Sushi and ramen", "Okonomiyaki and takoyaki", "Tempura and udon", "Curry and rice"], correct: "Okonomiyaki and takoyaki"},
-                        {q: "When will Yamada return to Tokyo?", options: ["This week", "Next week", "Next month", "Next year"], correct: "Next month"}
+                        {q: "¿Dónde está Yamada ahora?", options: ["Tokyo", "Osaka", "Kyoto", "Nagoya"], correct: "Osaka"},
+                        {q: "¿Cuándo llegó Yamada a esta ciudad?", options: ["El domingo pasado", "El sábado pasado", "El viernes pasado", "Este sábado"], correct: "El sábado pasado"},
+                        {q: "¿Qué comidas le gustan especialmente a Yamada?", options: ["Sushi y ramen", "Okonomiyaki y takoyaki", "Tempura y udon", "Curry y arroz"], correct: "Okonomiyaki y takoyaki"},
+                        {q: "¿Cuándo regresará Yamada a Tokyo?", options: ["Esta semana", "La próxima semana", "El próximo mes", "El próximo año"], correct: "El próximo mes"}
                     ]
                 }
             ]
@@ -1154,28 +1689,28 @@
         // Sentence building challenges
         const sentenceChallenges = [
             {
-                prompt: "I go to school",
+                prompt: "Voy a la escuela",
                 words: ["私", "は", "学校", "に", "行きます", "を"],
                 correct: ["私", "は", "学校", "に", "行きます"],
                 romaji: "watashi wa gakko ni ikimasu",
                 hint: "Remember: [topic]は [destination]に [verb]"
             },
             {
-                prompt: "I eat an apple",
+                prompt: "Como una manzana",
                 words: ["私", "は", "りんご", "を", "食べます", "に"],
                 correct: ["私", "は", "りんご", "を", "食べます"],
                 romaji: "watashi wa ringo wo tabemasu",
                 hint: "Remember: [topic]は [object]を [verb]"
             },
             {
-                prompt: "This is a book",
+                prompt: "Esto es un libro",
                 words: ["これ", "は", "本", "です", "を", "が"],
                 correct: ["これ", "は", "本", "です"],
                 romaji: "kore wa hon desu",
                 hint: "Remember: [topic]は [noun]です"
             },
             {
-                prompt: "I study at the library",
+                prompt: "Estudio en la biblioteca",
                 words: ["私", "は", "図書館", "で", "勉強します", "を", "に"],
                 correct: ["私", "は", "図書館", "で", "勉強します"],
                 romaji: "watashi wa toshokan de benkyo shimasu",
@@ -1200,50 +1735,8 @@
             "Particle Pro",
             "Comprehension Champion"
         ];
-        const vocabularyData = {
-            family: [
-                {jp: "かぞく", romaji: "kazoku", en: "family"},
-                {jp: "おとうさん", romaji: "otosan", en: "father"},
-                {jp: "おかあさん", romaji: "okasan", en: "mother"},
-                {jp: "おにいさん", romaji: "onisan", en: "older brother"},
-                {jp: "おねえさん", romaji: "onesan", en: "older sister"},
-                {jp: "おとうと", romaji: "ototo", en: "younger brother"},
-                {jp: "いもうと", romaji: "imoto", en: "younger sister"},
-                {jp: "ともだち", romaji: "tomodachi", en: "friend"}
-            ],
-            food: [
-                {jp: "たべもの", romaji: "tabemono", en: "food"},
-                {jp: "のみもの", romaji: "nomimono", en: "drink"},
-                {jp: "みず", romaji: "mizu", en: "water"},
-                {jp: "おちゃ", romaji: "ocha", en: "tea"},
-                {jp: "コーヒー", romaji: "kohi", en: "coffee"},
-                {jp: "ごはん", romaji: "gohan", en: "rice/meal"},
-                {jp: "パン", romaji: "pan", en: "bread"},
-                {jp: "にく", romaji: "niku", en: "meat"},
-                {jp: "さかな", romaji: "sakana", en: "fish"},
-                {jp: "りんご", romaji: "ringo", en: "apple"}
-            ],
-            time: [
-                {jp: "いま", romaji: "ima", en: "now"},
-                {jp: "あさ", romaji: "asa", en: "morning"},
-                {jp: "ひる", romaji: "hiru", en: "noon"},
-                {jp: "ばん", romaji: "ban", en: "evening"},
-                {jp: "よる", romaji: "yoru", en: "night"},
-                {jp: "きのう", romaji: "kino", en: "yesterday"},
-                {jp: "きょう", romaji: "kyo", en: "today"},
-                {jp: "あした", romaji: "ashita", en: "tomorrow"}
-            ],
-            places: [
-                {jp: "いえ", romaji: "ie", en: "house"},
-                {jp: "がっこう", romaji: "gakko", en: "school"},
-                {jp: "びょういん", romaji: "byoin", en: "hospital"},
-                {jp: "ぎんこう", romaji: "ginko", en: "bank"},
-                {jp: "みせ", romaji: "mise", en: "store"},
-                {jp: "えき", romaji: "eki", en: "station"},
-                {jp: "こうえん", romaji: "koen", en: "park"},
-                {jp: "としょかん", romaji: "toshokan", en: "library"}
-            ]
-        };
+        // Vocabulary data will be loaded from JSON file
+        let vocabularyData = {};
         
         const kanjiData = [
             {jp: "一", romaji: "ichi", en: "one"},
@@ -1476,7 +1969,7 @@
                     <button onclick="this.parentElement.parentElement.remove()" 
                             style="background: #e74c3c; color: white; border: none; padding: 10px 20px; 
                                    border-radius: 10px; cursor: pointer; margin-top: 10px;">
-                        Continue Learning!
+                        ¡Continúa Aprendiendo!
                     </button>
                 </div>
                 <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -1539,7 +2032,7 @@
         
         function checkReadingAnswers() {
             completeDailyTask('reading');
-            alert('Great job completing the reading passage! Check your answers above.');
+            alert('¡Excelente trabajo completando la lectura! Revisa tus respuestas arriba.');
         }
         
         function nextReadingPassage() {
@@ -1654,12 +2147,12 @@
                 learningProgress.sentenceStats.built++;
                 feedback.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
                 feedback.style.color = 'white';
-                feedback.textContent = '🎉 Correct! Great job building the sentence!';
+                feedback.textContent = '🎉 ¡Correcto! ¡Excelente trabajo construyendo la oración!';
                 completeDailyTask('sentences');
             } else {
                 feedback.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
                 feedback.style.color = 'white';
-                feedback.innerHTML = `❌ Not quite right. The correct sentence is: ${challenge.correct.join(' ')}<br>Hint: ${challenge.hint}`;
+                feedback.innerHTML = `❌ No del todo correcto. La oración correcta es: ${challenge.correct.join(' ')}<br>Pista: ${challenge.hint}`;
             }
             
             updateSentenceStats();
@@ -1698,15 +2191,77 @@
         let quizScore = 0;
         let selectedAnswer = null;
         
+        // Load vocabulary data from JSON file
+        async function loadVocabularyData() {
+            try {
+                const response = await fetch('vocabulary.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                vocabularyData = await response.json();
+                const totalItems = Object.values(vocabularyData).reduce((sum, category) => sum + category.length, 0);
+                console.log(`Vocabulary data loaded successfully: ${totalItems} items across ${Object.keys(vocabularyData).length} categories`);
+                return true;
+            } catch (error) {
+                console.error('Error loading vocabulary data:', error);
+                // Fallback: set empty categories to prevent errors
+                vocabularyData = {
+                    family: [],
+                    food: [],
+                    time: [],
+                    places: [],
+                    verbs: [],
+                    occupations: [],
+                    countries: [],
+                    numbers: [],
+                    objects: [],
+                    demonstratives: [],
+                    weekdays: [],
+                    others: [],
+                    adjectives: [],
+                    colors: [],
+                    transportation: [],
+                    expressions: [],
+                    activities: [],
+                    people: [],
+                    directions: [],
+                    weather: [],
+                    animals: [],
+                    study: [],
+                    body_parts: []
+                };
+                return false;
+            }
+        }
+
         // Initialize the application
-        function initializeApp() {
-            updateStats();
-            populateVocabulary();
-            loadFlashcards('vocabulary');
-            updateReviewSchedule();
-            updateDailyChallenge();
-            loadSentenceChallenge();
-            setupSentenceAreaEvents();
+        async function initializeApp() {
+            console.log('Initializing JLPT app...');
+            
+            // Load vocabulary data first
+            const vocabLoaded = await loadVocabularyData();
+            
+            if (vocabLoaded) {
+                console.log('Vocabulary loaded, initializing UI components...');
+                // Then initialize other components that depend on vocabulary data
+                updateStats();
+                populateVocabulary();
+                loadFlashcards('vocabulary');
+                updateReviewSchedule();
+                updateDailyChallenge();
+                loadSentenceChallenge();
+                setupSentenceAreaEvents();
+                console.log('JLPT app initialization complete!');
+            } else {
+                console.warn('Vocabulary failed to load, some features may not work correctly');
+                // Still initialize other components
+                updateStats();
+                populateVocabulary(); // This will show "Loading vocabulary..." message
+                updateReviewSchedule();
+                updateDailyChallenge();
+                loadSentenceChallenge();
+                setupSentenceAreaEvents();
+            }
         }
         
         // Navigation functions
@@ -1775,6 +2330,10 @@
         }
         
         function getAllVocabulary() {
+            if (!vocabularyData || Object.keys(vocabularyData).length === 0) {
+                console.log('Warning: vocabularyData is not loaded yet');
+                return [];
+            }
             let allVocab = [];
             Object.values(vocabularyData).forEach(category => {
                 allVocab = allVocab.concat(category);
@@ -1795,7 +2354,7 @@
             const card = currentFlashcards[currentFlashcardIndex];
             document.getElementById('flashcardFront').textContent = card.jp;
             document.getElementById('flashcardReading').textContent = card.romaji;
-            document.getElementById('flashcardBack').textContent = card.en;
+            document.getElementById('flashcardBack').textContent = card.es;
             document.getElementById('flashcardMeaning').textContent = card.example || '';
             
             // Reset flip state
@@ -1823,7 +2382,7 @@
         
         function markCard(difficulty) {
             const card = currentFlashcards[currentFlashcardIndex];
-            const cardId = card.jp + card.en;
+            const cardId = card.jp + card.es;
             
             // Update difficulty mapping
             const difficultyLevel = difficulty === 'easy' ? 1 : difficulty === 'medium' ? 2 : 3;
@@ -1858,7 +2417,7 @@
         function showDifficultWords() {
             // Filter cards marked as hard or medium
             const difficultCards = currentFlashcards.filter(card => {
-                const cardId = card.jp + card.en;
+                const cardId = card.jp + card.es;
                 const difficulty = learningProgress.difficultyMap[cardId];
                 return difficulty === 2 || difficulty === 3; // medium or hard
             });
@@ -1916,11 +2475,11 @@
         function generateQuizQuestions(data, count) {
             const shuffled = [...data].sort(() => 0.5 - Math.random());
             return shuffled.slice(0, count).map(item => {
-                const correctAnswer = item.en || item.meaning;
+                const correctAnswer = item.es || item.meaning;
                 const wrongAnswers = data.filter(d => d !== item)
                     .sort(() => 0.5 - Math.random())
                     .slice(0, 3)
-                    .map(d => d.en || d.meaning);
+                    .map(d => d.es || d.meaning);
                 
                 const allAnswers = [correctAnswer, ...wrongAnswers].sort(() => 0.5 - Math.random());
                 
@@ -2000,16 +2559,16 @@
             let message = '';
             
             if (percentage >= 80) {
-                message = '🎉 Excellent! You\'ve mastered this material!';
+                message = '🎉 ¡Excelente! ¡Has dominado este material!';
                 completeDailyTask('quizzes'); // Only complete if score is good
             } else if (percentage >= 60) {
-                message = '👍 Good job! Keep practicing to improve!';
+                message = '👍 ¡Buen trabajo! ¡Sigue practicando para mejorar!';
             } else {
-                message = '📚 Keep studying! Review the material and try again.';
+                message = '📚 ¡Sigue estudiando! Repasa el material e inténtalo de nuevo.';
             }
             
             document.getElementById('quizQuestion').innerHTML = 
-                `<div>Quiz Complete!</div>
+                `<div>¡Cuestionario Completado!</div>
                  <div style="font-size: 0.8em; margin-top: 10px;">Score: ${quizScore}/${currentQuiz.length} (${percentage}%)</div>
                  <div style="font-size: 0.6em; margin-top: 10px;">${message}</div>`;
             
@@ -2054,7 +2613,7 @@
             updateStats();
             updateKanaStats();
             document.getElementById('kanaGrid').innerHTML = '';
-            document.getElementById('kanaMode').textContent = 'Select a mode';
+            document.getElementById('kanaMode').textContent = 'Selecciona un modo';
         }
         
         function showAllKana() {
@@ -2079,6 +2638,12 @@
             const container = document.getElementById('vocabularyList');
             let vocabToShow = [];
             
+            if (!vocabularyData || Object.keys(vocabularyData).length === 0) {
+                console.log('Warning: vocabularyData is not loaded yet for filterVocabulary');
+                container.innerHTML = '<p>Cargando vocabulario...</p>';
+                return;
+            }
+            
             if (category === 'all') {
                 vocabToShow = getAllVocabulary();
             } else {
@@ -2089,7 +2654,7 @@
                 `<div class="japanese-text" style="margin: 10px 0;">
                     <strong>${word.jp}</strong> 
                     <span class="romaji">(${word.romaji})</span> 
-                    <span class="english">${word.en}</span>
+                    <span class="spanish">${word.es}</span>
                 </div>`
             ).join('');
         }
@@ -2100,7 +2665,7 @@
             const filtered = allVocab.filter(word => 
                 word.jp.includes(searchTerm) || 
                 word.romaji.toLowerCase().includes(searchTerm) || 
-                word.en.toLowerCase().includes(searchTerm)
+                word.es.toLowerCase().includes(searchTerm)
             );
             
             const container = document.getElementById('vocabularyList');
@@ -2108,7 +2673,7 @@
                 `<div class="japanese-text" style="margin: 10px 0;">
                     <strong>${word.jp}</strong> 
                     <span class="romaji">(${word.romaji})</span> 
-                    <span class="english">${word.en}</span>
+                    <span class="spanish">${word.es}</span>
                 </div>`
             ).join('');
         }
@@ -2205,11 +2770,11 @@
             let message = '';
             
             if (percentage >= 80) {
-                message = '🎉 Excellent grammar mastery!';
+                message = '🎉 ¡Excelente dominio de la gramática!';
             } else if (percentage >= 60) {
-                message = '👍 Good understanding! Review the patterns you missed.';
+                message = '👍 ¡Buena comprensión! Repasa los patrones que fallaste.';
             } else {
-                message = '📚 Keep practicing! Focus on the grammar reference section.';
+                message = '📚 ¡Sigue practicando! Enfócate en la sección de referencia gramátical.';
             }
             
             document.getElementById('grammarQuestion').innerHTML = 
@@ -2237,7 +2802,45 @@
         
         // Initialize progress tracking
         updateProgress();
-        initializeApp();
+
+        // Verb Practice Functions
+        function showVerbSection(section) {
+            // Hide all verb sections
+            document.getElementById('allVerbs').style.display = 'none';
+            document.getElementById('similarVerbs').style.display = 'none';
+            document.getElementById('oppositeVerbs').style.display = 'none';
+            document.getElementById('verbQuiz').style.display = 'none';
+
+            // Show selected section
+            switch(section) {
+                case 'all':
+                    document.getElementById('allVerbs').style.display = 'block';
+                    break;
+                case 'similar':
+                    document.getElementById('similarVerbs').style.display = 'block';
+                    break;
+                case 'opposites':
+                    document.getElementById('oppositeVerbs').style.display = 'block';
+                    break;
+                case 'quiz':
+                    document.getElementById('verbQuiz').style.display = 'block';
+                    break;
+            }
+        }
+
+        function startVerbQuiz() {
+            showVerbSection('quiz');
+            // TODO: Implement verb quiz functionality
+            document.getElementById('verbQuizContent').innerHTML = 
+                '<p>🚧 Quiz de verbos en desarrollo. ¡Próximamente tendrás ejercicios interactivos para practicar todos los verbos con sus mnemotécnicos!</p>';
+        }
+
+        // Initialize verb section to show all verbs by default
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('allVerbs')) {
+                showVerbSection('all');
+            }
+        });
     </script>
 </body>
 </html>
