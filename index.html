@@ -873,7 +873,7 @@
                 <div class="challenge-progress">
                     <div class="challenge-progress-fill" id="challengeProgress"></div>
                 </div>
-                <p id="challengeDescription">Complete today's tasks to maintain your streak!</p>
+                <p id="challengeDescription">¡Completa las tareas de hoy para mantener tu racha!</p>
                 <div class="streak-flame" id="streakFlame">🔥</div>
                 <p><strong><span id="currentStreak">0</span> Day Streak!</strong></p>
             </div>
@@ -881,11 +881,11 @@
             <div class="daily-stats">
                 <div class="daily-stat">
                     <div class="daily-stat-number" id="todayFlashcards">0</div>
-                    <div class="daily-stat-label">Flashcards</div>
+                    <div class="daily-stat-label">Tarjetas</div>
                 </div>
                 <div class="daily-stat">
                     <div class="daily-stat-number" id="todayQuizzes">0</div>
-                    <div class="daily-stat-label">Quizzes</div>
+                    <div class="daily-stat-label">Cuestionarios</div>
                 </div>
                 <div class="daily-stat">
                     <div class="daily-stat-number" id="todayReading">0</div>
@@ -899,24 +899,24 @@
             
             <div class="card-grid">
                 <div class="card" onclick="startDailyTask('flashcards')">
-                    <h4>🎴 Flashcard Challenge</h4>
+                    <h4>🎴 Desafío de Tarjetas</h4>
                     <p>Review 20 vocabulary cards</p>
-                    <div class="btn" style="margin-top: 10px;">Start Challenge</div>
+                    <div class="btn" style="margin-top: 10px;">Iniciar Desafío</div>
                 </div>
                 <div class="card" onclick="startDailyTask('quiz')">
-                    <h4>🧠 Quiz Challenge</h4>
-                    <p>Score 80%+ on a mixed quiz</p>
-                    <div class="btn" style="margin-top: 10px;">Start Challenge</div>
+                    <h4>🧠 Desafío de Cuestionarios</h4>
+                    <p>Obtén 80%+ en un cuestionario mixto</p>
+                    <div class="btn" style="margin-top: 10px;">Iniciar Desafío</div>
                 </div>
                 <div class="card" onclick="startDailyTask('reading')">
                     <h4>📖 Reading Challenge</h4>
                     <p>Read and comprehend 1 passage</p>
-                    <div class="btn" style="margin-top: 10px;">Start Challenge</div>
+                    <div class="btn" style="margin-top: 10px;">Iniciar Desafío</div>
                 </div>
                 <div class="card" onclick="startDailyTask('sentences')">
                     <h4>🧩 Sentence Challenge</h4>
-                    <p>Build 5 correct sentences</p>
-                    <div class="btn" style="margin-top: 10px;">Start Challenge</div>
+                    <p>Construye 5 oraciones correctas</p>
+                    <div class="btn" style="margin-top: 10px;">Iniciar Desafío</div>
                 </div>
             </div>
         </div>
@@ -937,7 +937,7 @@
                     Select a reading level to begin
                 </div>
                 <div id="passageContent">
-                    Click on a difficulty level above to load a reading passage with comprehension questions.
+                    Haz clic en un nivel de dificultad arriba para cargar un pasaje de lectura con preguntas de comprensión.
                 </div>
             </div>
             
@@ -945,8 +945,8 @@
                 <h3 style="color: #e74c3c; margin: 20px 0;">Comprehension Questions</h3>
                 <div id="questionContainer"></div>
                 <div class="controls">
-                    <button class="btn success" onclick="checkReadingAnswers()">Check Answers</button>
-                    <button class="btn" onclick="nextReadingPassage()">Next Passage</button>
+                    <button class="btn success" onclick="checkReadingAnswers()">Verificar Respuestas</button>
+                    <button class="btn" onclick="nextReadingPassage()">Siguiente Pasaje</button>
                 </div>
             </div>
             
@@ -956,7 +956,7 @@
                     <li><strong>Toggle Furigana</strong> to test your kanji knowledge</li>
                     <li><strong>Read twice</strong> - once for general meaning, once for details</li>
                     <li><strong>Don't translate</strong> - try to understand directly in Japanese</li>
-                    <li><strong>Note new vocabulary</strong> for later flashcard practice</li>
+                    <li><strong>Anota vocabulario nuevo</strong> para practicar luego con tarjetas</li>
                 </ul>
             </div>
         </div>
@@ -977,10 +977,10 @@
                 </div>
                 
                 <div class="controls">
-                    <button class="btn success" onclick="checkSentence()">✅ Check Sentence</button>
+                    <button class="btn success" onclick="checkSentence()">✅ Verificar Oración</button>
                     <button class="btn" onclick="clearSentence()">🗑️ Clear</button>
                     <button class="btn secondary" onclick="getHint()">💡 Hint</button>
-                    <button class="btn" onclick="nextSentenceChallenge()">➡️ Next Challenge</button>
+                    <button class="btn" onclick="nextSentenceChallenge()">➡️ Siguiente Desafío</button>
                 </div>
                 
                 <div id="sentenceFeedback" style="margin-top: 20px; padding: 15px; border-radius: 10px; display: none;"></div>
@@ -993,7 +993,7 @@
                     <p>Success Rate: <span id="sentenceSuccessRate">0%</span></p>
                 </div>
                 <div class="card">
-                    <h4>📊 Your Progress</h4>
+                    <h4>📊 Tu Progreso</h4>
                     <p>Total Sentences: <span id="totalSentences">0</span></p>
                     <p>Accuracy: <span id="overallAccuracy">0%</span></p>
                 </div>
@@ -1002,7 +1002,7 @@
             <div class="study-tip">
                 <h4>🔧 Sentence Building Tips</h4>
                 <ul>
-                    <li><strong>Start with the topic</strong> - usually marked with は</li>
+                    <li><strong>Comienza con el tema</strong> - usualmente marcado con は</li>
                     <li><strong>Object comes before verb</strong> - marked with を</li>
                     <li><strong>Verb goes at the end</strong> - this is key in Japanese!</li>
                     <li><strong>Time/place before action</strong> - に, で particles show when/where</li>
@@ -1013,60 +1013,60 @@
             <h2 class="section-title">📚 Welcome to Your N5 Journey</h2>
             
             <div class="study-tip">
-                <h4>🎯 Your Learning Stats</h4>
+                <h4>🎯 Tus Estadísticas de Aprendizaje</h4>
                 <div class="stats" id="learningStats">
                     <div class="stat-card">
                         <div class="stat-number" id="vocabMastered">0</div>
-                        <div class="stat-label">Vocabulary Mastered</div>
+                        <div class="stat-label">Vocabulario Dominado</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="kanaMastered">0</div>
-                        <div class="stat-label">Kana Mastered</div>
+                        <div class="stat-label">Kana Dominado</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="quizzesTaken">0</div>
-                        <div class="stat-label">Quizzes Completed</div>
+                        <div class="stat-label">Cuestionarios Completados</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="studyStreak">0</div>
-                        <div class="stat-label">Study Streak (Days)</div>
+                        <div class="stat-label">Racha de Estudio (Días)</div>
                     </div>
                 </div>
                 
                 <div class="controls" style="margin-top: 20px;">
-                    <button class="btn success" onclick="saveProgress()">💾 Save Progress</button>
+                    <button class="btn success" onclick="saveProgress()">💾 Guardar Progreso</button>
                     <input type="file" id="loadProgressFile" accept=".json" onchange="loadProgress(event)" style="display: none;">
-                    <button class="btn" onclick="document.getElementById('loadProgressFile').click()">📁 Load Progress</button>
+                    <button class="btn" onclick="document.getElementById('loadProgressFile').click()">📁 Cargar Progreso</button>
                     <button class="btn secondary" onclick="showDifficultWords()">🔄 Review Difficult Words</button>
                 </div>
             </div>
             
             <div class="card-grid">
                 <div class="card">
-                    <h4>🎴 Interactive Flashcards</h4>
-                    <p>Study vocabulary, kanji, and grammar with spaced repetition flashcards that adapt to your learning pace.</p>
+                    <h4>🎴 Tarjetas de Estudio Interactivas</h4>
+                    <p>Estudia vocabulario, kanji y gramática con tarjetas de repetición espaciada que se adaptan a tu ritmo de aprendizaje.</p>
                 </div>
                 <div class="card">
-                    <h4>🧠 Smart Quizzes</h4>
-                    <p>Test your knowledge with adaptive quizzes that focus on your weak areas and track your progress.</p>
+                    <h4>🧠 Cuestionarios Inteligentes</h4>
+                    <p>Pon a prueba tu conocimiento con cuestionarios adaptativos que se enfocan en tus áreas débiles y monitorean tu progreso.</p>
                 </div>
                 <div class="card">
                     <h4>🔤 Kana Mastery</h4>
                     <p>Master hiragana and katakana with interactive practice tools and memory games.</p>
                 </div>
                 <div class="card">
-                    <h4>📊 Progress Tracking</h4>
-                    <p>Monitor your learning with detailed statistics and personalized study recommendations.</p>
+                    <h4>📊 Seguimiento de Progreso</h4>
+                    <p>Monitorea tu aprendizaje con estadísticas detalladas y recomendaciones personalizadas de estudio.</p>
                 </div>
             </div>
             
             <div class="study-tip">
-                <h4>🚀 Quick Start Guide</h4>
+                <h4>🚀 Guía de Inicio Rápido</h4>
                 <ol>
-                    <li><strong>Start with Kana Practice</strong> - Master hiragana and katakana first</li>
-                    <li><strong>Use Flashcards Daily</strong> - Study 20-30 cards per session</li>
-                    <li><strong>Take Regular Quizzes</strong> - Test yourself weekly to track progress</li>
-                    <li><strong>Follow the Study Plan</strong> - Structured 12-week curriculum</li>
+                    <li><strong>Comienza con Práctica de Kana</strong> - Domina hiragana y katakana primero</li>
+                    <li><strong>Usa Tarjetas Diariamente</strong> - Estudia 20-30 tarjetas por sesión</li>
+                    <li><strong>Toma Cuestionarios Regulares</strong> - Evalúate semanalmente para seguir el progreso</li>
+                    <li><strong>Sigue el Plan de Estudio</strong> - Currículo estructurado de 12 semanas</li>
                 </ol>
             </div>
         </div>
@@ -1084,24 +1084,24 @@
             
             <div class="score-display">
                 <span>Card <span id="currentCard">1</span> of <span id="totalCards">10</span></span>
-                <span style="margin-left: 20px;">Known: <span id="knownCards">0</span> | Learning: <span id="learningCards">0</span></span>
+                <span style="margin-left: 20px;">Conocidas: <span id="knownCards">0</span> | Aprendiendo: <span id="learningCards">0</span></span>
             </div>
             
             <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
                 <div class="flashcard-front">
-                    <div class="flashcard-text" id="flashcardFront">Click to start</div>
+                    <div class="flashcard-text" id="flashcardFront">Haz clic para comenzar</div>
                     <div class="flashcard-reading" id="flashcardReading"></div>
                 </div>
                 <div class="flashcard-back">
-                    <div class="flashcard-text" id="flashcardBack">Let's learn!</div>
+                    <div class="flashcard-text" id="flashcardBack">¡Vamos a aprender!</div>
                     <div class="flashcard-reading" id="flashcardMeaning"></div>
                 </div>
             </div>
             
             <div class="controls">
-                <button class="btn" onclick="previousCard()">⬅️ Previous</button>
+                <button class="btn" onclick="previousCard()">⬅️ Anterior</button>
                 <button class="btn" onclick="flipFlashcard()">🔄 Flip</button>
-                <button class="btn" onclick="nextCard()">Next ➡️</button>
+                <button class="btn" onclick="nextCard()">Siguiente ➡️</button>
             </div>
             
             <div class="controls">
@@ -1111,9 +1111,9 @@
             </div>
             
             <div class="study-tip">
-                <h4>💡 Flashcard Tips</h4>
+                <h4>💡 Consejos para Tarjetas</h4>
                 <ul>
-                    <li><strong>Click the card</strong> to flip between question and answer</li>
+                    <li><strong>Haz clic en la tarjeta</strong> para voltear entre pregunta y respuesta</li>
                     <li><strong>Rate your knowledge</strong> to use spaced repetition effectively</li>
                     <li><strong>Hard cards</strong> will appear more frequently</li>
                     <li><strong>Easy cards</strong> will appear less often</li>
@@ -1133,23 +1133,23 @@
             </div>
             
             <div class="quiz-container" id="quizContainer">
-                <div class="quiz-question" id="quizQuestion">Select a quiz type to begin!</div>
+                <div class="quiz-question" id="quizQuestion">¡Selecciona un tipo de cuestionario para comenzar!</div>
                 <div class="quiz-options" id="quizOptions"></div>
                 <div class="score-display" id="quizScore" style="display: none;">
-                    Score: <span id="currentScore">0</span>/<span id="totalQuestions">10</span>
+                    Puntuación: <span id="currentScore">0</span>/<span id="totalQuestions">10</span>
                 </div>
                 <div class="controls" id="quizControls" style="display: none;">
-                    <button class="btn" onclick="nextQuestion()">Next Question ➡️</button>
-                    <button class="btn secondary" onclick="restartQuiz()">🔄 Restart</button>
+                    <button class="btn" onclick="nextQuestion()">Siguiente Pregunta ➡️</button>
+                    <button class="btn secondary" onclick="restartQuiz()">🔄 Reiniciar</button>
                 </div>
             </div>
             
             <div class="study-tip">
-                <h4>🎯 Quiz Features</h4>
+                <h4>🎯 Características del Cuestionario</h4>
                 <ul>
                     <li><strong>Adaptive questioning</strong> - Focus on your weak areas</li>
                     <li><strong>Immediate feedback</strong> - Learn from mistakes instantly</li>
-                    <li><strong>Progress tracking</strong> - See your improvement over time</li>
+                    <li><strong>Seguimiento de progreso</strong> - Ve tu mejora a lo largo del tiempo</li>
                     <li><strong>Mixed practice</strong> - Test all skills together</li>
                 </ul>
             </div>
@@ -1162,13 +1162,13 @@
             <div class="controls">
                 <button class="btn" onclick="practiceKana('hiragana')">あ Hiragana</button>
                 <button class="btn" onclick="practiceKana('katakana')">ア Katakana</button>
-                <button class="btn secondary" onclick="resetKanaPractice()">🔄 Reset</button>
+                <button class="btn secondary" onclick="resetKanaPractice()">🔄 Reiniciar</button>
                 <button class="btn success" onclick="showAllKana()">👁️ Show All</button>
             </div>
             
             <div class="score-display">
-                Practice Mode: <span id="kanaMode">Select a mode</span> | 
-                Mastered: <span id="kanaMasteredCount">0</span>/46
+                Modo de Práctica: <span id="kanaMode">Selecciona un modo</span> | 
+                Dominado: <span id="kanaMasteredCount">0</span>/46
             </div>
             
             <div class="kana-grid" id="kanaGrid">
@@ -1176,11 +1176,11 @@
             </div>
             
             <div class="study-tip">
-                <h4>🎓 Kana Learning Strategy</h4>
+                <h4>🎓 Estrategia de Aprendizaje de Kana</h4>
                 <ul>
                     <li><strong>Click on characters</strong> to reveal their readings</li>
                     <li><strong>Practice daily</strong> - 10 minutes builds strong memory</li>
-                    <li><strong>Start with hiragana</strong> - it's used more frequently</li>
+                    <li><strong>Comienza con hiragana</strong> - se usa con más frecuencia</li>
                     <li><strong>Use mnemonics</strong> - create visual associations</li>
                 </ul>
             </div>
@@ -1504,21 +1504,21 @@
             <h2 class="section-title">🔧 Práctica Interactiva de Gramática N5</h2>
             
             <div class="controls">
-                <button class="btn" onclick="startGrammarQuiz('particles')">⚡ Particles Quiz</button>
-                <button class="btn" onclick="startGrammarQuiz('verbs')">🏃 Verb Forms</button>
-                <button class="btn" onclick="startGrammarQuiz('adjectives')">🎨 Adjectives</button>
+                <button class="btn" onclick="startGrammarQuiz('particles')">⚡ Quiz de Partículas</button>
+                <button class="btn" onclick="startGrammarQuiz('verbs')">🏃 Formas Verbales</button>
+                <button class="btn" onclick="startGrammarQuiz('adjectives')">🎨 Adjetivos</button>
                 <button class="btn secondary" onclick="showGrammarReference()">📖 Reference</button>
             </div>
             
             <div class="quiz-container" id="grammarQuizContainer">
-                <div class="quiz-question" id="grammarQuestion">Select a grammar topic to practice!</div>
+                <div class="quiz-question" id="grammarQuestion">¡Selecciona un tema de gramática para practicar!</div>
                 <div class="quiz-options" id="grammarOptions"></div>
                 <div class="score-display" id="grammarScore" style="display: none;">
-                    Score: <span id="grammarCurrentScore">0</span>/<span id="grammarTotalQuestions">10</span>
+                    Puntuación: <span id="grammarCurrentScore">0</span>/<span id="grammarTotalQuestions">10</span>
                 </div>
                 <div class="controls" id="grammarControls" style="display: none;">
-                    <button class="btn" onclick="nextGrammarQuestion()">Next Question ➡️</button>
-                    <button class="btn secondary" onclick="restartGrammarQuiz()">🔄 Restart</button>
+                    <button class="btn" onclick="nextGrammarQuestion()">Siguiente Pregunta ➡️</button>
+                    <button class="btn secondary" onclick="restartGrammarQuiz()">🔄 Reiniciar</button>
                 </div>
             </div>
             
@@ -1646,18 +1646,18 @@
                     title: "私の家族 (My Family)",
                     content: `<span class="furigana-text">私<span class="furigana">わたし</span></span>の<span class="furigana-text">家族<span class="furigana">かぞく</span></span>は五人です。<span class="furigana-text">父<span class="furigana">ちち</span></span>と<span class="furigana-text">母<span class="furigana">はは</span></span>と<span class="furigana-text">姉<span class="furigana">あね</span></span>と<span class="furigana-text">弟<span class="furigana">おとうと</span></span>がいます。<span class="furigana-text">父<span class="furigana">ちち</span></span>は<span class="furigana-text">会社員<span class="furigana">かいしゃいん</span></span>です。<span class="furigana-text">母<span class="furigana">はは</span></span>は<span class="furigana-text">看護師<span class="furigana">かんごし</span></span>です。<span class="furigana-text">姉<span class="furigana">あね</span></span>は<span class="furigana-text">大学生<span class="furigana">だいがくせい</span></span>で、<span class="furigana-text">弟<span class="furigana">おとうと</span></span>は<span class="furigana-text">高校生<span class="furigana">こうこうせい</span></span>です。みんな<span class="furigana-text">元気<span class="furigana">げんき</span></span>です。`,
                     questions: [
-                        {q: "How many people are in the family?", options: ["4", "5", "6", "3"], correct: "5"},
-                        {q: "What is the father's job?", options: ["Teacher", "Doctor", "Company employee", "Student"], correct: "Company employee"},
-                        {q: "Who is a university student?", options: ["Father", "Mother", "Sister", "Brother"], correct: "Sister"}
+                        {q: "¿Cuántas personas hay en la familia?", options: ["4", "5", "6", "3"], correct: "5"},
+                        {q: "¿Cuál es el trabajo del padre?", options: ["Maestro", "Doctor", "Empleado de empresa", "Estudiante"], correct: "Empleado de empresa"},
+                        {q: "¿Quién es estudiante universitario?", options: ["Padre", "Madre", "Hermana", "Hermano"], correct: "Hermana"}
                     ]
                 },
                 {
                     title: "毎日の生活 (Daily Life)",
                     content: `<span class="furigana-text">毎日<span class="furigana">まいにち</span></span>七<span class="furigana-text">時<span class="furigana">じ</span></span>に<span class="furigana-text">起<span class="furigana">お</span></span>きます。<span class="furigana-text">朝<span class="furigana">あさ</span></span>ごはんを<span class="furigana-text">食<span class="furigana">た</span></span>べて、<span class="furigana-text">学校<span class="furigana">がっこう</span></span>に<span class="furigana-text">行<span class="furigana">い</span></span>きます。<span class="furigana-text">午後<span class="furigana">ごご</span></span>三<span class="furigana-text">時<span class="furigana">じ</span></span>に<span class="furigana-text">家<span class="furigana">いえ</span></span>に<span class="furigana-text">帰<span class="furigana">かえ</span></span>ります。<span class="furigana-text">宿題<span class="furigana">しゅくだい</span></span>をして、<span class="furigana-text">友達<span class="furigana">ともだち</span></span>と<span class="furigana-text">遊<span class="furigana">あそ</span></span>びます。<span class="furigana-text">夜<span class="furigana">よる</span></span>は<span class="furigana-text">家族<span class="furigana">かぞく</span></span>と<span class="furigana-text">晩<span class="furigana">ばん</span></span>ごはんを<span class="furigana-text">食<span class="furigana">た</span></span>べます。`,
                     questions: [
-                        {q: "What time do they wake up?", options: ["6:00", "7:00", "8:00", "9:00"], correct: "7:00"},
-                        {q: "What time do they return home?", options: ["2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"], correct: "3:00 PM"},
-                        {q: "Who do they eat dinner with?", options: ["Friends", "Family", "Alone", "Classmates"], correct: "Family"}
+                        {q: "¿A qué hora se levantan?", options: ["6:00", "7:00", "8:00", "9:00"], correct: "7:00"},
+                        {q: "¿A qué hora regresan a casa?", options: ["2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"], correct: "3:00 PM"},
+                        {q: "¿Con quién cenan?", options: ["Amigos", "Familia", "Solo/a", "Compañeros"], correct: "Familia"}
                     ]
                 }
             ],
@@ -1666,9 +1666,9 @@
                     title: "日本の四季 (Japan's Four Seasons)",
                     content: `<span class="furigana-text">日本<span class="furigana">にほん</span></span>には<span class="furigana-text">美<span class="furigana">うつく</span></span>しい<span class="furigana-text">四季<span class="furigana">しき</span></span>があります。<span class="furigana-text">春<span class="furigana">はる</span></span>には<span class="furigana-text">桜<span class="furigana">さくら</span></span>が<span class="furigana-text">咲<span class="furigana">さ</span></span>きます。<span class="furigana-text">夏<span class="furigana">なつ</span></span>は<span class="furigana-text">暑<span class="furigana">あつ</span></span>くて、<span class="furigana-text">海<span class="furigana">うみ</span></span>に<span class="furigana-text">行<span class="furigana">い</span></span>く<span class="furigana-text">人<span class="furigana">ひと</span></span>が<span class="furigana-text">多<span class="furigana">おお</span></span>いです。<span class="furigana-text">秋<span class="furigana">あき</span></span>は<span class="furigana-text">紅葉<span class="furigana">こうよう</span></span>が<span class="furigana-text">綺麗<span class="furigana">きれい</span></span>で、<span class="furigana-text">冬<span class="furigana">ふゆ</span></span>には<span class="furigana-text">雪<span class="furigana">ゆき</span></span>が<span class="furigana-text">降<span class="furigana">ふ</span></span>ります。それぞれの<span class="furigana-text">季節<span class="furigana">きせつ</span></span>に<span class="furigana-text">特別<span class="furigana">とくべつ</span></span>な<span class="furigana-text">楽<span class="furigana">たの</span></span>しみがあります。`,
                     questions: [
-                        {q: "What blooms in spring?", options: ["Leaves", "Cherry blossoms", "Snow", "Rain"], correct: "Cherry blossoms"},
-                        {q: "What do many people do in summer?", options: ["Ski", "Go to the sea", "See leaves", "Stay home"], correct: "Go to the sea"},
-                        {q: "What is beautiful in autumn?", options: ["Snow", "Cherry blossoms", "Autumn leaves", "Rain"], correct: "Autumn leaves"}
+                        {q: "¿Qué florece en primavera?", options: ["Hojas", "Flores de cerezo", "Nieve", "Lluvia"], correct: "Flores de cerezo"},
+                        {q: "¿Qué hace mucha gente en verano?", options: ["Esquiar", "Ir al mar", "Ver hojas", "Quedarse en casa"], correct: "Ir al mar"},
+                        {q: "¿Qué es hermoso en otoño?", options: ["Nieve", "Flores de cerezo", "Hojas de otoño", "Lluvia"], correct: "Hojas de otoño"}
                     ]
                 }
             ],
@@ -1677,10 +1677,10 @@
                     title: "友達からの手紙 (Letter from a Friend)",
                     content: `<span class="furigana-text">田中<span class="furigana">たなか</span></span>さんへ<br><br><span class="furigana-text">元気<span class="furigana">げんき</span></span>ですか。<span class="furigana-text">私<span class="furigana">わたし</span></span>は<span class="furigana-text">今<span class="furigana">いま</span></span>、<span class="furigana-text">大阪<span class="furigana">おおさか</span></span>にいます。<span class="furigana-text">先週<span class="furigana">せんしゅう</span></span>の<span class="furigana-text">土曜日<span class="furigana">どようび</span></span>に<span class="furigana-text">東京<span class="furigana">とうきょう</span></span>から<span class="furigana-text">来<span class="furigana">き</span></span>ました。<span class="furigana-text">大阪<span class="furigana">おおさか</span></span>の<span class="furigana-text">食<span class="furigana">た</span></span>べ<span class="furigana-text">物<span class="furigana">もの</span></span>は<span class="furigana-text">美味<span class="furigana">おい</span></span>しいです。<span class="furigana-text">特<span class="furigana">とく</span></span>に<span class="furigana-text">お好<span class="furigana">おこの</span></span>み<span class="furigana-text">焼<span class="furigana">や</span></span>きと<span class="furigana-text">たこ焼<span class="furigana">たこや</span></span>きが<span class="furigana-text">好<span class="furigana">す</span></span>きになりました。<span class="furigana-text">来月<span class="furigana">らいげつ</span></span><span class="furigana-text">東京<span class="furigana">とうきょう</span></span>に<span class="furigana-text">帰<span class="furigana">かえ</span></span>ります。その<span class="furigana-text">時<span class="furigana">とき</span></span>、<span class="furigana-text">会<span class="furigana">あ</span></span>いませんか。<br><br><span class="furigana-text">山田<span class="furigana">やまだ</span></span>より`,
                     questions: [
-                        {q: "Where is Yamada now?", options: ["Tokyo", "Osaka", "Kyoto", "Nagoya"], correct: "Osaka"},
-                        {q: "When did Yamada come to this city?", options: ["Last Sunday", "Last Saturday", "Last Friday", "This Saturday"], correct: "Last Saturday"},
-                        {q: "What foods does Yamada particularly like?", options: ["Sushi and ramen", "Okonomiyaki and takoyaki", "Tempura and udon", "Curry and rice"], correct: "Okonomiyaki and takoyaki"},
-                        {q: "When will Yamada return to Tokyo?", options: ["This week", "Next week", "Next month", "Next year"], correct: "Next month"}
+                        {q: "¿Dónde está Yamada ahora?", options: ["Tokyo", "Osaka", "Kyoto", "Nagoya"], correct: "Osaka"},
+                        {q: "¿Cuándo llegó Yamada a esta ciudad?", options: ["El domingo pasado", "El sábado pasado", "El viernes pasado", "Este sábado"], correct: "El sábado pasado"},
+                        {q: "¿Qué comidas le gustan especialmente a Yamada?", options: ["Sushi y ramen", "Okonomiyaki y takoyaki", "Tempura y udon", "Curry y arroz"], correct: "Okonomiyaki y takoyaki"},
+                        {q: "¿Cuándo regresará Yamada a Tokyo?", options: ["Esta semana", "La próxima semana", "El próximo mes", "El próximo año"], correct: "El próximo mes"}
                     ]
                 }
             ]
@@ -1689,28 +1689,28 @@
         // Sentence building challenges
         const sentenceChallenges = [
             {
-                prompt: "I go to school",
+                prompt: "Voy a la escuela",
                 words: ["私", "は", "学校", "に", "行きます", "を"],
                 correct: ["私", "は", "学校", "に", "行きます"],
                 romaji: "watashi wa gakko ni ikimasu",
                 hint: "Remember: [topic]は [destination]に [verb]"
             },
             {
-                prompt: "I eat an apple",
+                prompt: "Como una manzana",
                 words: ["私", "は", "りんご", "を", "食べます", "に"],
                 correct: ["私", "は", "りんご", "を", "食べます"],
                 romaji: "watashi wa ringo wo tabemasu",
                 hint: "Remember: [topic]は [object]を [verb]"
             },
             {
-                prompt: "This is a book",
+                prompt: "Esto es un libro",
                 words: ["これ", "は", "本", "です", "を", "が"],
                 correct: ["これ", "は", "本", "です"],
                 romaji: "kore wa hon desu",
                 hint: "Remember: [topic]は [noun]です"
             },
             {
-                prompt: "I study at the library",
+                prompt: "Estudio en la biblioteca",
                 words: ["私", "は", "図書館", "で", "勉強します", "を", "に"],
                 correct: ["私", "は", "図書館", "で", "勉強します"],
                 romaji: "watashi wa toshokan de benkyo shimasu",
@@ -1969,7 +1969,7 @@
                     <button onclick="this.parentElement.parentElement.remove()" 
                             style="background: #e74c3c; color: white; border: none; padding: 10px 20px; 
                                    border-radius: 10px; cursor: pointer; margin-top: 10px;">
-                        Continue Learning!
+                        ¡Continúa Aprendiendo!
                     </button>
                 </div>
                 <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
@@ -2032,7 +2032,7 @@
         
         function checkReadingAnswers() {
             completeDailyTask('reading');
-            alert('Great job completing the reading passage! Check your answers above.');
+            alert('¡Excelente trabajo completando la lectura! Revisa tus respuestas arriba.');
         }
         
         function nextReadingPassage() {
@@ -2147,12 +2147,12 @@
                 learningProgress.sentenceStats.built++;
                 feedback.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
                 feedback.style.color = 'white';
-                feedback.textContent = '🎉 Correct! Great job building the sentence!';
+                feedback.textContent = '🎉 ¡Correcto! ¡Excelente trabajo construyendo la oración!';
                 completeDailyTask('sentences');
             } else {
                 feedback.style.background = 'linear-gradient(135deg, #e74c3c, #c0392b)';
                 feedback.style.color = 'white';
-                feedback.innerHTML = `❌ Not quite right. The correct sentence is: ${challenge.correct.join(' ')}<br>Hint: ${challenge.hint}`;
+                feedback.innerHTML = `❌ No del todo correcto. La oración correcta es: ${challenge.correct.join(' ')}<br>Pista: ${challenge.hint}`;
             }
             
             updateSentenceStats();
@@ -2559,16 +2559,16 @@
             let message = '';
             
             if (percentage >= 80) {
-                message = '🎉 Excellent! You\'ve mastered this material!';
+                message = '🎉 ¡Excelente! ¡Has dominado este material!';
                 completeDailyTask('quizzes'); // Only complete if score is good
             } else if (percentage >= 60) {
-                message = '👍 Good job! Keep practicing to improve!';
+                message = '👍 ¡Buen trabajo! ¡Sigue practicando para mejorar!';
             } else {
-                message = '📚 Keep studying! Review the material and try again.';
+                message = '📚 ¡Sigue estudiando! Repasa el material e inténtalo de nuevo.';
             }
             
             document.getElementById('quizQuestion').innerHTML = 
-                `<div>Quiz Complete!</div>
+                `<div>¡Cuestionario Completado!</div>
                  <div style="font-size: 0.8em; margin-top: 10px;">Score: ${quizScore}/${currentQuiz.length} (${percentage}%)</div>
                  <div style="font-size: 0.6em; margin-top: 10px;">${message}</div>`;
             
@@ -2613,7 +2613,7 @@
             updateStats();
             updateKanaStats();
             document.getElementById('kanaGrid').innerHTML = '';
-            document.getElementById('kanaMode').textContent = 'Select a mode';
+            document.getElementById('kanaMode').textContent = 'Selecciona un modo';
         }
         
         function showAllKana() {
@@ -2770,11 +2770,11 @@
             let message = '';
             
             if (percentage >= 80) {
-                message = '🎉 Excellent grammar mastery!';
+                message = '🎉 ¡Excelente dominio de la gramática!';
             } else if (percentage >= 60) {
-                message = '👍 Good understanding! Review the patterns you missed.';
+                message = '👍 ¡Buena comprensión! Repasa los patrones que fallaste.';
             } else {
-                message = '📚 Keep practicing! Focus on the grammar reference section.';
+                message = '📚 ¡Sigue practicando! Enfócate en la sección de referencia gramátical.';
             }
             
             document.getElementById('grammarQuestion').innerHTML = 
