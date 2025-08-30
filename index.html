@@ -1010,7 +1010,7 @@
             </div>
         </div>
         <div id="overview" class="content-section active">
-            <h2 class="section-title">📚 Welcome to Your N5 Journey</h2>
+            <h2 class="section-title"></h2>
             
             <div class="study-tip">
                 <h4>🎯 Tus Estadísticas de Aprendizaje</h4>
@@ -1037,38 +1037,11 @@
                     <button class="btn success" onclick="saveProgress()">💾 Guardar Progreso</button>
                     <input type="file" id="loadProgressFile" accept=".json" onchange="loadProgress(event)" style="display: none;">
                     <button class="btn" onclick="document.getElementById('loadProgressFile').click()">📁 Cargar Progreso</button>
-                    <button class="btn secondary" onclick="showDifficultWords()">🔄 Review Difficult Words</button>
+                    <button class="btn secondary" onclick="showDifficultWords()">🔄 Revisar Palabras Dificiles</button>
                 </div>
             </div>
             
-            <div class="card-grid">
-                <div class="card">
-                    <h4>🎴 Tarjetas de Estudio Interactivas</h4>
-                    <p>Estudia vocabulario, kanji y gramática con tarjetas de repetición espaciada que se adaptan a tu ritmo de aprendizaje.</p>
-                </div>
-                <div class="card">
-                    <h4>🧠 Cuestionarios Inteligentes</h4>
-                    <p>Pon a prueba tu conocimiento con cuestionarios adaptativos que se enfocan en tus áreas débiles y monitorean tu progreso.</p>
-                </div>
-                <div class="card">
-                    <h4>🔤 Kana Mastery</h4>
-                    <p>Master hiragana and katakana with interactive practice tools and memory games.</p>
-                </div>
-                <div class="card">
-                    <h4>📊 Seguimiento de Progreso</h4>
-                    <p>Monitorea tu aprendizaje con estadísticas detalladas y recomendaciones personalizadas de estudio.</p>
-                </div>
-            </div>
-            
-            <div class="study-tip">
-                <h4>🚀 Guía de Inicio Rápido</h4>
-                <ol>
-                    <li><strong>Comienza con Práctica de Kana</strong> - Domina hiragana y katakana primero</li>
-                    <li><strong>Usa Tarjetas Diariamente</strong> - Estudia 20-30 tarjetas por sesión</li>
-                    <li><strong>Toma Cuestionarios Regulares</strong> - Evalúate semanalmente para seguir el progreso</li>
-                    <li><strong>Sigue el Plan de Estudio</strong> - Currículo estructurado de 12 semanas</li>
-                </ol>
-            </div>
+
         </div>
         
         <!-- Flashcards Section -->
@@ -1188,7 +1161,7 @@
         
         <!-- Vocabulary Section -->
         <div id="vocabulary" class="content-section">
-            <h2 class="section-title">📝 Lista Maestra de Vocabulario N5</h2>
+            <h2 class="section-title"></h2>
             
             <div class="controls">
                 <button class="btn" onclick="filterVocabulary('all')">Todas las Palabras</button>
@@ -1214,6 +1187,7 @@
                 <button class="btn" onclick="filterVocabulary('animals')">🐕 Animales</button>
                 <button class="btn" onclick="filterVocabulary('study')">📚 Estudio</button>
                 <button class="btn" onclick="filterVocabulary('body_parts')">👤 Cuerpo</button>
+                <button class="btn" onclick="filterVocabulary('counters')">🔢 Contadores</button>
                 <button class="btn" onclick="filterVocabulary('others')">📋 Otros</button>
                 <button class="btn secondary" onclick="searchVocabulary()">🔍 Buscar</button>
             </div>
@@ -1506,8 +1480,9 @@
             <div class="controls">
                 <button class="btn" onclick="startGrammarQuiz('particles')">⚡ Quiz de Partículas</button>
                 <button class="btn" onclick="startGrammarQuiz('verbs')">🏃 Formas Verbales</button>
+                <button class="btn" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); border: none;" onclick="startTeFormQuiz()">🔥 Forma て</button>
                 <button class="btn" onclick="startGrammarQuiz('adjectives')">🎨 Adjetivos</button>
-                <button class="btn secondary" onclick="showGrammarReference()">📖 Reference</button>
+                <button class="btn secondary" onclick="showGrammarReference()">📖 Referencia</button>
             </div>
             
             <div class="quiz-container" id="grammarQuizContainer">
@@ -1554,59 +1529,145 @@
                         </div>
                     </div>
                     
-                    <h4>2. Verb Conjugations</h4>
+                    <h4>2. Conjugaciones Verbales Básicas</h4>
                     <div class="card-grid">
                         <div class="card">
-                            <h4>Present Polite (ます)</h4>
-                            <p>たべます (tabemasu) - eat<br>のみます (nomimasu) - drink<br>いきます (ikimasu) - go</p>
+                            <h4>Presente Cortés (ます)</h4>
+                            <p>たべます (tabemasu) - comer<br>のみます (nomimasu) - beber<br>いきます (ikimasu) - ir</p>
                         </div>
                         <div class="card">
-                            <h4>Past Polite (ました)</h4>
-                            <p>たべました (tabemashita) - ate<br>のみました (nomimashita) - drank<br>いきました (ikimashita) - went</p>
+                            <h4>Pasado Cortés (ました)</h4>
+                            <p>たべました (tabemashita) - comió<br>のみました (nomimashita) - bebió<br>いきました (ikimashita) - fue</p>
                         </div>
                         <div class="card">
-                            <h4>Negative (ません)</h4>
-                            <p>たべません (tabemasen) - don't eat<br>のみません (nomimasen) - don't drink<br>いきません (ikimasen) - don't go</p>
+                            <h4>Negativo (ません)</h4>
+                            <p>たべません (tabemasen) - no come<br>のみません (nomimasen) - no bebe<br>いきません (ikimasen) - no va</p>
                         </div>
                         <div class="card">
-                            <h4>Negative Past (ませんでした)</h4>
-                            <p>たべませんでした (tabemasendeshita) - didn't eat<br>のみませんでした (nomimasendeshita) - didn't drink</p>
+                            <h4>Pasado Negativo (ませんでした)</h4>
+                            <p>たべませんでした (tabemasendeshita) - no comió<br>のみませんでした (nomimasendeshita) - no bebió</p>
+                        </div>
+                    </div>
+
+                    <h4>3. 🔥 La Forma て (Te) - ¡SÚPER IMPORTANTE!</h4>
+                    <div class="study-tip" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); color: white; margin-bottom: 20px;">
+                        <h4>💡 ¿Por qué es tan importante la forma て?</h4>
+                        <p>La forma て es la base para:</p>
+                        <ul>
+                            <li><strong>Conectar verbos</strong> - como "y" en español</li>
+                            <li><strong>Presente progresivo</strong> (~ています)</li>
+                            <li><strong>Peticiones</strong> (~てください)</li>
+                            <li><strong>Dar/recibir</strong> (~てもらう, ~てあげる)</li>
+                            <li><strong>Y mucho más!</strong></li>
+                        </ul>
+                    </div>
+
+                    <h5>🎯 Reglas de Conjugación para la Forma て</h5>
+                    <div class="card-grid">
+                        <div class="card" style="border-left: 4px solid #3498db;">
+                            <h4>📘 Verbos う (Grupo 1)</h4>
+                            <p><strong>う, つ, る → って</strong><br>
+                            かう → かって (comprar)<br>
+                            たつ → たって (pararse)<br>
+                            つくる → つくって (hacer)</p>
+                            
+                            <p><strong>む, ぬ, ぶ → んで</strong><br>
+                            よむ → よんで (leer)<br>
+                            しぬ → しんで (morir)<br>
+                            あそぶ → あそんで (jugar)</p>
+                            
+                            <p><strong>く → いて</strong><br>
+                            きく → きいて (escuchar)<br>
+                            かく → かいて (escribir)</p>
+                            
+                            <p><strong>ぐ → いで</strong><br>
+                            およぐ → およいで (nadar)</p>
+                            
+                            <p><strong>す → して</strong><br>
+                            はなす → はなして (hablar)</p>
+                        </div>
+                        
+                        <div class="card" style="border-left: 4px solid #2ecc71;">
+                            <h4>📗 Verbos る (Grupo 2)</h4>
+                            <p><strong>る → て (¡Súper fácil!)</strong><br>
+                            たべる → たべて (comer)<br>
+                            みる → みて (ver)<br>
+                            ねる → ねて (dormir)</p>
+                        </div>
+                        
+                        <div class="card" style="border-left: 4px solid #e74c3c;">
+                            <h4>📕 Verbos Irregulares</h4>
+                            <p><strong>¡Memorízalos!</strong><br>
+                            する → して (hacer)<br>
+                            くる → きて (venir)</p>
+                        </div>
+                        
+                        <div class="card" style="border-left: 4px solid #f39c12;">
+                            <h4>🔥 Práctica Rápida</h4>
+                            <p><strong>¿Puedes conjugar estos?</strong><br>
+                            いく → <span style="color: #f39c12;">いって</span><br>
+                            のむ → <span style="color: #f39c12;">のんで</span><br>
+                            およぐ → <span style="color: #f39c12;">およいで</span><br>
+                            する → <span style="color: #f39c12;">して</span></p>
+                        </div>
+                    </div>
+
+                    <h5>💫 Usos Principales de la Forma て</h5>
+                    <div class="card-grid">
+                        <div class="card">
+                            <h4>1. 🔗 Conectar Acciones</h4>
+                            <p>おきて、あさごはんをたべます。<br><span class="romaji">(okite, asagohan wo tabemasu)</span><br><em>Me levanto y como desayuno.</em></p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>2. 📈 Presente Progresivo (~ています)</h4>
+                            <p>いま、べんきょうしています。<br><span class="romaji">(ima, benkyou shiteimasu)</span><br><em>Ahora estoy estudiando.</em></p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>3. 🙏 Peticiones (~てください)</h4>
+                            <p>てつだってください。<br><span class="romaji">(tetsudatte kudasai)</span><br><em>Por favor ayúdame.</em></p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>4. 🎁 Hacer por alguien (~てあげる)</h4>
+                            <p>ともだちにほんをかしてあげます。<br><span class="romaji">(tomodachi ni hon wo kashite agemasu)</span><br><em>Le presto un libro a mi amigo.</em></p>
                         </div>
                     </div>
                     
-                    <h4>3. い-Adjectives</h4>
+                    <h4>4. Adjetivos い</h4>
                     <div class="card-grid">
                         <div class="card">
-                            <h4>Present</h4>
-                            <p>おおきいです (okii desu) - is big<br>やすいです (yasui desu) - is cheap</p>
+                            <h4>Presente</h4>
+                            <p>おおきいです (okii desu) - es grande<br>やすいです (yasui desu) - es barato</p>
                         </div>
                         <div class="card">
-                            <h4>Past</h4>
-                            <p>おおきかったです (okikatta desu) - was big<br>やすかったです (yasuaktta desu) - was cheap</p>
+                            <h4>Pasado</h4>
+                            <p>おおきかったです (okikatta desu) - era grande<br>やすかったです (yasukatta desu) - era barato</p>
                         </div>
                         <div class="card">
-                            <h4>Negative</h4>
-                            <p>おおきくないです (okikunai desu) - is not big<br>やすくないです (yasukunai desu) - is not cheap</p>
+                            <h4>Negativo</h4>
+                            <p>おおきくないです (okikunai desu) - no es grande<br>やすくないです (yasukunai desu) - no es barato</p>
                         </div>
                     </div>
                     
-                    <h4>4. な-Adjectives</h4>
+                    <h4>5. Adjetivos な</h4>
                     <div class="card-grid">
                         <div class="card">
-                            <h4>Present</h4>
-                            <p>げんきです (genki desu) - is healthy<br>きれいです (kirei desu) - is pretty</p>
+                            <h4>Presente</h4>
+                            <p>げんきです (genki desu) - está saludable<br>きれいです (kirei desu) - es bonito/a</p>
                         </div>
                         <div class="card">
-                            <h4>Past</h4>
-                            <p>げんきでした (genki deshita) - was healthy<br>きれいでした (kirei deshita) - was pretty</p>
+                            <h4>Pasado</h4>
+                            <p>げんきでした (genki deshita) - estaba saludable<br>きれいでした (kirei deshita) - era bonito/a</p>
                         </div>
                         <div class="card">
-                            <h4>Negative</h4>
-                            <p>げんきじゃないです (genki ja nai desu) - is not healthy<br>きれいじゃないです (kirei ja nai desu) - is not pretty</p>
+                            <h4>Negativo</h4>
+                            <p>げんきじゃないです (genki ja nai desu) - no está saludable<br>きれいじゃないです (kirei ja nai desu) - no es bonito/a</p>
                         </div>
                     </div>
                     
-                    <h4>5. Essential Patterns</h4>
+                    <h4>6. Patrones Esenciales</h4>
                     <div class="card-grid">
                         <div class="card">
                             <h4>〜たいです (want to)</h4>
@@ -1766,6 +1827,14 @@
             {category: "verbs", pattern: "ません", romaji: "masen", meaning: "polite negative", question: "きょうは はたらき___。", options: ["ます", "ました", "ません", "ませんでした"], correct: "ません", explanation: "ません is the polite negative form"},
             {category: "verbs", pattern: "たい", romaji: "tai", meaning: "want to do", question: "にほんに いき___ です。", options: ["たい", "ている", "てください", "ことができます"], correct: "たい", explanation: "たい expresses desire to do something"},
             {category: "verbs", pattern: "ている", romaji: "teiru", meaning: "present progressive", question: "いま なにを し___ ますか。", options: ["たい", "ている", "てください", "た"], correct: "ている", explanation: "ている shows ongoing action or state"},
+            
+            // Te-form (forma て) - ¡Muy importante!
+            {category: "verbs", pattern: "て form", romaji: "te-form", meaning: "て form conjugation", question: "いく → ___", options: ["いって", "いいて", "いて", "いかって"], correct: "いって", explanation: "う ending verbs change to って in て-form"},
+            {category: "verbs", pattern: "て form", romaji: "te-form", meaning: "て form conjugation", question: "のむ → ___", options: ["のって", "のんて", "のんで", "のみて"], correct: "のんで", explanation: "む ending verbs change to んで in て-form"},
+            {category: "verbs", pattern: "て form", romaji: "te-form", meaning: "て form conjugation", question: "およぐ → ___", options: ["およって", "およいて", "およんで", "およいで"], correct: "およいで", explanation: "ぐ ending verbs change to いで in て-form"},
+            {category: "verbs", pattern: "て form", romaji: "te-form", meaning: "て form conjugation", question: "たべる → ___", options: ["たべって", "たべて", "たべいて", "たべんで"], correct: "たべて", explanation: "る verbs (Group 2) simply change る to て"},
+            {category: "verbs", pattern: "て form", romaji: "te-form", meaning: "て form conjugation", question: "する → ___", options: ["すって", "して", "すて", "しって"], correct: "して", explanation: "する is irregular: する → して"},
+            {category: "verbs", pattern: "て form", romaji: "te-form", meaning: "て form conjugation", question: "くる → ___", options: ["くって", "くて", "きて", "こて"], correct: "きて", explanation: "くる is irregular: くる → きて"},
             
             // Adjectives
             {category: "adjectives", pattern: "い-adj", romaji: "i-adj", meaning: "i-adjective conjugation", question: "このりんごは おいし___ です。", options: ["い", "かった", "くない", "くなかった"], correct: "い", explanation: "い-adjectives end in い in present form"},
@@ -2228,7 +2297,9 @@
                     weather: [],
                     animals: [],
                     study: [],
-                    body_parts: []
+                    body_parts: [],
+                    numbers: [],
+                    counters: []
                 };
                 return false;
             }
@@ -2696,6 +2767,28 @@
             document.getElementById('grammarReference').classList.add('hidden');
             
             showGrammarQuestion();
+        }
+
+        // Función especial para el quiz de la forma て
+        function startTeFormQuiz() {
+            const teFormQuestions = grammarData.filter(q => q.pattern === "て form");
+            currentGrammarQuiz = teFormQuestions.sort(() => 0.5 - Math.random());
+            currentGrammarIndex = 0;
+            grammarScore = 0;
+            selectedGrammarAnswer = null;
+            
+            document.getElementById('grammarScore').style.display = 'block';
+            document.getElementById('grammarControls').style.display = 'block';
+            document.getElementById('grammarReference').classList.add('hidden');
+            
+            // Mensaje especial para la forma て
+            document.getElementById('grammarQuestion').innerHTML = 
+                '<div style="font-size: 1.5em; margin-bottom: 15px;">🔥 ¡Quiz Especializado de la Forma て!</div>' +
+                '<div style="font-size: 0.9em; opacity: 0.8;">Domina las conjugaciones más importantes del japonés</div>';
+                
+            setTimeout(() => {
+                showGrammarQuestion();
+            }, 2000);
         }
         
         function showGrammarQuestion() {
