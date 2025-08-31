@@ -1014,23 +1014,56 @@
             <h2 class="section-title"></h2>
             
             <div class="study-tip">
-                <h4>🎯 Tus Estadísticas de Aprendizaje</h4>
+                <h4>🎯 Sistema de Progreso Inteligente (3 Niveles)</h4>
+                
+                <!-- 3-LEVEL PROGRESS SYSTEM -->
                 <div class="stats" id="learningStats">
-                    <div class="stat-card">
-                        <div class="stat-number" id="vocabMastered">0</div>
-                        <div class="stat-label">Vocabulario Dominado</div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #ff6b6b, #ee5a52);">
+                        <div class="stat-number" id="newWords">0</div>
+                        <div class="stat-label">🆕 Nuevas</div>
                     </div>
-                    <div class="stat-card">
-                        <div class="stat-number" id="tofuguKana">∞</div>
-                        <div class="stat-label">Kana (Tofugu Quiz)</div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #feca57, #ff9ff3);">
+                        <div class="stat-number" id="learningWords">0</div>
+                        <div class="stat-label">📚 Aprendiendo</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #48dbfb, #0abde3);">
+                        <div class="stat-number" id="masteredWords">0</div>
+                        <div class="stat-label">✅ Dominadas</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #1dd1a1, #10ac84);">
+                        <div class="stat-number" id="totalWords">0</div>
+                        <div class="stat-label">📊 Total</div>
+                    </div>
+                </div>
+                
+                <!-- SMART REVIEW SYSTEM -->
+                <div class="stats" style="margin-top: 20px;">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #ff9ff3, #f368e0);">
+                        <div class="stat-number" id="reviewCount">0</div>
+                        <div class="stat-label">🔄 Para Revisar</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #54a0ff, #2e86de);">
                         <div class="stat-number" id="quizzesTaken">0</div>
-                        <div class="stat-label">Cuestionarios Completados</div>
+                        <div class="stat-label">🧠 Cuestionarios</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #ff9ff3, #f368e0);">
                         <div class="stat-number" id="studyStreak">0</div>
-                        <div class="stat-label">Racha de Estudio (Días)</div>
+                        <div class="stat-label">🔥 Racha (Días)</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #ff9ff3, #f368e0);">
+                        <div class="stat-number" id="tofuguKana">∞</div>
+                        <div class="stat-label">🔤 Kana (Tofugu)</div>
+                    </div>
+                </div>
+                
+                <!-- PROGRESS BAR -->
+                <div style="margin: 20px 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                        <span>Progreso General</span>
+                        <span id="progressPercentage">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;"></div>
                     </div>
                 </div>
                 
@@ -1038,7 +1071,18 @@
                     <button class="btn success" onclick="saveProgress()">💾 Guardar Progreso</button>
                     <input type="file" id="loadProgressFile" accept=".json" onchange="loadProgress(event)" style="display: none;">
                     <button class="btn" onclick="document.getElementById('loadProgressFile').click()">📁 Cargar Progreso</button>
-                    <button class="btn secondary" onclick="showDifficultWords()">🔄 Revisar Palabras Dificiles</button>
+                    <button class="btn secondary" onclick="loadFlashcards('review')">🔄 Repaso Inteligente</button>
+                    <button class="btn" onclick="showDifficultWords()">😓 Palabras Difíciles</button>
+                </div>
+                
+                <div class="study-tip" style="margin-top: 20px; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                    <h5>🎯 Cómo Funciona el Sistema de 3 Niveles:</h5>
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li><strong>🆕 Nuevas:</strong> Palabras que nunca has visto</li>
+                        <li><strong>📚 Aprendiendo:</strong> Palabras que has visto pero no dominas (2+ correctas)</li>
+                        <li><strong>✅ Dominadas:</strong> Palabras que conoces bien (5+ correctas consecutivas)</li>
+                        <li><strong>🔄 Repaso Inteligente:</strong> Prioriza palabras difíciles y olvidadas</li>
+                    </ul>
                 </div>
             </div>
             
@@ -1058,7 +1102,8 @@
             
             <div class="score-display">
                 <span>Card <span id="currentCard">1</span> of <span id="totalCards">10</span></span>
-                <span style="margin-left: 20px;">Conocidas: <span id="knownCards">0</span> | Aprendiendo: <span id="learningCards">0</span></span>
+                <span style="margin-left: 20px;" id="currentCardLevel">🆕 Nuevo</span>
+                <span style="margin-left: 20px;">🆕 <span id="newCards">0</span> | 📚 <span id="learningCards">0</span> | ✅ <span id="knownCards">0</span></span>
             </div>
             
             <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
@@ -2512,16 +2557,29 @@
         
         // Kana data removed - now using Tofugu's embedded quiz
         
-        // Learning progress tracking with JSON persistence
+        // Learning progress tracking with JSON persistence - 3 LEVEL SYSTEM
         function initializeProgress() {
             return {
                 vocabMastered: 0,
                 quizzesTaken: 0,
                 studyStreak: 1,
-                masteredWords: new Set(),
-                difficultyMap: {}, // word/kanji -> difficulty level (1=easy, 2=medium, 3=hard)
-                reviewSchedule: {}, // word/kanji -> next review date
-                streakDates: [], // dates of study sessions
+                
+                // 3-LEVEL PROGRESS SYSTEM
+                wordProgress: {
+                    new: new Set(),        // Level 1: New words (never seen)
+                    learning: new Set(),   // Level 2: Learning (seen but not mastered)
+                    mastered: new Set()    // Level 3: Mastered (consistently correct)
+                },
+                
+                // SMART REVIEW SYSTEM
+                difficultyMap: {},         // word -> difficulty level (1=easy, 2=medium, 3=hard)
+                reviewSchedule: {},        // word -> next review date
+                errorCount: {},           // word -> number of errors
+                lastSeen: {},             // word -> last seen date
+                correctStreak: {},        // word -> consecutive correct answers
+                
+                // STATISTICS
+                streakDates: [],          // dates of study sessions
                 lastStudyDate: null,
                 dailyStats: {
                     flashcards: 0,
@@ -2533,6 +2591,17 @@
                     built: 0,
                     correct: 0,
                     total: 0
+                },
+                
+                // CATEGORY PROGRESS
+                categoryProgress: {},     // category -> {new, learning, mastered}
+                
+                // STUDY SESSION DATA
+                sessionStats: {
+                    totalSessions: 0,
+                    averageSessionTime: 0,
+                    longestStreak: 0,
+                    totalStudyTime: 0
                 }
             };
         }
@@ -2546,11 +2615,15 @@
         let furiganaVisible = true;
         let draggedElement = null;
         
-        // Memory persistence functions
+        // Memory persistence functions - UPDATED FOR 3-LEVEL SYSTEM
         function saveProgress() {
             const progressData = {
                 ...learningProgress,
-                masteredWords: Array.from(learningProgress.masteredWords || [])
+                wordProgress: {
+                    new: Array.from(learningProgress.wordProgress.new || []),
+                    learning: Array.from(learningProgress.wordProgress.learning || []),
+                    mastered: Array.from(learningProgress.wordProgress.mastered || [])
+                }
             };
             
             // Create and download JSON file
@@ -2572,14 +2645,30 @@
             reader.onload = function(e) {
                 try {
                     const progressData = JSON.parse(e.target.result);
+                    
+                    // Handle migration from old format
+                    if (progressData.masteredWords && !progressData.wordProgress) {
+                        progressData.wordProgress = {
+                            new: [],
+                            learning: [],
+                            mastered: Array.from(progressData.masteredWords || [])
+                        };
+                    }
+                    
                     // Initialize with default values, then override with loaded data
                     learningProgress = {
                         ...initializeProgress(),
                         ...progressData,
-                        masteredWords: new Set(progressData.masteredWords || [])
+                        wordProgress: {
+                            new: new Set(progressData.wordProgress?.new || []),
+                            learning: new Set(progressData.wordProgress?.learning || []),
+                            mastered: new Set(progressData.wordProgress?.mastered || [])
+                        }
                     };
+                    
                     updateStats();
                     updateReviewSchedule();
+                    updateCategoryProgress();
                     alert('¡Progreso cargado exitosamente!');
                 } catch (error) {
                     alert('Error loading progress file. Please check the file format.');
@@ -2616,29 +2705,259 @@
             setTimeout(() => notification.remove(), 5000);
         }
         
+        // 3-LEVEL PROGRESS SYSTEM FUNCTIONS
+        function getWordLevel(wordId) {
+            if (learningProgress.wordProgress.mastered.has(wordId)) return 'mastered';
+            if (learningProgress.wordProgress.learning.has(wordId)) return 'learning';
+            return 'new';
+        }
+        
+        function moveWordToLevel(wordId, newLevel) {
+            const currentLevel = getWordLevel(wordId);
+            
+            // Remove from current level
+            if (currentLevel === 'mastered') learningProgress.wordProgress.mastered.delete(wordId);
+            else if (currentLevel === 'learning') learningProgress.wordProgress.learning.delete(wordId);
+            else if (currentLevel === 'new') learningProgress.wordProgress.new.delete(wordId);
+            
+            // Add to new level
+            if (newLevel === 'mastered') learningProgress.wordProgress.mastered.add(wordId);
+            else if (newLevel === 'learning') learningProgress.wordProgress.learning.add(wordId);
+            else if (newLevel === 'new') learningProgress.wordProgress.new.add(wordId);
+            
+            // Update last seen date
+            learningProgress.lastSeen[wordId] = new Date().toISOString();
+            
+            // Update category progress
+            updateCategoryProgress();
+        }
+        
+        function recordWordResult(wordId, isCorrect) {
+            // Initialize if not exists
+            if (!learningProgress.errorCount[wordId]) learningProgress.errorCount[wordId] = 0;
+            if (!learningProgress.correctStreak[wordId]) learningProgress.correctStreak[wordId] = 0;
+            
+            if (isCorrect) {
+                learningProgress.correctStreak[wordId]++;
+                // Move to next level based on streak
+                const currentLevel = getWordLevel(wordId);
+                const streak = learningProgress.correctStreak[wordId];
+                
+                if (currentLevel === 'new' && streak >= 2) {
+                    moveWordToLevel(wordId, 'learning');
+                } else if (currentLevel === 'learning' && streak >= 5) {
+                    moveWordToLevel(wordId, 'mastered');
+                }
+            } else {
+                learningProgress.errorCount[wordId]++;
+                learningProgress.correctStreak[wordId] = 0;
+                
+                // Demote if too many errors
+                const currentLevel = getWordLevel(wordId);
+                const errors = learningProgress.errorCount[wordId];
+                
+                if (currentLevel === 'mastered' && errors >= 3) {
+                    moveWordToLevel(wordId, 'learning');
+                } else if (currentLevel === 'learning' && errors >= 5) {
+                    moveWordToLevel(wordId, 'new');
+                }
+            }
+            
+            // Update difficulty map
+            updateWordDifficulty(wordId);
+        }
+        
+        function updateWordDifficulty(wordId) {
+            const errors = learningProgress.errorCount[wordId] || 0;
+            const streak = learningProgress.correctStreak[wordId] || 0;
+            
+            if (errors >= 5 || streak === 0) {
+                learningProgress.difficultyMap[wordId] = 3; // Hard
+            } else if (errors >= 2 || streak < 3) {
+                learningProgress.difficultyMap[wordId] = 2; // Medium
+            } else {
+                learningProgress.difficultyMap[wordId] = 1; // Easy
+            }
+        }
+        
+        function updateCategoryProgress() {
+            if (!vocabularyData) return;
+            
+            Object.keys(vocabularyData).forEach(category => {
+                const words = vocabularyData[category];
+                let newCount = 0, learningCount = 0, masteredCount = 0;
+                
+                words.forEach(word => {
+                    const wordId = `${category}_${word.jp}`;
+                    const level = getWordLevel(wordId);
+                    
+                    if (level === 'new') newCount++;
+                    else if (level === 'learning') learningCount++;
+                    else if (level === 'mastered') masteredCount++;
+                });
+                
+                learningProgress.categoryProgress[category] = {
+                    new: newCount,
+                    learning: learningCount,
+                    mastered: masteredCount,
+                    total: words.length
+                };
+            });
+        }
+        
+        // SMART REVIEW SYSTEM
+        function getNextReviewDate(difficultyLevel) {
+            const now = new Date();
+            let daysToAdd = 1; // Default: review tomorrow
+            
+            switch(difficultyLevel) {
+                case 1: // Easy
+                    daysToAdd = 7; // Review in 1 week
+                    break;
+                case 2: // Medium
+                    daysToAdd = 3; // Review in 3 days
+                    break;
+                case 3: // Hard
+                    daysToAdd = 1; // Review tomorrow
+                    break;
+            }
+            
+            now.setDate(now.getDate() + daysToAdd);
+            return now.toISOString();
+        }
+        
+        function getPriorityWords(count = 10) {
+            const now = new Date();
+            const priorityWords = [];
+            
+            // Get all words that need review
+            Object.keys(learningProgress.reviewSchedule).forEach(wordId => {
+                const reviewDate = new Date(learningProgress.reviewSchedule[wordId]);
+                if (reviewDate <= now) {
+                    const difficulty = learningProgress.difficultyMap[wordId] || 2;
+                    const errors = learningProgress.errorCount[wordId] || 0;
+                    const lastSeen = learningProgress.lastSeen[wordId];
+                    
+                    // Calculate priority score (higher = more urgent)
+                    let priority = 0;
+                    priority += difficulty * 10; // Hard words get higher priority
+                    priority += errors * 5; // More errors = higher priority
+                    
+                    if (lastSeen) {
+                        const daysSinceLastSeen = (now - new Date(lastSeen)) / (1000 * 60 * 60 * 24);
+                        priority += daysSinceLastSeen * 2; // Older words get higher priority
+                    }
+                    
+                    priorityWords.push({ wordId, priority });
+                }
+            });
+            
+            // Sort by priority and return top words
+            priorityWords.sort((a, b) => b.priority - a.priority);
+            return priorityWords.slice(0, count).map(item => item.wordId);
+        }
+        
+        function getSmartFlashcards(category = null, count = 10) {
+            if (!vocabularyData) return [];
+            
+            const priorityWords = getPriorityWords(count * 2); // Get more than needed
+            const smartCards = [];
+            
+            // Add priority words first
+            priorityWords.forEach(wordId => {
+                if (smartCards.length >= count) return;
+                
+                const [cat, jp] = wordId.split('_');
+                if (category && cat !== category) return;
+                
+                const word = vocabularyData[cat]?.find(w => w.jp === jp);
+                if (word) {
+                    smartCards.push({
+                        ...word,
+                        category: cat,
+                        wordId: wordId,
+                        level: getWordLevel(wordId),
+                        priority: 'high'
+                    });
+                }
+            });
+            
+            // Fill remaining slots with new words
+            if (smartCards.length < count) {
+                const categories = category ? [category] : Object.keys(vocabularyData);
+                
+                categories.forEach(cat => {
+                    if (smartCards.length >= count) return;
+                    
+                    vocabularyData[cat].forEach(word => {
+                        if (smartCards.length >= count) return;
+                        
+                        const wordId = `${cat}_${word.jp}`;
+                        if (getWordLevel(wordId) === 'new') {
+                            smartCards.push({
+                                ...word,
+                                category: cat,
+                                wordId: wordId,
+                                level: 'new',
+                                priority: 'new'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            // If still no cards, add some random words as new
+            if (smartCards.length === 0) {
+                const categories = category ? [category] : Object.keys(vocabularyData);
+                
+                categories.forEach(cat => {
+                    if (smartCards.length >= count) return;
+                    
+                    const randomWords = vocabularyData[cat]
+                        .sort(() => 0.5 - Math.random())
+                        .slice(0, count - smartCards.length);
+                    
+                    randomWords.forEach(word => {
+                        const wordId = `${cat}_${word.jp}`;
+                        smartCards.push({
+                            ...word,
+                            category: cat,
+                            wordId: wordId,
+                            level: 'new',
+                            priority: 'new'
+                        });
+                    });
+                });
+            }
+            
+            return smartCards.slice(0, count);
+        }
+        
         // Daily challenge functions
         function updateDailyChallenge() {
             const today = new Date().toDateString();
             const challengeIndex = new Date().getDate() % dailyChallenges.length;
             
-            document.getElementById('challengeTitle').textContent = dailyChallenges[challengeIndex];
-            document.getElementById('challengeDescription').textContent = 
-                `Complete 4 different activities today to maintain your streak!`;
+            safeSetTextContent('challengeTitle', dailyChallenges[challengeIndex]);
+            safeSetTextContent('challengeDescription', 'Complete 4 different activities today to maintain your streak!');
             
             // Update daily stats
             const stats = learningProgress.dailyStats;
-            document.getElementById('todayFlashcards').textContent = stats.flashcards;
-            document.getElementById('todayQuizzes').textContent = stats.quizzes;
-            document.getElementById('todayReading').textContent = stats.reading;
-            document.getElementById('todaySentences').textContent = stats.sentences;
+            safeSetTextContent('todayFlashcards', stats.flashcards);
+            safeSetTextContent('todayQuizzes', stats.quizzes);
+            safeSetTextContent('todayReading', stats.reading);
+            safeSetTextContent('todaySentences', stats.sentences);
             
             // Update progress bar
             const completed = Object.values(stats).filter(v => v > 0).length;
             const progress = (completed / 4) * 100;
-            document.getElementById('challengeProgress').style.width = progress + '%';
+            const challengeProgressElement = document.getElementById('challengeProgress');
+            if (challengeProgressElement) {
+                challengeProgressElement.style.width = progress + '%';
+            }
             
             // Update streak
-            document.getElementById('currentStreak').textContent = learningProgress.studyStreak;
+            safeSetTextContent('currentStreak', learningProgress.studyStreak);
         }
         
         function startDailyTask(taskType) {
@@ -2966,6 +3285,9 @@
                 updateDailyChallenge();
                 loadSentenceChallenge();
                 setupSentenceAreaEvents();
+                
+                // Initialize 3-level progress system
+                updateCategoryProgress();
                 console.log('JLPT app initialization complete!');
             } else {
                 console.warn('Vocabulary failed to load, some features may not work correctly');
@@ -2979,6 +3301,14 @@
             }
         }
         
+        // Helper function for safe element updates
+        function safeSetTextContent(elementId, text) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = text;
+            }
+        }
+        
         // Navigation functions
         function showSection(sectionId) {
             const sections = document.querySelectorAll('.content-section');
@@ -2987,8 +3317,14 @@
             const tabs = document.querySelectorAll('.nav-tab');
             tabs.forEach(tab => tab.classList.remove('active'));
             
-            document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+            
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
             
             updateProgress();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -2998,15 +3334,93 @@
             const sections = ['overview', 'daily-challenge', 'reading-practice', 'sentence-builder', 'flashcards', 'quizzes', 'kana-practice', 'vocabulary', 'grammar', 'counters'];
             const activeSection = document.querySelector('.content-section.active').id;
             const progress = ((sections.indexOf(activeSection) + 1) / sections.length) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
+            
+            // Check if progressFill element exists before updating
+            const progressFillElement = document.getElementById('progressFill');
+            if (progressFillElement) {
+                progressFillElement.style.width = progress + '%';
+            }
         }
         
-        // Statistics functions
+        // Statistics functions - ENHANCED WITH 3-LEVEL SYSTEM
         function updateStats() {
-            document.getElementById('vocabMastered').textContent = learningProgress.vocabMastered;
-            // Kana stats handled by Tofugu quiz
-            document.getElementById('quizzesTaken').textContent = learningProgress.quizzesTaken;
-            document.getElementById('studyStreak').textContent = learningProgress.studyStreak;
+            // Update basic stats with null checks
+            const vocabMasteredElement = document.getElementById('vocabMastered');
+            const quizzesTakenElement = document.getElementById('quizzesTaken');
+            const studyStreakElement = document.getElementById('studyStreak');
+            
+            if (vocabMasteredElement) {
+                vocabMasteredElement.textContent = learningProgress.wordProgress.mastered.size;
+            }
+            if (quizzesTakenElement) {
+                quizzesTakenElement.textContent = learningProgress.quizzesTaken;
+            }
+            if (studyStreakElement) {
+                studyStreakElement.textContent = learningProgress.studyStreak;
+            }
+            
+            // Update 3-level progress stats
+            updateProgressStats();
+            
+            // Update category progress
+            updateCategoryProgress();
+            
+            // Update smart review stats
+            updateReviewStats();
+        }
+        
+        function updateProgressStats() {
+            const newCount = learningProgress.wordProgress.new.size;
+            const learningCount = learningProgress.wordProgress.learning.size;
+            const masteredCount = learningProgress.wordProgress.mastered.size;
+            const totalWords = newCount + learningCount + masteredCount;
+            
+            // Update progress display if elements exist
+            const progressElements = {
+                'newWords': newCount,
+                'learningWords': learningCount,
+                'masteredWords': masteredCount,
+                'totalWords': totalWords
+            };
+            
+            Object.keys(progressElements).forEach(elementId => {
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.textContent = progressElements[elementId];
+                }
+            });
+            
+            // Update progress bar and percentage
+            const progressBar = document.querySelector('.progress-fill');
+            const progressPercentageElement = document.getElementById('progressPercentage');
+            
+            if (totalWords > 0) {
+                const progressPercentage = ((learningCount + masteredCount) / totalWords) * 100;
+                
+                if (progressBar) {
+                    progressBar.style.width = `${progressPercentage}%`;
+                }
+                
+                if (progressPercentageElement) {
+                    progressPercentageElement.textContent = `${Math.round(progressPercentage)}%`;
+                }
+            }
+        }
+        
+        function updateReviewStats() {
+            const priorityWords = getPriorityWords();
+            const reviewCount = priorityWords.length;
+            
+            // Update review count display
+            const reviewElement = document.getElementById('reviewCount');
+            if (reviewElement) {
+                reviewElement.textContent = reviewCount;
+            }
+            
+            // Show review notification if needed
+            if (reviewCount > 0) {
+                showReviewNotification(reviewCount);
+            }
         }
         
         function incrementStat(statName, increment = 1) {
@@ -3020,10 +3434,11 @@
             loadFlashcards(mode);
         }
         
-        function loadFlashcards(mode) {
+        function loadFlashcards(mode, category = null) {
             switch(mode) {
                 case 'vocabulary':
-                    currentFlashcards = getAllVocabulary();
+                    // Use smart flashcards for vocabulary
+                    currentFlashcards = getSmartFlashcards(category, 20);
                     break;
                 case 'kanji':
                     currentFlashcards = kanjiData;
@@ -3036,9 +3451,20 @@
                         example: g.example
                     }));
                     break;
+                case 'review':
+                    // Load only words that need review
+                    const priorityWords = getPriorityWords(20);
+                    currentFlashcards = priorityWords.map(wordId => {
+                        const [cat, jp] = wordId.split('_');
+                        const word = vocabularyData[cat]?.find(w => w.jp === jp);
+                        return word ? { ...word, category: cat, wordId: wordId } : null;
+                    }).filter(Boolean);
+                    break;
             }
             
-            shuffleFlashcards();
+            if (mode !== 'vocabulary' && mode !== 'review') {
+                shuffleFlashcards();
+            }
             currentFlashcardIndex = 0;
             updateFlashcard();
             updateFlashcardStats();
@@ -3064,16 +3490,26 @@
         }
         
         function updateFlashcard() {
-            if (currentFlashcards.length === 0) return;
+            if (currentFlashcards.length === 0) {
+                // Show default message when no cards
+                safeSetTextContent('flashcardFront', 'Haz clic para comenzar');
+                safeSetTextContent('flashcardReading', '');
+                safeSetTextContent('flashcardBack', '¡Vamos a aprender!');
+                safeSetTextContent('flashcardMeaning', '');
+                return;
+            }
             
             const card = currentFlashcards[currentFlashcardIndex];
-            document.getElementById('flashcardFront').textContent = card.jp;
-            document.getElementById('flashcardReading').textContent = card.romaji;
-            document.getElementById('flashcardBack').textContent = card.es;
-            document.getElementById('flashcardMeaning').textContent = card.example || '';
+            safeSetTextContent('flashcardFront', card.jp || 'Cargando...');
+            safeSetTextContent('flashcardReading', card.romaji || '');
+            safeSetTextContent('flashcardBack', card.es || card.en || 'Cargando...');
+            safeSetTextContent('flashcardMeaning', card.example || '');
             
             // Reset flip state
-            document.getElementById('flashcard').classList.remove('flipped');
+            const flashcardElement = document.getElementById('flashcard');
+            if (flashcardElement) {
+                flashcardElement.classList.remove('flipped');
+            }
             isFlashcardFlipped = false;
         }
         
@@ -3097,30 +3533,22 @@
         
         function markCard(difficulty) {
             const card = currentFlashcards[currentFlashcardIndex];
-            const cardId = card.jp + card.es;
+            const cardId = `${card.category || 'vocabulary'}_${card.jp}`;
             
-            // Update difficulty mapping
+            // Record the result in the 3-level system
+            const isCorrect = difficulty === 'easy';
+            recordWordResult(cardId, isCorrect);
+            
+            // Update difficulty mapping and review schedule
             const difficultyLevel = difficulty === 'easy' ? 1 : difficulty === 'medium' ? 2 : 3;
             learningProgress.difficultyMap[cardId] = difficultyLevel;
             learningProgress.reviewSchedule[cardId] = getNextReviewDate(difficultyLevel);
             
-            if (difficulty === 'easy') {
-                if (!learningProgress.masteredWords) learningProgress.masteredWords = new Set();
-                learningProgress.masteredWords.add(cardId);
-                incrementStat('vocabMastered');
-            } else if (difficulty === 'hard') {
-                // Remove from mastered if marked as hard
-                if (learningProgress.masteredWords) {
-                    learningProgress.masteredWords.delete(cardId);
-                }
-                if (learningProgress.vocabMastered > 0) {
-                    learningProgress.vocabMastered--;
-                    updateStats();
-                }
-            }
-            
             // Update daily stats
             completeDailyTask('flashcards');
+            
+            // Update stats display
+            updateStats();
             
             nextCard();
         }
@@ -3154,12 +3582,32 @@
         }
         
         function updateFlashcardStats() {
-            if (!learningProgress.masteredWords) learningProgress.masteredWords = new Set();
+            // Update card counter
+            safeSetTextContent('currentCard', currentFlashcards.length > 0 ? currentFlashcardIndex + 1 : 0);
+            safeSetTextContent('totalCards', currentFlashcards.length);
             
-            document.getElementById('currentCard').textContent = currentFlashcardIndex + 1;
-            document.getElementById('totalCards').textContent = currentFlashcards.length;
-            document.getElementById('knownCards').textContent = learningProgress.masteredWords.size;
-            document.getElementById('learningCards').textContent = currentFlashcards.length - learningProgress.masteredWords.size;
+            // Update 3-level progress display
+            const newCount = learningProgress.wordProgress.new.size;
+            const learningCount = learningProgress.wordProgress.learning.size;
+            const masteredCount = learningProgress.wordProgress.mastered.size;
+            
+            // Update elements if they exist
+            safeSetTextContent('newCards', newCount);
+            safeSetTextContent('learningCards', learningCount);
+            safeSetTextContent('knownCards', masteredCount);
+            
+            // Show current card level if available
+            if (currentFlashcards.length > 0) {
+                const currentCard = currentFlashcards[currentFlashcardIndex];
+                if (currentCard.wordId) {
+                    const level = getWordLevel(currentCard.wordId);
+                    const levelNames = { new: '🆕 Nuevo', learning: '📚 Aprendiendo', mastered: '✅ Dominado' };
+                    safeSetTextContent('currentCardLevel', levelNames[level] || '');
+                }
+            } else {
+                // Reset level display when no cards
+                safeSetTextContent('currentCardLevel', '🆕 Nuevo');
+            }
         }
         
         // Quiz functions
