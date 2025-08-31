@@ -2513,27 +2513,31 @@
         // Kana data removed - now using Tofugu's embedded quiz
         
         // Learning progress tracking with JSON persistence
-        let learningProgress = {
-            vocabMastered: 0,
-            quizzesTaken: 0,
-            studyStreak: 1,
-            masteredWords: new Set(),
-            difficultyMap: {}, // word/kanji -> difficulty level (1=easy, 2=medium, 3=hard)
-            reviewSchedule: {}, // word/kanji -> next review date
-            streakDates: [], // dates of study sessions
-            lastStudyDate: null,
-            dailyStats: {
-                flashcards: 0,
-                quizzes: 0,
-                reading: 0,
-                sentences: 0
-            },
-            sentenceStats: {
-                built: 0,
-                correct: 0,
-                total: 0
-            }
-        };
+        function initializeProgress() {
+            return {
+                vocabMastered: 0,
+                quizzesTaken: 0,
+                studyStreak: 1,
+                masteredWords: new Set(),
+                difficultyMap: {}, // word/kanji -> difficulty level (1=easy, 2=medium, 3=hard)
+                reviewSchedule: {}, // word/kanji -> next review date
+                streakDates: [], // dates of study sessions
+                lastStudyDate: null,
+                dailyStats: {
+                    flashcards: 0,
+                    quizzes: 0,
+                    reading: 0,
+                    sentences: 0
+                },
+                sentenceStats: {
+                    built: 0,
+                    correct: 0,
+                    total: 0
+                }
+            };
+        }
+        
+        let learningProgress = initializeProgress();
         
         // Current states
         let currentReadingPassage = null;
@@ -2546,8 +2550,7 @@
         function saveProgress() {
             const progressData = {
                 ...learningProgress,
-                masteredWords: Array.from(learningProgress.masteredWords),
-                masteredKana: Array.from(learningProgress.masteredKana)
+                masteredWords: Array.from(learningProgress.masteredWords || [])
             };
             
             // Create and download JSON file
@@ -2569,14 +2572,15 @@
             reader.onload = function(e) {
                 try {
                     const progressData = JSON.parse(e.target.result);
+                    // Initialize with default values, then override with loaded data
                     learningProgress = {
+                        ...initializeProgress(),
                         ...progressData,
-                        masteredWords: new Set(progressData.masteredWords || []),
-                        masteredKana: new Set(progressData.masteredKana || [])
+                        masteredWords: new Set(progressData.masteredWords || [])
                     };
                     updateStats();
                     updateReviewSchedule();
-                    alert('Progress loaded successfully!');
+                    alert('¡Progreso cargado exitosamente!');
                 } catch (error) {
                     alert('Error loading progress file. Please check the file format.');
                 }
@@ -3101,11 +3105,14 @@
             learningProgress.reviewSchedule[cardId] = getNextReviewDate(difficultyLevel);
             
             if (difficulty === 'easy') {
+                if (!learningProgress.masteredWords) learningProgress.masteredWords = new Set();
                 learningProgress.masteredWords.add(cardId);
                 incrementStat('vocabMastered');
             } else if (difficulty === 'hard') {
                 // Remove from mastered if marked as hard
-                learningProgress.masteredWords.delete(cardId);
+                if (learningProgress.masteredWords) {
+                    learningProgress.masteredWords.delete(cardId);
+                }
                 if (learningProgress.vocabMastered > 0) {
                     learningProgress.vocabMastered--;
                     updateStats();
@@ -3147,6 +3154,8 @@
         }
         
         function updateFlashcardStats() {
+            if (!learningProgress.masteredWords) learningProgress.masteredWords = new Set();
+            
             document.getElementById('currentCard').textContent = currentFlashcardIndex + 1;
             document.getElementById('totalCards').textContent = currentFlashcards.length;
             document.getElementById('knownCards').textContent = learningProgress.masteredWords.size;
