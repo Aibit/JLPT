@@ -2512,16 +2512,91 @@
         let vocabularyData = {};
         
         const kanjiData = [
-            {jp: "一", romaji: "ichi", en: "one"},
-            {jp: "二", romaji: "ni", en: "two"},
-            {jp: "三", romaji: "san", en: "three"},
-            {jp: "四", romaji: "yon/shi", en: "four"},
-            {jp: "五", romaji: "go", en: "five"},
-            {jp: "人", romaji: "hito/jin", en: "person"},
-            {jp: "日", romaji: "hi/nichi", en: "day/sun"},
-            {jp: "月", romaji: "tsuki/getsu", en: "moon/month"},
-            {jp: "火", romaji: "hi/ka", en: "fire"},
-            {jp: "水", romaji: "mizu/sui", en: "water"}
+            // Números básicos
+            {jp: "一", romaji: "ichi", en: "one", es: "uno", category: "numbers"},
+            {jp: "二", romaji: "ni", en: "two", es: "dos", category: "numbers"},
+            {jp: "三", romaji: "san", en: "three", es: "tres", category: "numbers"},
+            {jp: "四", romaji: "yon/shi", en: "four", es: "cuatro", category: "numbers"},
+            {jp: "五", romaji: "go", en: "five", es: "cinco", category: "numbers"},
+            {jp: "六", romaji: "roku", en: "six", es: "seis", category: "numbers"},
+            {jp: "七", romaji: "nana/shichi", en: "seven", es: "siete", category: "numbers"},
+            {jp: "八", romaji: "hachi", en: "eight", es: "ocho", category: "numbers"},
+            {jp: "九", romaji: "kyuu/ku", en: "nine", es: "nueve", category: "numbers"},
+            {jp: "十", romaji: "juu", en: "ten", es: "diez", category: "numbers"},
+            {jp: "百", romaji: "hyaku", en: "hundred", es: "cien", category: "numbers"},
+            {jp: "千", romaji: "sen", en: "thousand", es: "mil", category: "numbers"},
+            {jp: "万", romaji: "man", en: "ten thousand", es: "diez mil", category: "numbers"},
+            
+            // Personas y familia
+            {jp: "人", romaji: "hito/jin", en: "person", es: "persona", category: "people"},
+            {jp: "男", romaji: "otoko", en: "man", es: "hombre", category: "people"},
+            {jp: "女", romaji: "onna", en: "woman", es: "mujer", category: "people"},
+            {jp: "子", romaji: "ko", en: "child", es: "niño", category: "people"},
+            {jp: "父", romaji: "chichi", en: "father", es: "padre", category: "family"},
+            {jp: "母", romaji: "haha", en: "mother", es: "madre", category: "family"},
+            {jp: "兄", romaji: "ani", en: "older brother", es: "hermano mayor", category: "family"},
+            {jp: "弟", romaji: "otouto", en: "younger brother", es: "hermano menor", category: "family"},
+            {jp: "姉", romaji: "ane", en: "older sister", es: "hermana mayor", category: "family"},
+            {jp: "妹", romaji: "imouto", en: "younger sister", es: "hermana menor", category: "family"},
+            
+            // Tiempo y días
+            {jp: "日", romaji: "hi/nichi", en: "day/sun", es: "día/sol", category: "time"},
+            {jp: "月", romaji: "tsuki/getsu", en: "moon/month", es: "luna/mes", category: "time"},
+            {jp: "年", romaji: "toshi/nen", en: "year", es: "año", category: "time"},
+            {jp: "時", romaji: "toki/ji", en: "time", es: "tiempo/hora", category: "time"},
+            {jp: "分", romaji: "fun/bun", en: "minute", es: "minuto", category: "time"},
+            {jp: "今", romaji: "ima", en: "now", es: "ahora", category: "time"},
+            {jp: "今", romaji: "ima", en: "now", es: "ahora", category: "time"},
+            
+            // Elementos naturales
+            {jp: "火", romaji: "hi/ka", en: "fire", es: "fuego", category: "nature"},
+            {jp: "水", romaji: "mizu/sui", en: "water", es: "agua", category: "nature"},
+            {jp: "木", romaji: "ki/moku", en: "tree/wood", es: "árbol/madera", category: "nature"},
+            {jp: "土", romaji: "tsuchi/do", en: "earth/soil", es: "tierra", category: "nature"},
+            {jp: "山", romaji: "yama/san", en: "mountain", es: "montaña", category: "nature"},
+            {jp: "川", romaji: "kawa", en: "river", es: "río", category: "nature"},
+            {jp: "海", romaji: "umi", en: "sea", es: "mar", category: "nature"},
+            
+            // Comida y bebida
+            {jp: "米", romaji: "kome", en: "rice", es: "arroz", category: "food"},
+            {jp: "肉", romaji: "niku", en: "meat", es: "carne", category: "food"},
+            {jp: "魚", romaji: "sakana", en: "fish", es: "pescado", category: "food"},
+            {jp: "茶", romaji: "cha", en: "tea", es: "té", category: "food"},
+            {jp: "酒", romaji: "sake", en: "sake/alcohol", es: "sake/alcohol", category: "food"},
+            
+            // Lugares y edificios
+            {jp: "家", romaji: "ie/ka", en: "house/home", es: "casa", category: "places"},
+            {jp: "学校", romaji: "gakkou", en: "school", es: "escuela", category: "places"},
+            {jp: "店", romaji: "mise", en: "shop/store", es: "tienda", category: "places"},
+            {jp: "駅", romaji: "eki", en: "station", es: "estación", category: "places"},
+            {jp: "空", romaji: "sora/kuu", en: "sky/empty", es: "cielo/vacío", category: "places"},
+            
+            // Acciones básicas
+            {jp: "行", romaji: "iku/gyou", en: "go", es: "ir", category: "actions"},
+            {jp: "来", romaji: "kuru/rai", en: "come", es: "venir", category: "actions"},
+            {jp: "見", romaji: "miru/ken", en: "see", es: "ver", category: "actions"},
+            {jp: "聞", romaji: "kiku/bun", en: "hear/ask", es: "oír/preguntar", category: "actions"},
+            {jp: "言", romaji: "iu/gen", en: "say", es: "decir", category: "actions"},
+            {jp: "書", romaji: "kaku/sho", en: "write", es: "escribir", category: "actions"},
+            {jp: "読", romaji: "yomu/doku", en: "read", es: "leer", category: "actions"},
+            {jp: "買", romaji: "kau/bai", en: "buy", es: "comprar", category: "actions"},
+            {jp: "売", romaji: "uru/bai", en: "sell", es: "vender", category: "actions"},
+            {jp: "食", romaji: "taberu/shoku", en: "eat", es: "comer", category: "actions"},
+            {jp: "飲", romaji: "nomu/in", en: "drink", es: "beber", category: "actions"},
+            
+            // Adjetivos básicos
+            {jp: "大", romaji: "ookii/dai", en: "big", es: "grande", category: "adjectives"},
+            {jp: "小", romaji: "chiisai/shou", en: "small", es: "pequeño", category: "adjectives"},
+            {jp: "新", romaji: "atarashii/shin", en: "new", es: "nuevo", category: "adjectives"},
+            {jp: "古", romaji: "furui/ko", en: "old", es: "viejo", category: "adjectives"},
+            {jp: "高", romaji: "takai/kou", en: "high/expensive", es: "alto/caro", category: "adjectives"},
+            {jp: "安", romaji: "yasui/an", en: "cheap", es: "barato", category: "adjectives"},
+            {jp: "好", romaji: "suki/kou", en: "like", es: "gustar", category: "adjectives"},
+            {jp: "悪", romaji: "warui/aku", en: "bad", es: "malo", category: "adjectives"},
+            {jp: "白", romaji: "shiroi/haku", en: "white", es: "blanco", category: "adjectives"},
+            {jp: "黒", romaji: "kuroi/koku", en: "black", es: "negro", category: "adjectives"},
+            {jp: "赤", romaji: "akai/seki", en: "red", es: "rojo", category: "adjectives"},
+            {jp: "青", romaji: "aoi/sei", en: "blue", es: "azul", category: "adjectives"}
         ];
         
         const grammarData = [
@@ -2931,6 +3006,102 @@
             }
             
             return smartCards.slice(0, count);
+        }
+        
+        function getSmartKanjiCards(category = null, count = 10) {
+            if (!kanjiData) return [];
+            
+            const smartCards = [];
+            
+            // Get kanji that need review (priority)
+            const priorityKanji = getPriorityKanji(count * 2);
+            priorityKanji.forEach(kanjiId => {
+                if (smartCards.length >= count) return;
+                
+                const [cat, jp] = kanjiId.split('_');
+                if (category && cat !== category) return;
+                
+                const kanji = kanjiData.find(k => k.jp === jp);
+                if (kanji) {
+                    smartCards.push({
+                        ...kanji,
+                        category: cat,
+                        wordId: kanjiId,
+                        level: getWordLevel(kanjiId),
+                        priority: 'high'
+                    });
+                }
+            });
+            
+            // Fill with new kanji
+            if (smartCards.length < count) {
+                const categories = category ? [category] : [...new Set(kanjiData.map(k => k.category))];
+                
+                categories.forEach(cat => {
+                    if (smartCards.length >= count) return;
+                    
+                    const categoryKanji = kanjiData.filter(k => k.category === cat);
+                    categoryKanji.forEach(kanji => {
+                        if (smartCards.length >= count) return;
+                        
+                        const kanjiId = `kanji_${kanji.jp}`;
+                        if (getWordLevel(kanjiId) === 'new') {
+                            smartCards.push({
+                                ...kanji,
+                                category: 'kanji',
+                                wordId: kanjiId,
+                                level: 'new',
+                                priority: 'new'
+                            });
+                        }
+                    });
+                });
+            }
+            
+            // If still no cards, add random kanji as new
+            if (smartCards.length === 0) {
+                const randomKanji = kanjiData
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, count);
+                
+                randomKanji.forEach(kanji => {
+                    const kanjiId = `kanji_${kanji.jp}`;
+                    smartCards.push({
+                        ...kanji,
+                        category: 'kanji',
+                        wordId: kanjiId,
+                        level: 'new',
+                        priority: 'new'
+                    });
+                });
+            }
+            
+            return smartCards.slice(0, count);
+        }
+        
+        function getPriorityKanji(count = 10) {
+            const now = new Date();
+            const priorityKanji = [];
+            
+            // Get all kanji that need review
+            Object.keys(learningProgress.reviewSchedule).forEach(kanjiId => {
+                if (!kanjiId.startsWith('kanji_')) return;
+                
+                const reviewDate = new Date(learningProgress.reviewSchedule[kanjiId]);
+                if (reviewDate <= now) {
+                    const difficulty = learningProgress.difficultyMap[kanjiId] || 2;
+                    const errors = learningProgress.errorCount[kanjiId] || 0;
+                    
+                    let priority = 0;
+                    priority += difficulty * 10;
+                    priority += errors * 5;
+                    
+                    priorityKanji.push({ kanjiId, priority });
+                }
+            });
+            
+            priorityKanji.sort((a, b) => b.priority - a.priority);
+            return priorityKanji.slice(0, count).map(item => item.kanjiId);
         }
         
         // Daily challenge functions
@@ -3441,7 +3612,8 @@
                     currentFlashcards = getSmartFlashcards(category, 20);
                     break;
                 case 'kanji':
-                    currentFlashcards = kanjiData;
+                    // Use smart flashcards for kanji with 3-level system
+                    currentFlashcards = getSmartKanjiCards(category, 20);
                     break;
                 case 'grammar':
                     currentFlashcards = grammarData.map(g => ({
@@ -3462,7 +3634,7 @@
                     break;
             }
             
-            if (mode !== 'vocabulary' && mode !== 'review') {
+            if (mode !== 'vocabulary' && mode !== 'review' && mode !== 'kanji') {
                 shuffleFlashcards();
             }
             currentFlashcardIndex = 0;
@@ -3502,8 +3674,17 @@
             const card = currentFlashcards[currentFlashcardIndex];
             safeSetTextContent('flashcardFront', card.jp || 'Cargando...');
             safeSetTextContent('flashcardReading', card.romaji || '');
-            safeSetTextContent('flashcardBack', card.es || card.en || 'Cargando...');
-            safeSetTextContent('flashcardMeaning', card.example || '');
+            
+            // Show meaning in Spanish if available, otherwise English
+            const meaning = card.es || card.en || 'Cargando...';
+            safeSetTextContent('flashcardBack', meaning);
+            
+            // Show category info for kanji
+            if (card.category && card.category !== 'vocabulary') {
+                safeSetTextContent('flashcardMeaning', `Categoría: ${card.category}`);
+            } else {
+                safeSetTextContent('flashcardMeaning', card.example || '');
+            }
             
             // Reset flip state
             const flashcardElement = document.getElementById('flashcard');
@@ -3533,7 +3714,14 @@
         
         function markCard(difficulty) {
             const card = currentFlashcards[currentFlashcardIndex];
-            const cardId = `${card.category || 'vocabulary'}_${card.jp}`;
+            
+            // Create appropriate cardId based on card type
+            let cardId;
+            if (card.category === 'kanji' || card.wordId?.startsWith('kanji_')) {
+                cardId = `kanji_${card.jp}`;
+            } else {
+                cardId = `${card.category || 'vocabulary'}_${card.jp}`;
+            }
             
             // Record the result in the 3-level system
             const isCorrect = difficulty === 'easy';
